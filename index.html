@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SKYPIONEERS - Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="sound-hint" class="sound-indicator visible">
+      <i class="fas fa-volume-up mr-2"></i> Tap anywhere for sound
+    </div>
+
+    <!-- Tesla Style Liquid Navbar with Mega Menu -->
+    <nav class="tesla-nav" id="navbar">
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="imgs/logo.png" alt="Logo" id="nav-logo" />
+        </a>
+      </div>
+
+      <div class="nav-center hidden lg:flex">
+        <!-- Home Link -->
+        <div class="nav-item">
+          <a href="index.html">Home</a>
+        </div>
+
+        <!-- Explore Link -->
+        <div class="nav-item">
+          <a href="explore.html">Explore</a>
+        </div>
+
+        <div class="nav-item has-menu">
+          Projects
+          <div class="mega-menu-container">
+            <div class="mega-content">
+              <div class="mega-col">
+                <h4>Residential</h4>
+                <ul>
+                  <li><a href="#">Skyline Towers</a></li>
+                  <li><a href="#">The Glass House</a></li>
+                  <li><a href="#">Urban Lofts</a></li>
+                  <li><a href="#">Garden Villas</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Commercial</h4>
+                <ul>
+                  <li><a href="#">Tech Hub Plaza</a></li>
+                  <li><a href="#">Innovation Center</a></li>
+                  <li><a href="#">Executive Suites</a></li>
+                  <li><a href="#">Global Trade Tower</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Upcoming</h4>
+                <ul>
+                  <li><a href="#">The Vertex</a></li>
+                  <li><a href="#">Eco District</a></li>
+                  <li><a href="#">Ocean Front</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Featured</h4>
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
+                  style="
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 120px;
+                    object-fit: cover;
+                  "
+                />
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: var(--text-muted);
+                  "
+                  >View Masterplan -></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Link triggers Page Switch -->
+        <!-- <div class="nav-item" onclick="switchPage('about')">About</div> -->
+
+        <div class="nav-item has-menu">
+          <a href="about.html">About</a>
+          <div class="mega-menu-container">
+            <div class="mega-content">
+              <div class="mega-col">
+                <h4>About Us</h4>
+                <ul>
+                  <li><a href="#">Our Story</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Our Vision</a></li>
+                  <li><a href="#">Our Mission</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Our Work</h4>
+                <ul>
+                  <li><a href="#">Marketing Insights</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Events</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Sky News & Events</h4>
+                <ul>
+                  <li><a href="#">Sky News</a></li>
+                  <li><a href="#">Events</a></li>
+                  <li><a href="#">Press</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Featured</h4>
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
+                  style="
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 120px;
+                    object-fit: cover;
+                  "
+                />
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: var(--text-muted);
+                  "
+                  >View Masterplan -></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="sell.html">Sell Unit</a>
+        </div>
+        <div class="nav-item">
+          <a href="developers.html">Developers</a>
+        </div>
+        <div class="nav-item">
+          <a href="calculator.html">Calculator</a>
+        </div>
+        <div class="nav-item">
+          <a href="blogs.html">Blogs</a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="theme-toggle" onclick="" title="Help Center">
+          <a href="help.html">
+            <i class="fa-regular fa-circle-question"></i>
+          </a>
+        </div>
+        <div class="theme-toggle" onclick="toggleTheme()" title="Switch Theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </div>
+        <div class="hidden lg:flex theme-toggle">
+          <a href="login.html">
+            <i class="fa-solid fa-user"></i>
+          </a>
+        </div>
+        <div class="nav-item lg:hidden" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu-overlay">
+      <div class="mobile-close-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-times"></i>
+      </div>
+
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="explore.html">Explore</a>
+      </div>
+
+      <div class="mobile-projects-wrapper">
+        <div class="mobile-projects-title">Projects</div>
+        <div class="mobile-nav-sublink" style="display: block">Residential</div>
+        <div class="mobile-nav-sublink" style="display: block">Commercial</div>
+        <div class="mobile-nav-sublink" style="display: block">Upcoming</div>
+      </div>
+
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="about.html">About</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="sell.html">Sell Unit</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="developers.html">Developers</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="calculator.html">Calculator</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="blogs.html">Blogs</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="mobile-login-btn" onclick="toggleMobileMenu()">
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+
+    <!-- HOME PAGE VIEW WRAPPER -->
+    <div id="home-page" class="page-section">
+      <!-- Hero Section -->
+      <header class="hero-section">
+        <video
+          id="hero-video"
+          class="hero-bg-video"
+          autoplay
+          loop
+          muted
+          playsinline
+          webkit-playsinline
+          poster="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop"
+        >
+          <source src="video sky.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content-wrapper">
+          <h1 class="main-title">
+            <span class="title-line">
+              <span class="title-word delay-1">SKY</span>
+              <span class="title-word delay-2">PIONEERS</span>
+            </span>
+            <span class="title-line">
+              <span class="title-word delay-3">Real Estate</span>
+            </span>
+          </h1>
+        </div>
+      </header>
+
+      <!-- Divider -->
+      <div class="year-divider">
+        <span class="year-text">EST. 2024</span>
+      </div>
+
+      <!-- Gallery Section -->
+      <section class="gallery-section">
+        <h2 class="gallery-title">Portfolio</h2>
+        <div class="cylinder-track" id="cylinder-track"></div>
+        <div class="cylinder-controls">
+          <div class="control-btn" onclick="rotateCylinder(1)">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="control-btn" onclick="rotateCylinder(-1)">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- Concept Section -->
+      <section class="concept-section">
+        <video
+          id="concept-video"
+          class="concept-bg-video"
+          autoplay
+          loop
+          muted
+          playsinline
+          webkit-playsinline
+          poster="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2000&auto=format&fit=crop"
+        >
+          <source src="video sky.mp4" type="video/mp4" />
+        </video>
+        <div class="concept-overlay"></div>
+        <div class="blueprint-lines">
+          <div
+            class="tech-line"
+            style="width: 1px; height: 100%; left: 20%; top: 0"
+          ></div>
+          <div
+            class="tech-line"
+            style="width: 1px; height: 100%; left: 80%; top: 0"
+          ></div>
+          <div
+            class="tech-line"
+            style="width: 1px; height: 60%; left: 50%; top: 20%"
+          ></div>
+          <div
+            class="tech-line"
+            style="width: 100%; height: 1px; left: 0; top: 30%"
+          ></div>
+          <div
+            class="tech-line"
+            style="width: 100%; height: 1px; left: 0; top: 70%"
+          ></div>
+          <div
+            style="
+              position: absolute;
+              left: 50%;
+              top: 40%;
+              width: 8px;
+              height: 8px;
+              background: var(--accent-gold);
+              border-radius: 50%;
+            "
+          ></div>
+        </div>
+      </section>
+      <div class="py-5 px-5">
+        <div class="property-grid">
+          <!-- Property Card 1 -->
+          <div
+            class="developer-card"
+            style="position: relative; bottom: 30rem; z-index: 1"
+          >
+            <div class="developer-img-container">
+              <!-- <img src="imgs/108.png" class="prop-img" /> -->
+            </div>
+            <div class="developer-details">
+              <!-- <div class="prop-tag">NEW CAIRO</div> -->
+              <a href="#" class="prop-price">
+                Trending Now
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <!-- <div class="prop-tag">Projects</div> -->
+
+              <!-- <div class="developer-description">
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Eveniet vitae laudantium optio amet repellendus corrupti odio
+                  sequi dignissimos nesciunt repellat, quis ipsam, porro,
+                  voluptas quidem? Recusandae earum eos laboriosam amet?
+                </p>
+              </div> -->
+              <!-- <a href="#" class="prop-price"
+                >View Details
+                <i class="fa-solid fa-arrow-right"></i>
+              </a> -->
+              <!-- <div class="prop-specs">
+                    <span><i class="fas fa-bed"></i> 2</span>
+                    <span><i class="fas fa-ruler-combined"></i> 113m²</span>
+                  </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <h1 style="font-size: 25px; text-align: center; margin-bottom: 20px">
+        Sign Up To Our Newsletter
+      </h1>
+      <div class="search-container" style="margin: 1rem auto">
+        <input
+          class="search-input"
+          placeholder="Ask a question..."
+          type="text"
+        />
+        <button class="search-input-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div> -->
+    </div>
+
+    <section class="newsletter-section">
+      <h1>Join Our Newsletter</h1>
+      <p>Get the latest updates and offers delivered to your inbox</p>
+      <div class="search-container">
+        <input type="email" placeholder="Enter your email" />
+      </div>
+      <!-- <button>Subscribe</button> -->
+      <a href="newsletter.html">Subscribe</a>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <div>&copy; 2026 SkyPioneers</div>
+      <div>
+        <a class="text-white" href="#"
+          ><i class="fab fa-facebook-f mx-2"></i
+        ></a>
+        <a class="text-white" href="#"
+          ><i class="fab fa-instagram mx-2"></i
+        ></a>
+        <a class="text-white" href="#"
+          ><i class="fab fa-linkedin-in mx-2"></i
+        ></a>
+      </div>
+    </footer>
+
+    <div class="tesla-bottom-bar">
+      <div class="tesla-chat-input">
+        <i class="fa-regular fa-comment-dots chat-icon"></i>
+        <input type="text" placeholder="Ask a Question" />
+        <button class="send-btn"><i class="fa-solid fa-arrow-up"></i></button>
+      </div>
+
+      <!-- <a href="#" class="tesla-schedule-btn">
+        <i class="fa-solid fa-car"></i>
+        <span>Schedule a Drive Today</span>
+      </a> -->
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
