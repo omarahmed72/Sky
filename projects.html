@@ -15,6 +15,51 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* Save Button Styles */
+      .save-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        z-index: 20;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .save-btn:hover {
+        background: var(--accent-gold, #c5a059);
+        border-color: var(--accent-gold, #c5a059);
+        transform: scale(1.1);
+      }
+
+      .save-btn.saved {
+        background: var(--accent-gold, #c5a059);
+        border-color: var(--accent-gold, #c5a059);
+        color: white;
+      }
+
+      .save-btn i {
+        font-size: 14px;
+        transition: transform 0.3s ease;
+      }
+
+      .save-btn.saved i {
+        transform: rotate(180deg);
+      }
+    </style>
   </head>
   <body>
     <div id="sound-hint" class="sound-indicator visible">
@@ -401,6 +446,11 @@
             <div class="property-grid">
               <!-- Property Card 1 -->
               <a href="project-details.html" class="developer-card">
+                <!-- Save Button Added Here -->
+                <div class="save-btn" onclick="toggleSave(event, this)">
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+
                 <div
                   class="date"
                   style="
@@ -427,7 +477,6 @@
                   <img src="imgs/newsletter-1.webp" class="prop-img" />
                 </div>
                 <div class="developer-details">
-                  <!-- <h1 class="developer-title">Sarai Apartment</h1> -->
                   <div
                     class="pro-title"
                     style="gap: 10px; display: flex; align-items: start"
@@ -478,12 +527,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="developer-description">
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Eveniet vitae laudantium optio amet repellendus corrupti
-                    </p>
-                  </div> -->
 
                   <div
                     class="prop-price"
@@ -499,12 +542,16 @@
                       >7,375,464 EGP</span
                     >
                   </div>
-
-                  <!-- <div class="prop-tag" style="text-align: end">news</div> -->
                 </div>
               </a>
-              <!-- Property Card 1 -->
+
+              <!-- Property Card 2 -->
               <a href="project-details.html" class="developer-card">
+                <!-- Save Button Added Here -->
+                <div class="save-btn" onclick="toggleSave(event, this)">
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+
                 <div
                   class="date"
                   style="
@@ -531,7 +578,6 @@
                   <img src="imgs/newsletter-1.webp" class="prop-img" />
                 </div>
                 <div class="developer-details">
-                  <!-- <h1 class="developer-title">Sarai Apartment</h1> -->
                   <div
                     class="pro-title"
                     style="gap: 10px; display: flex; align-items: start"
@@ -582,12 +628,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="developer-description">
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Eveniet vitae laudantium optio amet repellendus corrupti
-                    </p>
-                  </div> -->
 
                   <div
                     class="prop-price"
@@ -603,12 +643,16 @@
                       >7,375,464 EGP</span
                     >
                   </div>
-
-                  <!-- <div class="prop-tag" style="text-align: end">news</div> -->
                 </div>
               </a>
-              <!-- Property Card 1 -->
+
+              <!-- Property Card 3 -->
               <a href="project-details.html" class="developer-card">
+                <!-- Save Button Added Here -->
+                <div class="save-btn" onclick="toggleSave(event, this)">
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+
                 <div
                   class="date"
                   style="
@@ -635,7 +679,6 @@
                   <img src="imgs/newsletter-1.webp" class="prop-img" />
                 </div>
                 <div class="developer-details">
-                  <!-- <h1 class="developer-title">Sarai Apartment</h1> -->
                   <div
                     class="pro-title"
                     style="gap: 10px; display: flex; align-items: start"
@@ -686,12 +729,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="developer-description">
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Eveniet vitae laudantium optio amet repellendus corrupti
-                    </p>
-                  </div> -->
 
                   <div
                     class="prop-price"
@@ -707,12 +744,15 @@
                       >7,375,464 EGP</span
                     >
                   </div>
-
-                  <!-- <div class="prop-tag" style="text-align: end">news</div> -->
                 </div>
               </a>
-              <!-- Property Card 1 -->
+
+              <!-- Property Card 4 -->
               <a href="project-details.html" class="developer-card">
+                <!-- Save Button Added Here -->
+                <div class="save-btn" onclick="toggleSave(event, this)">
+                  <i class="fa-solid fa-plus"></i>
+                </div>
                 <div
                   class="date"
                   style="
@@ -739,7 +779,6 @@
                   <img src="imgs/newsletter-1.webp" class="prop-img" />
                 </div>
                 <div class="developer-details">
-                  <!-- <h1 class="developer-title">Sarai Apartment</h1> -->
                   <div
                     class="pro-title"
                     style="gap: 10px; display: flex; align-items: start"
@@ -790,12 +829,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="developer-description">
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Eveniet vitae laudantium optio amet repellendus corrupti
-                    </p>
-                  </div> -->
 
                   <div
                     class="prop-price"
@@ -811,12 +844,15 @@
                       >7,375,464 EGP</span
                     >
                   </div>
-
-                  <!-- <div class="prop-tag" style="text-align: end">news</div> -->
                 </div>
               </a>
-              <!-- Property Card 1 -->
+
+              <!-- Property Card 5 -->
               <a href="project-details.html" class="developer-card">
+                <!-- Save Button Added Here -->
+                <div class="save-btn" onclick="toggleSave(event, this)">
+                  <i class="fa-solid fa-plus"></i>
+                </div>
                 <div
                   class="date"
                   style="
@@ -843,7 +879,6 @@
                   <img src="imgs/newsletter-1.webp" class="prop-img" />
                 </div>
                 <div class="developer-details">
-                  <!-- <h1 class="developer-title">Sarai Apartment</h1> -->
                   <div
                     class="pro-title"
                     style="gap: 10px; display: flex; align-items: start"
@@ -894,12 +929,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="developer-description">
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Eveniet vitae laudantium optio amet repellendus corrupti
-                    </p>
-                  </div> -->
 
                   <div
                     class="prop-price"
@@ -915,112 +944,6 @@
                       >7,375,464 EGP</span
                     >
                   </div>
-
-                  <!-- <div class="prop-tag" style="text-align: end">news</div> -->
-                </div>
-              </a>
-              <!-- Property Card 1 -->
-              <a href="project-details.html" class="developer-card">
-                <div
-                  class="date"
-                  style="
-                    position: absolute;
-                    top: 20px;
-                    left: 20px;
-                    font-size: 12px;
-                    padding: 10px 15px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-                    text-align: center;
-                    z-index: 10;
-                    backdrop-filter: blur(4px);
-                    border: 1px solid rgba(255, 255, 255, 0.6);
-                    min-width: 50px;
-                  "
-                >
-                  <p>Coming Soon</p>
-                </div>
-                <div
-                  class="developer-img-container"
-                  style="width: 100%; padding: 0"
-                >
-                  <img src="imgs/newsletter-1.webp" class="prop-img" />
-                </div>
-                <div class="developer-details">
-                  <!-- <h1 class="developer-title">Sarai Apartment</h1> -->
-                  <div
-                    class="pro-title"
-                    style="gap: 10px; display: flex; align-items: start"
-                  >
-                    <img
-                      style="width: 50px; height: 50px"
-                      src="https://cbe-realestate-egypt.fsn1.your-objectstorage.com/centro/logo/cropped-circle-image-copy.webp"
-                      alt=""
-                    />
-                    <div
-                      class=""
-                      style="
-                        gap: 10px;
-                        width: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: start;
-                      "
-                    >
-                      <h2
-                        class="title"
-                        style="
-                          font-size: 21px;
-                          font-weight: 600;
-                          text-align: start;
-                          width: 100%;
-                        "
-                      >
-                        El Centro Business Complex
-                      </h2>
-
-                      <div class="attributes">
-                        <span
-                          class="d-flex align-items-center w-100 location text-nowrap1"
-                          style="
-                            display: flex;
-                            gap: 10px;
-                            align-items: center;
-                            width: 100%;
-                          "
-                          ><img
-                            class="ico mr-1"
-                            src="https://coldwellbanker-eg.com/themes/coldwell/assets/images/location.svg"
-                            alt="New Administrative Capital"
-                          />
-                          New Administrative Capital
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- <div class="developer-description">
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Eveniet vitae laudantium optio amet repellendus corrupti
-                    </p>
-                  </div> -->
-
-                  <div
-                    class="prop-price"
-                    style="
-                      text-align: end;
-                      font-size: 15px;
-                      font-weight: lighter;
-                      margin-top: 10px;
-                    "
-                  >
-                    Starting from <br />
-                    <span style="font-weight: 600; font-size: 18px"
-                      >7,375,464 EGP</span
-                    >
-                  </div>
-
-                  <!-- <div class="prop-tag" style="text-align: end">news</div> -->
                 </div>
               </a>
             </div>
@@ -1054,13 +977,29 @@
         <input type="text" placeholder="Ask a Question" />
         <button class="send-btn"><i class="fa-solid fa-arrow-up"></i></button>
       </div>
-
-      <!-- <a href="#" class="tesla-schedule-btn">
-        <i class="fa-solid fa-car"></i>
-        <span>Schedule a Drive Today</span>
-      </a> -->
     </div>
 
     <script src="main.js"></script>
+    <script>
+      // Toggle Save Functionality
+      function toggleSave(event, element) {
+        // Prevent clicking the card link
+        event.preventDefault();
+        event.stopPropagation();
+
+        // Toggle saved class
+        element.classList.toggle("saved");
+
+        // Toggle Icon
+        const icon = element.querySelector("i");
+        if (element.classList.contains("saved")) {
+          icon.classList.remove("fa-plus");
+          icon.classList.add("fa-minus");
+        } else {
+          icon.classList.remove("fa-minus");
+          icon.classList.add("fa-plus");
+        }
+      }
+    </script>
   </body>
 </html>

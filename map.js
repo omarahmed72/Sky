@@ -1262,7 +1262,7 @@ if (mapElement && typeof L !== "undefined") {
         <div style="text-align:center; padding: 10px;">
             <img src="${p.thumb}" style="width:100%; border-radius:15px; margin-bottom: 12px;">
             <h3 style="margin:0 0 10px 0; color: var(--text-main); font-size: 1.2rem;">${p.name}</h3>
-            <button onclick="enterMasterPlan(${p.id})" class="btn-view-master" style="background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white; border: none; width: 100%; padding: 14px; border-radius: 12px; cursor: pointer; font-weight: bold; font-family: 'Cairo';">استكشاف الماستر بلان</button>
+            <button onclick="enterMasterPlan(${p.id})" class="btn-view-master" style="background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white; border: none; width: 100%; padding: 14px; border-radius: 12px; cursor: pointer; font-weight: bold; font-family: 'Cairo';">Exploring the Master Plan</button>
         </div>
         `,
         { maxWidth: 300 },
