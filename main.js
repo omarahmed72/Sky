@@ -138,8 +138,8 @@ function toggleTheme() {
   });
 }
 
-// --- Gallery Logic (Cylinder) ---
-const baseItems = [
+// --- UPDATED: Responsive Slider Logic (Replaces Cylinder) ---
+const sliderItems = [
   {
     img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop",
     title: "Aerial View",
@@ -182,82 +182,121 @@ const baseItems = [
   },
 ];
 
-const galleryItems = [...baseItems, ...baseItems];
+const track = document.getElementById("slider-track");
+const dotsContainer = document.getElementById("slider-dots");
+let currentIndex = 0;
+let slidesPerView = 3;
 
-const track = document.getElementById("cylinder-track");
-let selectedIndex = 0;
-const cellCount = galleryItems.length;
-const cellWidth = 320;
-const gap = 30;
-const radius = Math.round(
-  (cellWidth + gap) / (2 * Math.tan(Math.PI / cellCount)),
-);
-const theta = 360 / cellCount;
+// Detect screen size to adjust items visible
+function getSlidesPerView() {
+  if (window.innerWidth <= 768) return 1;
+  if (window.innerWidth <= 1024) return 2;
+  return 3;
+}
 
-function initGallery() {
+function initSlider() {
   if (!track) return;
-  galleryItems.forEach((item, i) => {
-    const card = document.createElement("div");
-    card.className = "glass-card";
-    const angle = theta * i;
-    card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+  track.innerHTML = "";
+  dotsContainer.innerHTML = "";
+  slidesPerView = getSlidesPerView();
 
-    card.innerHTML = `
-                    <img src="${item.img}" class="card-img" alt="${item.title}">
-                    <div class="relative z-10 w-full">
-                        <div class="card-title">${item.title} ${i + 1}</div>
-                        <div style="width: 30px; height: 2px; background: var(--accent-gold); box-shadow: 0 0 5px rgba(197, 160, 89, 0.5);"></div>
-                    </div>
-                `;
-    card.onclick = () => {
-      const currentMod = ((selectedIndex % cellCount) + cellCount) % cellCount;
-      let diff = i - currentMod;
-      if (diff > cellCount / 2) diff -= cellCount;
-      if (diff < -cellCount / 2) diff += cellCount;
-      rotateCylinder(diff);
-    };
-    track.appendChild(card);
+  // Render Slides
+  sliderItems.forEach((item, index) => {
+    const slide = document.createElement("div");
+    slide.className = "slide-item";
+    slide.innerHTML = `
+      <div class="slide-card">
+        <img src="${item.img}" class="slide-img" alt="${item.title}">
+        <div class="slide-content">
+          <div class="slide-title">${item.title}</div>
+          <div class="slide-bar"></div>
+        </div>
+      </div>
+    `;
+    track.appendChild(slide);
+
+    // Create Dots (Optional: might be too many dots for many items, limiting or logic needed if list is huge)
+    // For simplicity, we create a dot per slide group or just per slide
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    if (index === 0) dot.classList.add("active");
+    dot.onclick = () => goToSlide(index);
+    dotsContainer.appendChild(dot);
   });
-  updateCylinder();
+
+  updateSliderPosition();
 }
 
-function rotateCylinder(direction) {
-  selectedIndex += direction;
-  updateCylinder();
-}
-
-function updateCylinder() {
+function updateSliderPosition() {
   if (!track) return;
-  const angle = theta * selectedIndex * -1;
-  track.style.transform = `translateZ(${-radius}px) rotateY(${angle}deg)`;
-  const cards = document.querySelectorAll(".glass-card");
-  const activeIndex = ((selectedIndex % cellCount) + cellCount) % cellCount;
-  cards.forEach((card, i) => {
-    if (i === activeIndex) {
-      card.classList.add("active");
-      card.style.opacity = "1";
-    } else {
-      card.classList.remove("active");
-      card.style.opacity = "0.6";
+  const slideWidth = 100 / slidesPerView;
+  track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+  // Update Dots
+  const dots = document.querySelectorAll(".dot");
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle("active", idx === currentIndex);
+  });
+}
+
+function moveSlider(direction) {
+  const maxIndex = sliderItems.length - 1;
+  currentIndex += direction;
+
+  // Infinite loop effect logic
+  if (currentIndex < 0) {
+    currentIndex = maxIndex;
+  } else if (currentIndex > maxIndex) {
+    currentIndex = 0;
+  }
+
+  updateSliderPosition();
+}
+
+function goToSlide(index) {
+  currentIndex = index;
+  updateSliderPosition();
+}
+
+// Resize Listener
+window.addEventListener("resize", () => {
+  const newSlidesPerView = getSlidesPerView();
+  if (newSlidesPerView !== slidesPerView) {
+    slidesPerView = newSlidesPerView;
+    // Reset to 0 or adjust current index to fit
+    if (currentIndex > sliderItems.length - 1) {
+      currentIndex = sliderItems.length - 1;
     }
+    updateSliderPosition();
+  }
+});
+
+// Touch / Swipe Logic for Mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (track) {
+  track.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  track.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
   });
 }
 
-initGallery();
-
-const section = document.querySelector(".gallery-section");
-if (section) {
-  let startX = 0;
-  section.addEventListener(
-    "touchstart",
-    (e) => (startX = e.changedTouches[0].screenX),
-  );
-  section.addEventListener("touchend", (e) => {
-    const endX = e.changedTouches[0].screenX;
-    if (endX < startX - 50) rotateCylinder(1);
-    if (endX > startX + 50) rotateCylinder(-1);
-  });
+function handleSwipe() {
+  if (touchEndX < touchStartX - 50) {
+    moveSlider(1); // Swipe Left -> Next
+  }
+  if (touchEndX > touchStartX + 50) {
+    moveSlider(-1); // Swipe Right -> Prev
+  }
 }
+
+// Initialize
+initSlider();
 
 // --- Audio Logic ---
 function enableAudio() {

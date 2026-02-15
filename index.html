@@ -285,7 +285,26 @@
       </div>
 
       <!-- Gallery Section -->
+
       <section class="gallery-section">
+        <h2 class="gallery-title">Portfolio</h2>
+
+        <div class="slider-container">
+          <div class="slider-track" id="slider-track">
+            <!-- Items will be injected by JS -->
+          </div>
+
+          <button class="slider-btn prev" onclick="moveSlider(-1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="slider-btn next" onclick="moveSlider(1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="slider-dots" id="slider-dots"></div>
+      </section>
+      <!-- <section class="gallery-section">
         <h2 class="gallery-title">Portfolio</h2>
         <div class="cylinder-track" id="cylinder-track"></div>
         <div class="cylinder-controls">
@@ -296,7 +315,7 @@
             <i class="fas fa-chevron-right"></i>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Concept Section -->
       <section class="concept-section">
