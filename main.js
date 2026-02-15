@@ -149,7 +149,7 @@ const sliderItems = [
     title: "Grand Lobby",
   },
   {
-    img: "https://images.unsplash.com/photo-1600596542815-6ad4c7213aa5?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop",
     title: "Rear Facade",
   },
   {
@@ -165,7 +165,7 @@ const sliderItems = [
     title: "Main Hall",
   },
   {
-    img: "https://images.unsplash.com/photo-1600596542815-6ad4c7213aa5?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop",
     title: "Detailing",
   },
   {
