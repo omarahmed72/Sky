@@ -8,7 +8,8 @@
     <!-- Leaflet & Icons -->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"ش
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      ش
     />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link
@@ -24,15 +25,15 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="ui-hidden">
     <!-- Tesla Style Liquid Navbar with Mega Menu -->
-    <nav dir="ltr" class="tesla-nav" id="navbar">
+    <nav class="tesla-nav" id="navbar">
       <div class="nav-logo">
         <a href="index.html">
-          <img src="https://via.placeholder.com/100x30?text=LOGO" alt="Logo" id="nav-logo" />
+          <img src="imgs/logo.png" alt="Logo" id="nav-logo" />
         </a>
       </div>
 
@@ -47,13 +48,119 @@
           <a href="explore.html">Explore</a>
         </div>
 
-        <div class="nav-item has-menu group relative">
+        <div class="nav-item has-menu">
           <a href="projects.html">Projects</a>
-          <!-- Simplified Mega Menu for Preview -->
+          <div class="mega-menu-container">
+            <div class="mega-content">
+              <div class="mega-col">
+                <h4>Residential</h4>
+                <ul>
+                  <li><a href="#">Skyline Towers</a></li>
+                  <li><a href="#">The Glass House</a></li>
+                  <li><a href="#">Urban Lofts</a></li>
+                  <li><a href="#">Garden Villas</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Commercial</h4>
+                <ul>
+                  <li><a href="#">Tech Hub Plaza</a></li>
+                  <li><a href="#">Innovation Center</a></li>
+                  <li><a href="#">Executive Suites</a></li>
+                  <li><a href="#">Global Trade Tower</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Upcoming</h4>
+                <ul>
+                  <li><a href="#">The Vertex</a></li>
+                  <li><a href="#">Eco District</a></li>
+                  <li><a href="#">Ocean Front</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Featured</h4>
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
+                  style="
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 120px;
+                    object-fit: cover;
+                  "
+                />
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: var(--text-muted);
+                  "
+                  >View Masterplan -></a
+                >
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="nav-item has-menu group relative">
+        <!-- About Link triggers Page Switch -->
+        <!-- <div class="nav-item" onclick="switchPage('about')">About</div> -->
+
+        <div class="nav-item has-menu">
           <a href="about.html">About</a>
+          <div class="mega-menu-container">
+            <div class="mega-content">
+              <div class="mega-col">
+                <h4>About Us</h4>
+                <ul>
+                  <li><a href="#">Our Story</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Our Vision</a></li>
+                  <li><a href="#">Our Mission</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Our Work</h4>
+                <ul>
+                  <li><a href="#">Marketing Insights</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Events</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Sky News & Events</h4>
+                <ul>
+                  <li><a href="#">Sky News</a></li>
+                  <li><a href="#">Events</a></li>
+                  <li><a href="#">Press</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Featured</h4>
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
+                  style="
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 120px;
+                    object-fit: cover;
+                  "
+                />
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: var(--text-muted);
+                  "
+                  >View Masterplan -></a
+                >
+              </div>
+            </div>
+          </div>
         </div>
         <div class="nav-item">
           <a href="sell.html">Sell Unit</a>
@@ -81,7 +188,7 @@
             <i class="fa-regular fa-circle-question"></i>
           </a>
         </div>
-        <div class="theme-toggle cursor-pointer" onclick="toggleTheme()" title="Switch Theme">
+        <div class="theme-toggle" onclick="toggleTheme()" title="Switch Theme">
           <i class="fas fa-moon" id="theme-icon"></i>
         </div>
         <div class="hidden lg:flex theme-toggle">
@@ -89,7 +196,7 @@
             <i class="fa-solid fa-user"></i>
           </a>
         </div>
-        <div class="nav-item lg:hidden cursor-pointer" onclick="toggleMobileMenu()">
+        <div class="nav-item lg:hidden" onclick="toggleMobileMenu()">
           <i class="fas fa-bars"></i>
         </div>
       </div>
@@ -110,15 +217,15 @@
 
       <div class="mobile-projects-wrapper">
         <div class="mobile-projects-title">
-          <a href="projects.html" class="font-bold text-lg mb-2 block mt-4">Projects</a>
+          <a href="projects.html">Projects</a>
         </div>
-        <div class="mobile-nav-sublink pl-4 py-2 block">
+        <div class="mobile-nav-sublink" style="display: block">
           <a href="projects.html">Residential</a>
         </div>
-        <div class="mobile-nav-sublink pl-4 py-2 block">
+        <div class="mobile-nav-sublink" style="display: block">
           <a href="projects.html">Commercial</a>
         </div>
-        <div class="mobile-nav-sublink pl-4 py-2 block">
+        <div class="mobile-nav-sublink" style="display: block">
           <a href="projects.html">Upcoming</a>
         </div>
       </div>
@@ -129,7 +236,24 @@
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="sell.html">Sell Unit</a>
       </div>
-      <!-- Other mobile links skipped for brevity but would be here -->
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="developers.html">Developers</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="calculator.html">Calculator</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="blogs.html">Blogs</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="careers.html">Careers</a>
+      </div>
+      <div class="mobile-login-btn" onclick="toggleMobileMenu()">
+        <a href="login.html">Login</a>
+      </div>
     </div>
 
     <div id="mapcontainer" style="position: relative; z-index: 1">
@@ -214,7 +338,7 @@
 
       <div id="map"></div>
     </div>
-    
+
     <!-- Active Script (Uncommented and Translated) -->
     <script src="map.js"></script>
   </body>

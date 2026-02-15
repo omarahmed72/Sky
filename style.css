@@ -999,6 +999,90 @@ a {
   transition: background-color 0.5s;
 }
 
+
+/* home card section */
+
+
+@media (min-width: 999px) {
+.home-card{
+  position: relative; bottom: 30rem; left: 50%; z-index: 1
+}
+}
+
+@media (max-width: 999px) {
+.home-card{
+  position: relative; bottom: 30rem; left: 0rem; z-index: 1
+}
+}
+
+/* .home-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+  background-color: var(--card-bg);
+  border: var(--card-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.home-card:hover {
+  transform: translateY(-10px);
+}
+
+.home-card .developer-img-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.home-card .developer-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-card .developer-description {
+  padding: 20px;
+}
+
+.home-card .developer-description h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.home-card .developer-description p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.home-card .developer-description a {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.home-card .developer-description a:hover {
+  color: var(--accent-gold);
+}
+
+.home-card .developer-price {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-top: 20px;
+}
+
+.home-card .developer-price i {
+  margin-left: 5px;
+} */
+
 /* --- Newsletter Section --- */
 .newsletter-section {
   padding: 60px 20px;
