@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Tesla Style Liquid Navbar with Mega Menu (Full Website Navbar) -->
+    <!-- Tesla Style Liquid Navbar with Mega Menu -->
     <nav class="tesla-nav" id="navbar">
       <div class="nav-logo">
         <a href="index.html">
@@ -26,26 +26,26 @@
 
       <div class="nav-center hidden lg:flex">
         <!-- Home Link -->
-        <div class="nav-item">
+        <!-- <div class="nav-item">
           <a href="index.html">Home</a>
-        </div>
+        </div> -->
 
         <!-- Explore Link -->
-        <div class="nav-item">
+        <!-- <div class="nav-item">
           <a href="explore.html">Explore</a>
-        </div>
+        </div> -->
 
         <div class="nav-item has-menu">
-          <a href="projects.html">Projects</a>
+          <a href="explore.html">Explore</a>
           <div class="mega-menu-container">
             <div class="mega-content">
               <div class="mega-col">
                 <h4>Residential</h4>
                 <ul>
-                  <li><a href="#">Skyline Towers</a></li>
-                  <li><a href="#">The Glass House</a></li>
-                  <li><a href="#">Urban Lofts</a></li>
-                  <li><a href="#">Garden Villas</a></li>
+                  <li><a href="projects.html">Projects</a></li>
+                  <li><a href="sell.html">Sell Unit</a></li>
+                  <li><a href="calculator.html">Calculator</a></li>
+                  <li><a href="developers.html">Developers</a></li>
                 </ul>
               </div>
               <div class="mega-col">
@@ -91,12 +91,8 @@
           </div>
         </div>
 
-        <!-- Dashboard Link (Added Here) -->
-        <div class="nav-item">
-          <a href="dashboard.html" style="color: var(--accent-gold)"
-            >Dashboard</a
-          >
-        </div>
+        <!-- About Link triggers Page Switch -->
+        <!-- <div class="nav-item" onclick="switchPage('about')">About</div> -->
 
         <div class="nav-item has-menu">
           <a href="about.html">About</a>
@@ -153,11 +149,23 @@
             </div>
           </div>
         </div>
-        <div class="nav-item">
+        <!-- <div class="nav-item">
           <a href="sell.html">Sell Unit</a>
         </div>
         <div class="nav-item">
+          <a href="developers.html">Developers</a>
+        </div>
+        <div class="nav-item">
+          <a href="calculator.html">Calculator</a>
+        </div> -->
+        <div class="nav-item">
+          <a href="blogs.html">Blogs</a>
+        </div>
+        <div class="nav-item">
           <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-item">
+          <a href="careers.html">Careers</a>
         </div>
       </div>
 
@@ -167,6 +175,12 @@
             <i class="fa-regular fa-circle-question"></i>
           </a>
         </div>
+        <div class="theme-toggle" onclick="" title="Saved Items">
+          <a href="saved-items.html">
+            <i class="fa-solid fa-bookmark"></i>
+          </a>
+        </div>
+
         <div class="theme-toggle" onclick="toggleTheme()" title="Switch Theme">
           <i class="fas fa-moon" id="theme-icon"></i>
         </div>

@@ -177,7 +177,7 @@
       <i class="fas fa-volume-up mr-2"></i> Tap anywhere for sound
     </div>
 
-    <!-- Tesla Style Liquid Navbar -->
+    <!-- Tesla Style Liquid Navbar with Mega Menu -->
     <nav class="tesla-nav" id="navbar">
       <div class="nav-logo">
         <a href="index.html">
@@ -186,18 +186,27 @@
       </div>
 
       <div class="nav-center hidden lg:flex">
-        <div class="nav-item"><a href="index.html">Home</a></div>
-        <div class="nav-item"><a href="explore.html">Explore</a></div>
+        <!-- Home Link -->
+        <!-- <div class="nav-item">
+          <a href="index.html">Home</a>
+        </div> -->
+
+        <!-- Explore Link -->
+        <!-- <div class="nav-item">
+          <a href="explore.html">Explore</a>
+        </div> -->
+
         <div class="nav-item has-menu">
-          <a href="projects.html">Projects</a>
-          <!-- Mega Menu Structure same as projects.html -->
+          <a href="explore.html">Explore</a>
           <div class="mega-menu-container">
             <div class="mega-content">
               <div class="mega-col">
                 <h4>Residential</h4>
                 <ul>
-                  <li><a href="#">Skyline Towers</a></li>
-                  <li><a href="#">The Glass House</a></li>
+                  <li><a href="projects.html">Projects</a></li>
+                  <li><a href="sell.html">Sell Unit</a></li>
+                  <li><a href="calculator.html">Calculator</a></li>
+                  <li><a href="developers.html">Developers</a></li>
                 </ul>
               </div>
               <div class="mega-col">
@@ -205,23 +214,141 @@
                 <ul>
                   <li><a href="#">Tech Hub Plaza</a></li>
                   <li><a href="#">Innovation Center</a></li>
+                  <li><a href="#">Executive Suites</a></li>
+                  <li><a href="#">Global Trade Tower</a></li>
                 </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Upcoming</h4>
+                <ul>
+                  <li><a href="#">The Vertex</a></li>
+                  <li><a href="#">Eco District</a></li>
+                  <li><a href="#">Ocean Front</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Featured</h4>
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
+                  style="
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 120px;
+                    object-fit: cover;
+                  "
+                />
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: var(--text-muted);
+                  "
+                  >View Masterplan -></a
+                >
               </div>
             </div>
           </div>
         </div>
-        <div class="nav-item"><a href="about.html">About</a></div>
-        <div class="nav-item"><a href="sell.html">Sell Unit</a></div>
-        <div class="nav-item"><a href="developers.html">Developers</a></div>
-        <div class="nav-item"><a href="contact.html">Contact</a></div>
+
+        <!-- About Link triggers Page Switch -->
+        <!-- <div class="nav-item" onclick="switchPage('about')">About</div> -->
+
+        <div class="nav-item has-menu">
+          <a href="about.html">About</a>
+          <div class="mega-menu-container">
+            <div class="mega-content">
+              <div class="mega-col">
+                <h4>About Us</h4>
+                <ul>
+                  <li><a href="#">Our Story</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Our Vision</a></li>
+                  <li><a href="#">Our Mission</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Our Work</h4>
+                <ul>
+                  <li><a href="#">Marketing Insights</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Events</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Sky News & Events</h4>
+                <ul>
+                  <li><a href="#">Sky News</a></li>
+                  <li><a href="#">Events</a></li>
+                  <li><a href="#">Press</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Featured</h4>
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
+                  style="
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 120px;
+                    object-fit: cover;
+                  "
+                />
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: var(--text-muted);
+                  "
+                  >View Masterplan -></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="nav-item">
+          <a href="sell.html">Sell Unit</a>
+        </div>
+        <div class="nav-item">
+          <a href="developers.html">Developers</a>
+        </div>
+        <div class="nav-item">
+          <a href="calculator.html">Calculator</a>
+        </div> -->
+        <div class="nav-item">
+          <a href="blogs.html">Blogs</a>
+        </div>
+        <div class="nav-item">
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-item">
+          <a href="careers.html">Careers</a>
+        </div>
       </div>
 
       <div class="nav-right">
+        <div class="theme-toggle" onclick="" title="Help Center">
+          <a href="help.html">
+            <i class="fa-regular fa-circle-question"></i>
+          </a>
+        </div>
+        <div class="theme-toggle" onclick="" title="Saved Items">
+          <a href="saved-items.html">
+            <i class="fa-solid fa-bookmark"></i>
+          </a>
+        </div>
+
         <div class="theme-toggle" onclick="toggleTheme()" title="Switch Theme">
           <i class="fas fa-moon" id="theme-icon"></i>
         </div>
         <div class="hidden lg:flex theme-toggle">
-          <a href="login.html"><i class="fa-solid fa-user"></i></a>
+          <a href="login.html">
+            <i class="fa-solid fa-user"></i>
+          </a>
         </div>
         <div class="nav-item lg:hidden" onclick="toggleMobileMenu()">
           <i class="fas fa-bars"></i>
