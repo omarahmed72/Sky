@@ -977,11 +977,79 @@
       </div>
     </footer>
 
+    <!-- REAL ESTATE CHATBOT WIDGET -->
+    <!-- Position adjusted in CSS to center above bottom bar -->
+    <div id="chatbot-widget" class="chatbot-widget">
+      <div class="chat-header">
+        <div class="chat-title-group">
+          <div class="chat-avatar">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="chat-info">
+            <h3>SkyBot</h3>
+            <span class="status-dot"></span> Online
+          </div>
+        </div>
+        <button class="close-chat" onclick="toggleChat()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-body" id="chat-body">
+        <div class="message bot-message">
+          Hello! 👋 I'm SkyBot. How can I assist you with your real estate
+          journey today?
+        </div>
+        <!-- Quick Option Buttons -->
+        <div class="chat-options">
+          <button onclick="sendOption('Browse Projects')">
+            <i class="fas fa-building"></i> Browse Projects
+          </button>
+          <button onclick="sendOption('Sell My Unit')">
+            <i class="fas fa-tag"></i> Sell Unit
+          </button>
+          <button onclick="sendOption('Contact Sales')">
+            <i class="fas fa-phone"></i> Contact Sales
+          </button>
+          <button onclick="sendOption('Price Range')">
+            <i class="fas fa-dollar-sign"></i> Price Range
+          </button>
+        </div>
+      </div>
+      <div class="chat-footer">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Ask about price, location..."
+          onkeypress="handleChatKey(event)"
+        />
+        <button class="send-chat-btn" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- WhatsApp Floating Button (Replaces Chat Toggle) -->
+    <a
+      href="https://wa.me/201000000000"
+      target="_blank"
+      class="whatsapp-float"
+      title="Chat on WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <div class="tesla-bottom-bar">
       <div class="tesla-chat-input">
         <i class="fa-regular fa-comment-dots chat-icon"></i>
-        <input type="text" placeholder="Ask a Question" />
-        <button class="send-btn"><i class="fa-solid fa-arrow-up"></i></button>
+        <input
+          type="text"
+          id="bottom-bar-input"
+          placeholder="Ask SkyBot a Question..."
+          onkeypress="handleBottomBarKey(event)"
+        />
+        <button class="send-btn" onclick="sendFromBottomBar()">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
       </div>
     </div>
 

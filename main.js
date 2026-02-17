@@ -304,17 +304,7 @@ function enableAudio() {
   videos.forEach((v) => {
     v.muted = false;
     v.volume = 0.5;
-    const playPromise = v.play();
-
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        console.warn("Unmuted playback failed, reverting to muted:", error);
-        // Fallback: If unmuted play fails (common on mobile without direct interaction),
-        // revert to muted to ensure visual playback continues.
-        v.muted = true;
-        v.play();
-      });
-    }
+    safePlay(v);
   });
   const hint = document.getElementById("sound-hint");
   if (hint) hint.classList.remove("visible");
@@ -689,3 +679,142 @@ function toggleAccordion(index) {
     icon.innerHTML = minusSVG;
   }
 }
+
+// ==========================================
+// CHATBOT LOGIC
+// ==========================================
+
+function toggleChat(shouldFocus = true) {
+  const widget = document.getElementById("chatbot-widget");
+  widget.classList.toggle("active");
+
+  // Focus input if opening and requested
+  if (widget.classList.contains("active") && shouldFocus) {
+    setTimeout(() => document.getElementById("chat-input").focus(), 300);
+  }
+}
+
+function handleChatKey(e) {
+  if (e.key === "Enter") {
+    sendMessage();
+  }
+}
+
+// Function to handle sending message from the bottom input bar
+function sendFromBottomBar() {
+  const bottomInput = document.getElementById("bottom-bar-input");
+  const msg = bottomInput.value.trim();
+
+  // Ensure chat window is open when button is clicked (regardless of text)
+  const widget = document.getElementById("chatbot-widget");
+  if (!widget.classList.contains("active")) {
+    toggleChat(false); // Open without stealing focus immediately if triggered by button click to see history
+  }
+
+  if (msg) {
+    processMessage(msg); // Send message
+    bottomInput.value = ""; // Clear input
+  }
+}
+
+function handleBottomBarKey(e) {
+  if (e.key === "Enter") {
+    sendFromBottomBar();
+  }
+}
+
+function sendOption(optionText) {
+  processMessage(optionText);
+}
+
+function sendMessage() {
+  const input = document.getElementById("chat-input");
+  const msg = input.value.trim();
+  if (msg) {
+    processMessage(msg);
+    input.value = "";
+  }
+}
+
+function processMessage(msg) {
+  const chatBody = document.getElementById("chat-body");
+
+  // User Message
+  const userDiv = document.createElement("div");
+  userDiv.className = "message user-message";
+  userDiv.innerText = msg;
+  chatBody.appendChild(userDiv);
+
+  // Scroll to bottom
+  chatBody.scrollTop = chatBody.scrollHeight;
+
+  // Simulate Typing
+  const typingDiv = document.createElement("div");
+  typingDiv.className = "typing-indicator";
+  typingDiv.innerHTML =
+    '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  chatBody.appendChild(typingDiv);
+  chatBody.scrollTop = chatBody.scrollHeight;
+
+  // Bot Response Delay
+  setTimeout(() => {
+    typingDiv.remove();
+    const response = getBotResponse(msg);
+    const botDiv = document.createElement("div");
+    botDiv.className = "message bot-message";
+    botDiv.innerHTML = response;
+    chatBody.appendChild(botDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }, 1000);
+}
+
+// Simple Rule-Based AI
+function getBotResponse(input) {
+  const lowerInput = input.toLowerCase();
+
+  if (lowerInput.includes("hello") || lowerInput.includes("hi")) {
+    return "Hello there! Welcome to SkyPioneers. Are you looking to buy, sell, or explore our projects?";
+  } else if (
+    lowerInput.includes("project") ||
+    lowerInput.includes("residential")
+  ) {
+    return "We have amazing residential projects available! Check out <a href='projects.html' style='color:var(--accent-gold); font-weight:bold;'>Sky City</a> and <a href='projects.html' style='color:var(--accent-gold); font-weight:bold;'>Blue Horizon</a>. Would you like to see the masterplans?";
+  } else if (lowerInput.includes("price") || lowerInput.includes("cost")) {
+    return "Our units start from <strong>2.5M EGP</strong> with flexible installment plans up to 8 years. You can use our <a href='calculator.html' style='color:var(--accent-gold);'>Mortgage Calculator</a> to estimate your payments.";
+  } else if (lowerInput.includes("sell")) {
+    return "Great choice! You can list your unit with us directly. Please visit our <a href='sell.html' style='color:var(--accent-gold); font-weight:bold;'>Sell Unit</a> page to upload your property details.";
+  } else if (
+    lowerInput.includes("contact") ||
+    lowerInput.includes("number") ||
+    lowerInput.includes("call")
+  ) {
+    return "You can reach our sales team at <strong>19900</strong> or visit our sales center in New Cairo. Would you like me to have an agent call you?";
+  } else if (lowerInput.includes("location") || lowerInput.includes("map")) {
+    return "Our primary projects are located in the heart of New Capital and North Coast. You can view the exact locations on our <a href='map.html' style='color:var(--accent-gold);'>Interactive Map</a>.";
+  } else {
+    return "I'm not sure I understand, but I'd love to help. You can choose an option below or ask about 'Projects', 'Prices', or 'Selling'.";
+  }
+}
+
+// Open chat when bottom bar input is focused
+const bottomBarInput = document.getElementById("bottom-bar-input");
+if (bottomBarInput) {
+  bottomBarInput.addEventListener("focus", () => {
+    const widget = document.getElementById("chatbot-widget");
+    if (!widget.classList.contains("active")) {
+      toggleChat(false); // Don't steal focus
+    }
+  });
+}
+
+// Add event listener to any button with class .send-btn inside the chat input
+// This ensures clicking the send button specifically triggers the logic
+document.addEventListener("DOMContentLoaded", () => {
+  const sendBtns = document.querySelectorAll(".tesla-chat-input .send-btn");
+  sendBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent accidental form submissions
+      sendFromBottomBar();
+    });
+  });
+});
