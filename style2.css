@@ -645,7 +645,7 @@ a {
 
   /* Active Class to Slide In */
   .filters-row.active {
-    left: 0;
+    left: -18px;
   }
 
   /* Mobile Filter Header */
