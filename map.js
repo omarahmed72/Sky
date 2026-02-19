@@ -425,6 +425,7 @@ if (mapElement && typeof L !== "undefined") {
 
   // --- FULL PROJECTS DATA (Restored) ---
   const projects = [
+    // ... (Keep all project data as is) ...
     // ================== العاصمة الإدارية (NAC) ==================
     {
       id: 901,
@@ -1290,6 +1291,27 @@ if (mapElement && typeof L !== "undefined") {
     const filtered =
       region === "all" ? projects : projects.filter((p) => p.region === region);
     window.renderProjects(filtered);
+
+    // Close mobile filter menu after selection
+    const menu = document.getElementById("filtersMenu");
+    if (menu && menu.classList.contains("active")) {
+      menu.classList.remove("active");
+    }
+  };
+
+  window.toggleFilterMenu = function () {
+    const menu = document.getElementById("filtersMenu");
+    if (menu) {
+      menu.classList.toggle("active");
+    }
+  };
+
+  // --- NEW: Toggle Sidebar Function ---
+  window.toggleSidebar = function () {
+    const sidebarContainer = document.getElementById("sidebarContainer");
+    if (sidebarContainer) {
+      sidebarContainer.classList.toggle("active");
+    }
   };
 
   window.enterMasterPlan = function (id) {
