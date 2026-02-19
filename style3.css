@@ -1469,6 +1469,10 @@ a {
   /* background-color: var(--bg-color); */
 }
 
+.split-section2 {
+  flex-direction: row-reverse;
+}
+
 .split-text {
   flex: 1;
   padding: 80px;
@@ -2589,8 +2593,16 @@ footer {
   .about-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .split-section {
+  .split-section,
+  .split-section2 {
     flex-direction: column;
+  }
+  .split-text {
+    padding: 0px;
+    margin-bottom: 1rem;
+  }
+  .split-title {
+    font-size: 2rem;
   }
   .about-main-title {
     font-size: 40px;
