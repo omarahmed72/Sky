@@ -75,16 +75,6 @@
       </div>
 
       <div class="nav-center hidden lg:flex">
-        <!-- Home Link -->
-        <!-- <div class="nav-item">
-          <a href="index.html">Home</a>
-        </div> -->
-
-        <!-- Explore Link -->
-        <!-- <div class="nav-item">
-          <a href="explore.html">Explore</a>
-        </div> -->
-
         <div class="nav-item has-menu">
           <a href="explore.html">Explore</a>
           <div class="mega-menu-container">
@@ -141,9 +131,6 @@
           </div>
         </div>
 
-        <!-- About Link triggers Page Switch -->
-        <!-- <div class="nav-item" onclick="switchPage('about')">About</div> -->
-
         <div class="nav-item has-menu">
           <a href="about.html">About</a>
           <div class="mega-menu-container">
@@ -199,15 +186,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="nav-item">
-          <a href="sell.html">Sell Unit</a>
-        </div>
-        <div class="nav-item">
-          <a href="developers.html">Developers</a>
-        </div>
-        <div class="nav-item">
-          <a href="calculator.html">Calculator</a>
-        </div> -->
         <div class="nav-item">
           <a href="blogs.html">Blogs</a>
         </div>
@@ -321,8 +299,21 @@
         <h1 class="explore-title">Projects</h1>
 
         <div class="explore-container">
+          <!-- Mobile Filter Toggle Button -->
+          <div class="mobile-filter-toggle w-full">
+            <button onclick="toggleMobileFilters()" class="filter-btn-mobile">
+              <i class="fas fa-filter"></i> Filters
+            </button>
+          </div>
+
           <!-- Sidebar with Glass Gradient -->
-          <aside class="sidebar">
+          <aside class="sidebar" id="filters-sidebar">
+            <!-- Mobile Header (Hidden on Desktop) -->
+            <div class="mobile-filter-header">
+              <h3>Filters</h3>
+              <button onclick="toggleMobileFilters()"><i class="fas fa-times"></i></button>
+            </div>
+
             <div class="filter-group">
               <h4 class="filter-title">Filters</h4>
               <input
@@ -444,6 +435,13 @@
               <label class="checkbox-item"
                 ><input type="checkbox" /> Orascom</label
               >
+            </div>
+
+            <!-- زر الإغلاق السفلي للموبايل -->
+            <div class="mobile-filter-footer">
+              <button class="close-filter-btn" onclick="toggleMobileFilters()">
+                <i class="fas fa-times"></i> إغلاق / Close
+              </button>
             </div>
           </aside>
 
@@ -1072,6 +1070,19 @@
         } else {
           icon.classList.remove("fa-minus");
           icon.classList.add("fa-plus");
+        }
+      }
+
+      // Toggle Mobile Filters Sidebar
+      function toggleMobileFilters() {
+        const sidebar = document.getElementById('filters-sidebar');
+        sidebar.classList.toggle('active');
+        
+        // Prevent body scroll when filter sidebar is open on mobile
+        if (sidebar.classList.contains('active')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
         }
       }
     </script>

@@ -2579,6 +2579,17 @@ footer {
   color: var(--text-color);
 }
 
+/* Mobile Filters Styling */
+.mobile-filter-toggle {
+  display: none;
+}
+.mobile-filter-header {
+  display: none;
+}
+.mobile-filter-footer {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .nav-center {
     display: none;
@@ -2610,13 +2621,107 @@ footer {
   .explore-container {
     flex-direction: column;
   }
-  .sidebar {
+
+  /* Filter Sidebar Full width logic */
+  .mobile-filter-toggle {
+    display: block;
+    margin-bottom: 20px;
     width: 100%;
-    position: relative;
+  }
+  .filter-btn-mobile {
+    background: var(--accent-gold);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+  }
+  .filter-btn-mobile:hover {
+    background: #b08d4e;
+  }
+  .mobile-filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--nav-border);
+    padding-bottom: 15px;
+  }
+  .mobile-filter-header h3 {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .mobile-filter-header button {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .mobile-filter-footer {
+    display: block;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-top: 1px solid var(--nav-border);
+  }
+
+  .close-filter-btn {
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+  }
+
+  .close-filter-btn:hover {
+    opacity: 0.8;
+  }
+
+  /* Fixed Sidebar over full screen */
+  .sidebar {
+    position: fixed;
     top: 0;
-    z-index: 10;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;
+    overflow-y: auto;
+    border-radius: 0;
+    border: none;
+    transition: left 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: var(--bg-color);
+    padding: 30px 20px;
+  }
+  .sidebar.active {
+    left: 0;
   }
 }
+
 @media (max-width: 640px) {
   .about-grid {
     grid-template-columns: 1fr;
