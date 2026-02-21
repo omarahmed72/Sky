@@ -2642,7 +2642,7 @@ footer {
     justify-content: center;
     gap: 10px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
   }
   .filter-btn-mobile:hover {
@@ -2694,7 +2694,7 @@ footer {
     justify-content: center;
     gap: 10px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
   }
 

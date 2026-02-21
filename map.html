@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Egypt Real Estate Map - Ultimate 56 Projects</title>
 
-    <!-- Leaflet & Icons -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -21,15 +15,13 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Alexandria:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="style2.css" />
-    <!-- <link rel="stylesheet" href="style3.css" /> -->
   </head>
   <body class="ui-hidden">
-    <!-- Tesla Style Liquid Navbar with Mega Menu -->
     <nav class="tesla-nav" id="navbar">
       <div class="nav-logo">
         <a href="index.html">
@@ -149,11 +141,15 @@
             </div>
           </div>
         </div>
+
         <div class="nav-item">
           <a href="blogs.html">Blogs</a>
         </div>
         <div class="nav-item">
           <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-item">
+          <a href="newsletter.html">Newsletter</a>
         </div>
         <div class="nav-item">
           <a href="careers.html">Careers</a>
@@ -186,7 +182,6 @@
       </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="mobile-menu-overlay">
       <div class="mobile-close-btn" onclick="toggleMobileMenu()">
         <i class="fas fa-times"></i>
@@ -230,8 +225,12 @@
         <a href="blogs.html">Blogs</a>
       </div>
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="newsletter.html">Newsletter</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="contact.html">Contact</a>
       </div>
+
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="careers.html">Careers</a>
       </div>
@@ -243,7 +242,6 @@
     <div id="mapcontainer" style="position: relative; z-index: 1">
       <div id="ui-wrapper">
         <div class="top-bar">
-          <!-- Search Box Wrapper with Filter Toggle for Mobile -->
           <div class="search-row-wrapper">
             <div class="search-box glass-panel">
               <i
@@ -256,7 +254,6 @@
               />
             </div>
 
-            <!-- NEW: Sidebar Toggle Button (List Icon) -->
             <button
               class="list-toggle-btn glass-panel"
               onclick="toggleSidebar()"
@@ -265,7 +262,6 @@
               <i class="fa-solid fa-list-ul"></i>
             </button>
 
-            <!-- Toggle Button for Mobile Filters -->
             <button
               class="filter-toggle-btn glass-panel"
               onclick="toggleFilterMenu()"
@@ -275,9 +271,7 @@
             </button>
           </div>
 
-          <!-- Filters Row (Acts as Drawer on Mobile) -->
           <div class="filters-row" id="filtersMenu">
-            <!-- Mobile Header for Filter Menu -->
             <div class="mobile-filter-header">
               <h3>Filter by Region</h3>
               <i
@@ -285,7 +279,6 @@
                 onclick="toggleFilterMenu()"
               ></i>
             </div>
-
             <button
               class="filter-chip glass-panel active"
               onclick="filterBy('all', 28.5, 30.5, 6.5, this)"
@@ -336,8 +329,6 @@
                   >0</span
                 >
               </div>
-
-              <!-- Close Sidebar Button (Mobile Only) -->
               <div class="close-sidebar-btn" onclick="toggleSidebar()">
                 <i class="fa-solid fa-xmark"></i>
               </div>
@@ -365,7 +356,30 @@
       <div id="map"></div>
     </div>
 
-    <!-- Active Script -->
-    <script src="map.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        // تأخير بسيط قدره 1 ثانية لإعطاء الأولوية لرسم واجهة الموقع (النافبار وغيرها)
+        setTimeout(() => {
+          // تحميل ملفات CSS الخاصة بالخريطة
+          const leafletCss = document.createElement("link");
+          leafletCss.rel = "stylesheet";
+          leafletCss.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+          document.head.appendChild(leafletCss);
+
+          // تحميل سكربت الخريطة
+          const leafletScript = document.createElement("script");
+          leafletScript.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+
+          // بعد الانتهاء من تحميل المكتبة، قم بتحميل ملف map.js الخاص بنا
+          leafletScript.onload = () => {
+            const mapScript = document.createElement("script");
+            mapScript.src = "map.js";
+            document.body.appendChild(mapScript);
+          };
+
+          document.body.appendChild(leafletScript);
+        }, 1000);
+      });
+    </script>
   </body>
 </html>

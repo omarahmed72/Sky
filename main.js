@@ -818,3 +818,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// ==========================================
+// CHATBOT LOGIC
+// ==========================================
+
+// ... (باقي الدوال كما هي) ...
+
+// Simple Rule-Based AI (تم تعديله ليصبح مباشراً ومختصراً)
+function getBotResponse(input) {
+  const lowerInput = input.toLowerCase();
+
+  if (lowerInput.includes("hello") || lowerInput.includes("hi")) {
+    return "Welcome to SkyPioneers! Buying, selling, or exploring?";
+  } else if (
+    lowerInput.includes("project") ||
+    lowerInput.includes("residential")
+  ) {
+    return "Check out <a href='projects.html' style='color:var(--accent-gold); font-weight:bold;'>Sky City</a> and <a href='projects.html' style='color:var(--accent-gold); font-weight:bold;'>Blue Horizon</a>.";
+  } else if (lowerInput.includes("price") || lowerInput.includes("cost")) {
+    return "Units start from 2.5M EGP (8 years installments). Use our <a href='calculator.html' style='color:var(--accent-gold);'>Calculator</a>.";
+  } else if (lowerInput.includes("sell")) {
+    return "List your unit directly on our <a href='sell.html' style='color:var(--accent-gold); font-weight:bold;'>Sell Unit</a> page.";
+  } else if (
+    lowerInput.includes("contact") ||
+    lowerInput.includes("number") ||
+    lowerInput.includes("call")
+  ) {
+    // عرض الرقم فقط هنا
+    return "You can reach our sales team at 19900.";
+  } else if (lowerInput.includes("location") || lowerInput.includes("map")) {
+    return "Located in New Capital and North Coast. View our <a href='map.html' style='color:var(--accent-gold);'>Map</a>.";
+  } else {
+    return "Please choose an option or ask about 'Projects', 'Prices', or 'Selling'.";
+  }
+}
+
+// ... (باقي الدوال في الأسفل كما هي) ...
