@@ -27,7 +27,7 @@
         --glass-border: rgba(255, 255, 255, 0.2);
         --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
         --text-color: #171a20;
-        --text-muted: #5c5e62;
+        --text-muted: #c2c6cf;
       }
 
       body {
@@ -127,7 +127,7 @@
       }
 
       .project-hero .arrows button:hover {
-        background-color: #0b0829;
+        background-color: var(--accent-gold);
       }
       .slider-container {
         position: absolute;
@@ -335,6 +335,29 @@
           height: 250px;
           top: 65%;
         }
+        .project-hero .carousel .list .item:nth-child(4) {
+          left: calc(51% + 220px);
+        }
+      }
+
+      @media (max-width: 500px) {
+        .project-hero .carousel .list .item {
+          width: 100px;
+          height: 150px;
+          top: 65%;
+        }
+        .project-hero .carousel .list .item:nth-child(3) {
+          left: 50%;
+        }
+        .project-hero .carousel .list .item:nth-child(4) {
+          left: calc(18% + 220px);
+        }
+      }
+
+      @media (max-width: 400px) {
+        .project-hero .carousel .list .item:nth-child(4) {
+          left: calc(14% + 220px);
+        }
       }
 
       .project-logo-overlay img {
@@ -368,7 +391,7 @@
       .section-title {
         font-size: 28px;
         font-weight: 300;
-        color: var(--text-color);
+        color: var(--title-color);
         margin: 0;
       }
 
@@ -410,7 +433,7 @@
       }
 
       .project-description strong {
-        color: var(--text-color);
+        color: var(--title-color);
         font-weight: 600;
       }
 
@@ -1625,7 +1648,7 @@
         );
       }
     </script> -->
-    <script>
+    <!-- <script>
       /* منطق الـ Carousel المأخوذ من blogs.html */
       document.addEventListener("DOMContentLoaded", () => {
         const nextBtn = document.querySelector(".next");
@@ -1691,7 +1714,7 @@
           themeIcon.classList.replace("fa-moon", "fa-sun");
         }
       });
-    </script>
+    </script> -->
     <script src="main.js"></script>
   </body>
 </html>
