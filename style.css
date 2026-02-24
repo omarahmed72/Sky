@@ -270,7 +270,7 @@ a {
 }
 
 /* --- Custom Liquid Dropdown CSS --- */
-.custom-select-wrapper {
+/* .custom-select-wrapper {
   position: relative;
   user-select: none;
   width: 35%;
@@ -279,7 +279,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px;
+  padding: 5px;
   font-size: 13px;
   font-weight: 500;
   color: var(--input-text);
@@ -317,7 +317,7 @@ a {
   transform: translateY(0);
 }
 .custom-option {
-  padding: 12px 15px;
+  padding: 12px 12px;
   font-size: 13px;
   color: var(--text-color);
   cursor: pointer;
@@ -337,7 +337,7 @@ a {
 }
 .custom-option.selected:hover {
   color: white;
-}
+} */
 
 /* --- Tesla-Style Liquid Navbar --- */
 .tesla-nav {

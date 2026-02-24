@@ -305,6 +305,7 @@ a {
   transition: all 0.3s;
   height: 100%;
 }
+
 .custom-select-trigger:hover {
   border-color: var(--accent-gold);
 }
@@ -332,7 +333,7 @@ a {
   transform: translateY(0);
 }
 .custom-option {
-  padding: 12px 15px;
+  padding: 12px 12px;
   font-size: 13px;
   color: var(--text-color);
   cursor: pointer;
@@ -352,6 +353,15 @@ a {
 }
 .custom-option.selected:hover {
   color: white;
+}
+
+@media (max-width: 500px) {
+  .custom-select-trigger {
+    font-size: 10px;
+  }
+  .custom-option {
+    font-size: 10px;
+  }
 }
 
 /* --- Tesla-Style Liquid Navbar --- */
