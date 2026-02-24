@@ -358,7 +358,6 @@ a {
   background: #cbdde6;
 }
 
-/* Glass Panel Utility */
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -369,7 +368,6 @@ a {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Top Bar Container */
 .top-bar {
   position: absolute;
   top: 125px;
@@ -381,6 +379,7 @@ a {
   transform: translateY(-30px);
 }
 
+/* Base style for Sidebar Container */
 .sidebar-container {
   position: absolute;
   top: 130px;
@@ -390,20 +389,26 @@ a {
   z-index: 1000;
   pointer-events: none;
   opacity: 0;
+  visibility: hidden;
   transform: translateX(30px);
   transition: all 0.6s ease;
 }
 
 /* Active State for Desktop (Intro Animation) */
 .ui-visible .top-bar,
-.ui-visible .sidebar-container,
 .ui-visible .bottom-btn {
   opacity: 1;
   transform: translate(0);
   pointer-events: auto;
 }
 
-/* Search Row Wrapper */
+.ui-visible .sidebar-container {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0);
+  pointer-events: auto;
+}
+
 .search-row-wrapper {
   display: flex;
   gap: 10px;
@@ -411,7 +416,6 @@ a {
   pointer-events: auto;
 }
 
-/* Search Box */
 .search-box {
   border-radius: 20px;
   padding: 0 20px;
@@ -431,10 +435,9 @@ a {
   margin-right: 12px;
 }
 
-/* Toggle Buttons for Mobile/Tablet */
 .filter-toggle-btn,
 .list-toggle-btn {
-  display: none; /* Hidden by default on Desktop */
+  display: none;
   width: 65px;
   height: 65px;
   border-radius: 15px;
@@ -452,7 +455,6 @@ a {
   color: white;
 }
 
-/* Filters Row (Desktop Default) */
 .filters-row {
   display: flex;
   gap: 2px;
@@ -467,7 +469,7 @@ a {
 }
 
 .mobile-filter-header {
-  display: none; /* Hidden on Desktop */
+  display: none;
 }
 
 .filter-chip {
@@ -487,7 +489,6 @@ a {
   box-shadow: 0 5px 15px rgba(247, 127, 0, 0.3);
 }
 
-/* Sidebar Styles */
 .sidebar {
   width: 100%;
   height: 100%;
@@ -511,7 +512,7 @@ a {
 }
 
 .close-sidebar-btn {
-  display: none; /* Hidden on Desktop */
+  display: none;
   cursor: pointer;
   width: 30px;
   height: 30px;
@@ -607,7 +608,6 @@ a {
    RESPONSIVE MAP UI (Added for Tablet & Mobile)
    ================================================================= */
 
-/* TABLET & MOBILE SHARED STYLES (Max Width 1024px) */
 @media (max-width: 1024px) {
   .top-bar {
     width: 70%;
@@ -618,17 +618,15 @@ a {
     flex-direction: column;
   }
 
-  /* Show Toggle Buttons */
   .filter-toggle-btn,
   .list-toggle-btn {
     display: flex;
   }
 
-  /* Transform Filters Row into a Side Drawer */
   .filters-row {
     position: fixed;
     top: 0;
-    left: -100%; /* Hidden off-screen left */
+    left: -100%;
     width: 280px;
     height: 100vh;
     background: var(--mega-menu-bg);
@@ -639,17 +637,15 @@ a {
     gap: 15px;
     margin-top: 0;
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 3000; /* Above everything */
+    z-index: 3000;
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
     border-right: 1px solid var(--glass-border);
   }
 
-  /* Active Class to Slide In */
   .filters-row.active {
     left: -18px;
   }
 
-  /* Mobile Filter Header */
   .mobile-filter-header {
     display: flex;
     justify-content: space-between;
@@ -675,7 +671,6 @@ a {
     transform: rotate(90deg);
   }
 
-  /* Adjust Filter Chips for Vertical List */
   .filter-chip {
     width: 100%;
     text-align: center;
@@ -683,7 +678,7 @@ a {
     border-radius: 12px;
   }
 
-  /* Sidebar positioning for Tablet - HIDDEN BY DEFAULT */
+  /* Completely Hide Sidebar when inactive to fix spacing issue */
   .ui-visible .sidebar-container {
     top: 0;
     height: 100vh;
@@ -691,16 +686,23 @@ a {
     right: 0;
     bottom: auto;
     z-index: 2999;
-    transform: translateX(120%); /* Hide off-screen right */
-    transition: transform 0.4s ease;
+    transform: translateX(120%);
+    transition:
+      transform 0.4s ease,
+      opacity 0.4s ease,
+      visibility 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 
-  /* Show sidebar when active */
   .ui-visible .sidebar-container.active {
     transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
-  /* Show close button in sidebar header */
   .close-sidebar-btn {
     display: flex;
   }
@@ -711,14 +713,11 @@ a {
   }
 }
 
-/* MOBILE MODE ONLY (Max Width 768px) */
 @media (max-width: 768px) {
-  /* Adjust Navbar Padding */
   .tesla-nav {
     padding: 0 20px;
   }
 
-  /* Full Width Top Search Bar */
   .top-bar {
     width: 92%;
     left: 4%;
@@ -739,7 +738,7 @@ a {
     font-size: 1.2rem;
   }
 
-  /* Sidebar as Bottom Sheet - HIDDEN BY DEFAULT */
+  /* Apply complete hiding behavior to mobile view */
   .ui-visible .sidebar-container {
     width: 96%;
     left: 2%;
@@ -747,14 +746,21 @@ a {
     top: auto;
     bottom: 20px;
     height: 35vh;
-    transform: translateY(120%); /* Hide off-screen bottom */
+    transform: translateY(
+      150%
+    ); /* Increased distance to guarantee off-screen */
     border-radius: 20px;
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 
-  /* Show sidebar when active */
   .ui-visible .sidebar-container.active {
     transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .sidebar {
@@ -772,7 +778,6 @@ a {
     height: 60px;
   }
 
-  /* Adjust Bottom Button */
   .bottom-btn {
     bottom: 20px;
     width: 80%;

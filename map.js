@@ -4,15 +4,12 @@
 const themeIcon = document.getElementById("theme-icon");
 const navLogo = document.getElementById("nav-logo");
 
-// Initialize from localStorage
 let savedTheme = localStorage.getItem("theme");
 let isDarkMode = savedTheme === "dark";
 
-// Placeholder for map update function (set later if map exists)
 let updateMapThemeFn = null;
 
 function applyTheme() {
-  // 1. UI Theme Attributes (Apply to Website UI)
   if (isDarkMode) {
     document.body.setAttribute("data-theme", "dark");
     document.documentElement.setAttribute("data-theme", "dark");
@@ -30,10 +27,6 @@ function applyTheme() {
     }
     if (navLogo) navLogo.src = "imgs/logo.png";
   }
-
-  // 2. Map Specific Updates
-  // NOTE: User requested to KEEP map tiles light even in dark mode.
-  // So we do NOT switch the tile layer URL here anymore.
 }
 
 function toggleTheme() {
@@ -41,40 +34,40 @@ function toggleTheme() {
   localStorage.setItem("theme", isDarkMode ? "dark" : "light");
   applyTheme();
 
-  // Handle Video Autoplay on interaction
   const videos = document.querySelectorAll("video");
   videos.forEach((v) => {
     if (!v.paused) return;
     const playPromise = v.play();
     if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        // console.log("Video auto-replay handled.");
-      });
+      playPromise.catch((error) => {});
     }
   });
 }
 
-// Apply immediately on load
 applyTheme();
 
 /* =========================================
    2. GENERAL UI LOGIC (Navbar, Mobile Menu)
    ========================================= */
 
-// --- Mobile Menu Toggle ---
-function toggleMobileMenu() {
+window.toggleMobileMenu = function () {
   const menu = document.getElementById("mobile-menu");
+
+  // Close other menus if open
+  const sidebar = document.getElementById("sidebarContainer");
+  const filterMenu = document.getElementById("filtersMenu");
+  if (sidebar) sidebar.classList.remove("active");
+  if (filterMenu) filterMenu.classList.remove("active");
+
   if (menu) {
     menu.classList.toggle("active");
-    // Show/Hide sublinks for projects in mobile just for visual effect
     const sublinks = document.querySelectorAll(".mobile-nav-sublink");
     sublinks.forEach((link) => {
       link.style.display = menu.classList.contains("active") ? "block" : "none";
     });
   }
-}
+};
 
-// --- Navbar Hide on Scroll ---
 let lastScrollTop = 0;
 const navbar = document.getElementById("navbar");
 
@@ -89,6 +82,49 @@ if (navbar) {
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   });
 }
+
+// --- NEW: Click outside to close all menus ---
+document.addEventListener("click", function (event) {
+  const filterMenu = document.getElementById("filtersMenu");
+  const filterBtn = document.querySelector(".filter-toggle-btn");
+  const sidebar = document.getElementById("sidebarContainer");
+  const listBtn = document.querySelector(".list-toggle-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+
+  // Handle Filter Menu click outside
+  if (filterMenu && filterMenu.classList.contains("active")) {
+    const clickedInsideFilter = filterMenu.contains(event.target);
+    const clickedFilterBtn = filterBtn && filterBtn.contains(event.target);
+
+    if (!clickedInsideFilter && !clickedFilterBtn) {
+      filterMenu.classList.remove("active");
+    }
+  }
+
+  // Handle Sidebar click outside
+  if (sidebar && sidebar.classList.contains("active")) {
+    const clickedInsideSidebar = sidebar.contains(event.target);
+    const clickedSidebarBtn = listBtn && listBtn.contains(event.target);
+
+    if (!clickedInsideSidebar && !clickedSidebarBtn) {
+      sidebar.classList.remove("active");
+    }
+  }
+
+  // Handle Mobile Menu click outside
+  if (mobileMenu && mobileMenu.classList.contains("active")) {
+    const clickedInsideMobileMenu = mobileMenu.contains(event.target);
+    const clickedMobileBtn =
+      mobileMenuBtn && mobileMenuBtn.contains(event.target);
+
+    if (!clickedInsideMobileMenu && !clickedMobileBtn) {
+      mobileMenu.classList.remove("active");
+      const sublinks = document.querySelectorAll(".mobile-nav-sublink");
+      sublinks.forEach((link) => (link.style.display = "none"));
+    }
+  }
+});
 
 /* =========================================
    3. STATS & COUNTERS LOGIC
@@ -112,7 +148,7 @@ function runStats() {
     const target = parseFloat(counter.getAttribute("data-target"));
     const isDecimal = counter.getAttribute("data-decimal") === "true";
     let current = 0;
-    const step = target / 60; // 60 steps for animation
+    const step = target / 60;
 
     const update = () => {
       current += step;
@@ -128,7 +164,6 @@ function runStats() {
   hasCounteds = true;
 }
 
-// Stats Observer (Trigger on Scroll)
 const statsSection = document.getElementById("stats-section");
 let hasCountedScroll = false;
 
@@ -173,7 +208,6 @@ if (statsSection) {
    4. GALLERIES & MEDIA LOGIC
    ========================================= */
 
-// --- 3D Cylinder Gallery ---
 const track = document.getElementById("cylinder-track");
 if (track) {
   const baseItems = [
@@ -277,10 +311,8 @@ if (track) {
     });
   }
 
-  // Initial call
   initGallery();
 
-  // Touch events for gallery
   const gallerySection = document.querySelector(".gallery-section");
   if (gallerySection) {
     let startX = 0;
@@ -296,7 +328,6 @@ if (track) {
   }
 }
 
-// --- Audio & Video Logic ---
 function enableAudio() {
   const videos = document.querySelectorAll("video");
   videos.forEach((v) => {
@@ -305,7 +336,6 @@ function enableAudio() {
     const playPromise = v.play();
     if (playPromise !== undefined) {
       playPromise.catch((error) => {
-        // console.warn("Unmuted playback failed, reverting to muted:", error);
         v.muted = true;
         v.play();
       });
@@ -320,7 +350,6 @@ function enableAudio() {
 document.addEventListener("click", enableAudio);
 document.addEventListener("touchstart", enableAudio);
 
-// Video Watchdog
 document.querySelectorAll("video").forEach((video) => {
   video.addEventListener("pause", (e) => {
     if (!video.closest(".hidden") && document.visibilityState === "visible") {
@@ -333,7 +362,6 @@ document.querySelectorAll("video").forEach((video) => {
    5. CALCULATOR, SELL PAGE & BLOG LOGIC
    ========================================= */
 
-// ... (Calculator & Sell Page Logic from original main.js kept intact) ...
 let currentCalcMode = "installment";
 window.switchCalcMode = function (mode) {
   currentCalcMode = mode;
@@ -360,16 +388,10 @@ window.switchCalcMode = function (mode) {
 
 window.calculate = function () {
   const fmt = (num) => Math.round(num).toLocaleString("en-US") + " EGP";
-  // ... (Calculation logic remains same) ...
-  // Simplified for brevity, add full logic if calculator page active
   if (document.getElementById("calc-price")) {
-    // Re-insert calculation logic here if needed
-    // For now assuming the original logic is sufficient or copy-pasted completely
   }
 };
-// Add the rest of calculator/sell functions if they exist on the page...
 
-// --- Blog Accordion ---
 window.toggleAccordion = function (index) {
   const content = document.getElementById(`content-${index}`);
   const icon = document.getElementById(`icon-${index}`);
@@ -394,7 +416,6 @@ window.toggleAccordion = function (index) {
 const mapElement = document.getElementById("map");
 
 if (mapElement && typeof L !== "undefined") {
-  // Map Configuration
   const tiles = {
     light:
       "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
@@ -402,20 +423,17 @@ if (mapElement && typeof L !== "undefined") {
     satellite: "http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
   };
 
-  // Initialize Layers
-  // FORCE LIGHT MODE TILES regardless of 'isDarkMode' variable
   var streetLayer = L.tileLayer(tiles.light, { maxZoom: 19 });
   var satLayer = L.tileLayer(tiles.satellite, {
     maxZoom: 20,
     subdomains: ["mt0", "mt1", "mt2", "mt3"],
   });
 
-  // Initialize Map
   var map = L.map("map", {
     zoomControl: false,
     layers: [streetLayer],
-    center: [15, 10], // Original center
-    zoom: 2.5, // Original zoom
+    center: [15, 10],
+    zoom: 2.5,
     attributionControl: false,
   });
 
@@ -423,10 +441,7 @@ if (mapElement && typeof L !== "undefined") {
   var markersLayer = L.layerGroup().addTo(map);
   var masterPlanLayer = L.layerGroup().addTo(map);
 
-  // --- FULL PROJECTS DATA (Restored) ---
   const projects = [
-    // ... (Keep all project data as is) ...
-    // ================== العاصمة الإدارية (NAC) ==================
     {
       id: 901,
       name: "Celia",
@@ -595,8 +610,6 @@ if (mapElement && typeof L !== "undefined") {
       thumb: "https://via.placeholder.com/100?text=Pukka",
       mp: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Plan_voisin_paris.jpg",
     },
-
-    // ================== القاهرة الجديدة ==================
     {
       id: 801,
       name: "Hyde Park",
@@ -765,8 +778,6 @@ if (mapElement && typeof L !== "undefined") {
       thumb: "https://via.placeholder.com/100?text=Sarai",
       mp: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Urban_plan_drawing.jpg/800px-Urban_plan_drawing.jpg",
     },
-
-    // ================== الشيخ زايد و نيو زايد ==================
     {
       id: 601,
       name: "Zed Towers",
@@ -963,8 +974,6 @@ if (mapElement && typeof L !== "undefined") {
       thumb: "https://via.placeholder.com/100?text=Solana",
       mp: "https://upload.wikimedia.org/wikipedia/commons/8/87/City_block_structure.jpg",
     },
-
-    // ================== الساحل الشمالي والعلمين ==================
     {
       id: 101,
       name: "Marassi",
@@ -1119,8 +1128,6 @@ if (mapElement && typeof L !== "undefined") {
       thumb: "https://via.placeholder.com/100?text=Lvls",
       mp: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Urban_plan_drawing.jpg/800px-Urban_plan_drawing.jpg",
     },
-
-    // ================== العين السخنة ==================
     {
       id: 301,
       name: "Il Monte Galala",
@@ -1177,8 +1184,6 @@ if (mapElement && typeof L !== "undefined") {
       thumb: "https://via.placeholder.com/100?text=VistaT",
       mp: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Urban_plan_drawing.jpg/800px-Urban_plan_drawing.jpg",
     },
-
-    // ================== 6 أكتوبر ==================
     {
       id: 401,
       name: "O West",
@@ -1223,8 +1228,6 @@ if (mapElement && typeof L !== "undefined") {
     },
   ];
 
-  // Helper Functions (Attached to Window for HTML access)
-
   window.renderProjects = function (data) {
     const countEl = document.getElementById("project-count");
     if (countEl) countEl.innerText = data.length;
@@ -1236,7 +1239,6 @@ if (mapElement && typeof L !== "undefined") {
     markersLayer.clearLayers();
 
     data.forEach((p) => {
-      // Create Map Marker
       const icon = L.divIcon({
         className: "custom-pin",
         html: `<div class="price-marker">${p.price}</div>`,
@@ -1269,7 +1271,6 @@ if (mapElement && typeof L !== "undefined") {
         { maxWidth: 300 },
       );
 
-      // Create Sidebar Card
       const card = document.createElement("div");
       card.className = "project-card";
       card.innerHTML = `<img src="${p.thumb}"><div><h4 style="margin:0; font-size: 0.95rem;">${p.name}</h4><p style="margin:0; font-size:0.8rem">${p.region.toUpperCase()}</p><b style="color:#f77f00">${p.price}</b></div>`;
@@ -1292,7 +1293,6 @@ if (mapElement && typeof L !== "undefined") {
       region === "all" ? projects : projects.filter((p) => p.region === region);
     window.renderProjects(filtered);
 
-    // Close mobile filter menu after selection
     const menu = document.getElementById("filtersMenu");
     if (menu && menu.classList.contains("active")) {
       menu.classList.remove("active");
@@ -1301,17 +1301,34 @@ if (mapElement && typeof L !== "undefined") {
 
   window.toggleFilterMenu = function () {
     const menu = document.getElementById("filtersMenu");
-    if (menu) {
-      menu.classList.toggle("active");
+    const sidebar = document.getElementById("sidebarContainer");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (sidebar) sidebar.classList.remove("active");
+    if (mobileMenu) {
+      mobileMenu.classList.remove("active");
+      document
+        .querySelectorAll(".mobile-nav-sublink")
+        .forEach((l) => (l.style.display = "none"));
     }
+
+    if (menu) menu.classList.toggle("active");
   };
 
-  // --- NEW: Toggle Sidebar Function ---
   window.toggleSidebar = function () {
     const sidebarContainer = document.getElementById("sidebarContainer");
-    if (sidebarContainer) {
-      sidebarContainer.classList.toggle("active");
+    const menu = document.getElementById("filtersMenu");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (menu) menu.classList.remove("active");
+    if (mobileMenu) {
+      mobileMenu.classList.remove("active");
+      document
+        .querySelectorAll(".mobile-nav-sublink")
+        .forEach((l) => (l.style.display = "none"));
     }
+
+    if (sidebarContainer) sidebarContainer.classList.toggle("active");
   };
 
   window.enterMasterPlan = function (id) {
@@ -1337,8 +1354,6 @@ if (mapElement && typeof L !== "undefined") {
 
     map.removeLayer(satLayer);
 
-    // Ensure we switch back to the correct street layer theme
-    // Keep Light mode for tiles
     streetLayer.setUrl(tiles.light);
     map.addLayer(streetLayer);
 
@@ -1354,7 +1369,6 @@ if (mapElement && typeof L !== "undefined") {
     }, 600);
   }
 
-  // Initial Render
   window.renderProjects(projects);
   startIntro();
 }
