@@ -4890,3 +4890,13 @@ footer {
     background-color: rgba(11, 8, 41, 0.85) !important;
   }
 }
+
+
+
+/* Performance Optimization: Isolate rendering for carousel items */
+.blogs-page .carousel .list .item,
+.carousel .list .item {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px 400px;
+  contain: paint layout;
+}
