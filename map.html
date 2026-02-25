@@ -270,47 +270,48 @@
               <i class="fa-solid fa-sliders"></i>
             </button>
           </div>
+        </div>
 
-          <div class="filters-row" id="filtersMenu">
-            <div class="mobile-filter-header">
-              <h3>Filter by Region</h3>
-              <i
-                class="fa-solid fa-xmark close-filter-btn"
-                onclick="toggleFilterMenu()"
-              ></i>
-            </div>
-            <button
-              class="filter-chip glass-panel active"
-              onclick="filterBy('all', 28.5, 30.5, 6.5, this)"
-            >
-              All
-            </button>
-            <button
-              class="filter-chip glass-panel"
-              onclick="filterBy('nac', 30.01, 31.74, 12, this)"
-            >
-              New Capital
-            </button>
-            <button
-              class="filter-chip glass-panel"
-              onclick="filterBy('new_cairo', 30.03, 31.47, 12, this)"
-            >
-              New Cairo
-            </button>
-            <button
-              class="filter-chip glass-panel"
-              onclick="filterBy('zayed', 30.05, 30.95, 13, this)"
-            >
-              Sheikh Zayed
-            </button>
-            <button
-              class="filter-chip glass-panel"
-              onclick="filterBy('north_coast', 31.0, 28.6, 9, this)"
-            >
-              North Coast
+        <!-- تم نقل قائمة الفلاتر خارج الـ top-bar لتجنب مشاكل الـ fixed positioning -->
+        <aside class="filters-sidebar" id="filtersMenu">
+          <div class="mobile-filter-header">
+            <h3>Filters</h3>
+            <button onclick="toggleFilterMenu()">
+              <i class="fas fa-times"></i>
             </button>
           </div>
-        </div>
+
+          <button
+            class="filter-chip glass-panel active"
+            onclick="filterBy('all', 28.5, 30.5, 6.5, this)"
+          >
+            All
+          </button>
+          <button
+            class="filter-chip glass-panel"
+            onclick="filterBy('nac', 30.01, 31.74, 12, this)"
+          >
+            New Capital
+          </button>
+          <button
+            class="filter-chip glass-panel"
+            onclick="filterBy('new_cairo', 30.03, 31.47, 12, this)"
+          >
+            New Cairo
+          </button>
+          <button
+            class="filter-chip glass-panel"
+            onclick="filterBy('zayed', 30.05, 30.95, 13, this)"
+          >
+            Sheikh Zayed
+          </button>
+          <button
+            class="filter-chip glass-panel"
+            onclick="filterBy('north_coast', 31.0, 28.6, 9, this)"
+          >
+            North Coast
+          </button>
+        </aside>
 
         <div class="sidebar-container" id="sidebarContainer">
           <div class="sidebar glass-panel">
@@ -364,6 +365,6 @@
       defer
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     ></script>
-    <script defer src="map.js"></script>
+    <script src="map.js"></script>
   </body>
 </html>

@@ -57,7 +57,10 @@ window.toggleMobileMenu = function () {
   const sidebar = document.getElementById("sidebarContainer");
   const filterMenu = document.getElementById("filtersMenu");
   if (sidebar) sidebar.classList.remove("active");
-  if (filterMenu) filterMenu.classList.remove("active");
+  if (filterMenu) {
+    filterMenu.classList.remove("active");
+    document.body.style.overflow = ""; // Unlock scroll if filter closes
+  }
 
   if (menu) {
     menu.classList.toggle("active");
@@ -96,7 +99,7 @@ if (navbar) {
   );
 }
 
-// --- NEW: Click outside to close all menus ---
+// --- Click outside to close all menus ---
 document.addEventListener("click", function (event) {
   const filterMenu = document.getElementById("filtersMenu");
   const filterBtn = document.querySelector(".filter-toggle-btn");
@@ -112,6 +115,7 @@ document.addEventListener("click", function (event) {
 
     if (!clickedInsideFilter && !clickedFilterBtn) {
       filterMenu.classList.remove("active");
+      document.body.style.overflow = ""; // Unlock body scroll
     }
   }
 
@@ -1033,6 +1037,7 @@ window.addEventListener("load", () => {
       const menu = document.getElementById("filtersMenu");
       if (menu && menu.classList.contains("active")) {
         menu.classList.remove("active");
+        document.body.style.overflow = ""; // Unlock scroll when closing
       }
     };
 
@@ -1049,7 +1054,15 @@ window.addEventListener("load", () => {
           .forEach((l) => (l.style.display = "none"));
       }
 
-      if (menu) menu.classList.toggle("active");
+      if (menu) {
+        menu.classList.toggle("active");
+        // Add scroll lock identical to the explore page filter sidebar
+        if (menu.classList.contains("active")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      }
     };
 
     window.toggleSidebar = function () {
@@ -1057,7 +1070,10 @@ window.addEventListener("load", () => {
       const menu = document.getElementById("filtersMenu");
       const mobileMenu = document.getElementById("mobile-menu");
 
-      if (menu) menu.classList.remove("active");
+      if (menu) {
+        menu.classList.remove("active");
+        document.body.style.overflow = ""; // Unlock scroll if filter closes
+      }
       if (mobileMenu) {
         mobileMenu.classList.remove("active");
         document
