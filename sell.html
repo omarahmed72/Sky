@@ -258,7 +258,7 @@
     <!-- === SELL UNIT PAGE (Dubizzle Style) === -->
     <div id="sell-page" class="page-section" style="padding-top: 100px">
       <div class="explore-full-bg">
-         <video
+        <video
           class="explore-video-bg"
           autoplay
           loop
@@ -267,7 +267,7 @@
           webkit-playsinline
         >
           <source src="video sky.mp4" type="video/mp4" />
-        </video> 
+        </video>
         <!-- Use blended overlay instead of solid dark -->
         <div class="explore-video-overlay"></div>
       </div>
@@ -292,6 +292,7 @@
                 <label class="calc-label">Property Title</label>
                 <input
                   type="text"
+                  id="sell-title"
                   class="calc-input"
                   placeholder="e.g. Luxury Apartment in New Cairo"
                 />
@@ -299,7 +300,7 @@
 
               <div>
                 <label class="calc-label">Category</label>
-                <select class="calc-select">
+                <select id="sell-category" class="calc-select">
                   <option>Apartment</option>
                   <option>Villa</option>
                   <option>Townhouse</option>
@@ -312,6 +313,7 @@
                 <label class="calc-label">Price (EGP)</label>
                 <input
                   type="number"
+                  id="sell-price"
                   class="calc-input"
                   placeholder="Total Price"
                 />
@@ -321,6 +323,7 @@
                 <label class="calc-label">Area (sqm)</label>
                 <input
                   type="number"
+                  id="sell-area"
                   class="calc-input"
                   placeholder="e.g. 150"
                 />
@@ -396,6 +399,7 @@
               <div class="full-span">
                 <label class="calc-label">Description</label>
                 <textarea
+                  id="sell-desc"
                   class="calc-input"
                   rows="4"
                   placeholder="Describe the key features of your property..."
@@ -435,7 +439,7 @@
             <div class="sell-grid">
               <div>
                 <label class="calc-label">Governorate</label>
-                <select class="calc-select">
+                <select id="sell-gov" class="calc-select">
                   <option>Cairo</option>
                   <option>Giza</option>
                   <option>Alexandria</option>
@@ -443,7 +447,7 @@
               </div>
               <div>
                 <label class="calc-label">City / Area</label>
-                <select class="calc-select">
+                <select id="sell-city" class="calc-select">
                   <option>New Cairo</option>
                   <option>Maadi</option>
                   <option>Nasr City</option>
@@ -456,12 +460,18 @@
             <div class="sell-grid">
               <div>
                 <label class="calc-label">Name</label>
-                <input type="text" class="calc-input" placeholder="Your Name" />
+                <input
+                  type="text"
+                  id="sell-name"
+                  class="calc-input"
+                  placeholder="Your Name"
+                />
               </div>
               <div>
                 <label class="calc-label">Phone Number</label>
                 <input
                   type="text"
+                  id="sell-phone"
                   class="calc-input"
                   placeholder="01xxxxxxxxx"
                 />
@@ -470,6 +480,7 @@
                 <label class="calc-label">Email</label>
                 <input
                   type="email"
+                  id="sell-email"
                   class="calc-input"
                   placeholder="you@example.com"
                 />
@@ -573,6 +584,14 @@
           <i class="fa-solid fa-arrow-up"></i>
         </button>
       </div>
+    </div>
+
+    <!-- Toasts for Notifications -->
+    <div id="client-toast" class="custom-toast client-toast">
+      <i class="fas fa-check-circle"></i> <span></span>
+    </div>
+    <div id="admin-toast" class="custom-toast admin-toast">
+      <i class="fas fa-bell"></i> <span></span>
     </div>
 
     <script src="main.js"></script>

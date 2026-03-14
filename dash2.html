@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SKYPIONEERS - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style3.css" />
+    <style>
+      /* تنسيقات إضافية مخصصة للـ Dashboard */
+      .dashboard-layout {
+        display: flex;
+        min-height: 100vh;
+        padding-top: 80px; /* مسافة للـ Navbar */
+        background-color: var(--site-bg);
+      }
+      .dashboard-main {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      /* تأثيرات البطاقات الجديدة للإحصائيات */
+      .stat-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      }
+      [data-theme="dark"] .stat-card:hover {
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.02);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[color:var(--site-bg)] text-[color:var(--text-color)] transition-colors duration-300"
+  >
+    <!-- Navbar -->
+    <nav
+      class="tesla-nav fixed top-0 w-full z-50 backdrop-blur-md"
+      id="navbar"
+      style="background: var(--nav-bg); border-bottom: var(--nav-border)"
+    >
+      <div
+        class="container mx-auto px-6 h-20 flex justify-between items-center"
+      >
+        <div class="nav-logo">
+          <a href="index.html">
+            <!-- ضع مسار اللوجو الصحيح هنا -->
+            <img
+              src="imgs/logo.png"
+              alt="Logo"
+              id="nav-logo"
+              class="h-10"
+              onerror="
+                this.src = 'https://via.placeholder.com/150x50?text=SkyPioneers'
+              "
+            />
+          </a>
+        </div>
+        <div class="nav-actions flex items-center gap-4">
+          <button
+            onclick="toggleTheme()"
+            class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-800 transition"
+          >
+            <i class="fa-solid fa-moon text-xl" id="theme-icon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+      <!-- Main Content -->
+      <main class="dashboard-main">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 mt-16 md:mt-0">
+          <h2 class="text-2xl font-bold text-[var(--title-color)]">
+            Admin Dashboard
+          </h2>
+          <div class="flex gap-2">
+            <button
+              onclick="window.showAddProjectModal()"
+              class="bg-[var(--primary-color)] text-white px-4 py-2 rounded hover:opacity-90 transition"
+            >
+              <i class="fa-solid fa-plus mr-2"></i>Add Project
+            </button>
+          </div>
+        </div>
+
+        <!-- Statistics / Numbers Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <!-- Stat Card 1 -->
+          <div
+            class="glass-panel p-6 rounded-2xl flex items-center justify-between transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <div>
+              <p class="text-sm text-[var(--text-muted)] mb-1 font-semibold">
+                إجمالي المشاريع
+              </p>
+              <h3
+                class="text-3xl font-bold text-[var(--title-color)]"
+                id="stat-projects"
+              >
+                0
+              </h3>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center bg-blue-500/10 text-blue-500 shadow-sm border border-blue-500/20"
+            >
+              <i class="fa-solid fa-building text-xl"></i>
+            </div>
+          </div>
+
+          <!-- Stat Card 2 -->
+          <div
+            class="glass-panel p-6 rounded-2xl flex items-center justify-between transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <div>
+              <p class="text-sm text-[var(--text-muted)] mb-1 font-semibold">
+                الوحدات المتاحة
+              </p>
+              <h3
+                class="text-3xl font-bold text-[var(--title-color)]"
+                id="stat-units"
+              >
+                0
+              </h3>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-500/10 text-emerald-500 shadow-sm border border-emerald-500/20"
+            >
+              <i class="fa-solid fa-house-chimney text-xl"></i>
+            </div>
+          </div>
+
+          <!-- Stat Card 3 -->
+          <div
+            class="glass-panel p-6 rounded-2xl flex items-center justify-between transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <div>
+              <p class="text-sm text-[var(--text-muted)] mb-1 font-semibold">
+                العملاء المسجلين
+              </p>
+              <h3
+                class="text-3xl font-bold text-[var(--title-color)]"
+                id="stat-clients"
+              >
+                0
+              </h3>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center bg-purple-500/10 text-purple-500 shadow-sm border border-purple-500/20"
+            >
+              <i class="fa-solid fa-users text-xl"></i>
+            </div>
+          </div>
+
+          <!-- Stat Card 4 -->
+          <div
+            class="glass-panel p-6 rounded-2xl flex items-center justify-between transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <div>
+              <p class="text-sm text-[var(--text-muted)] mb-1 font-semibold">
+                إجمالي الزيارات
+              </p>
+              <h3 class="text-3xl font-bold text-[var(--title-color)]">
+                12.5K
+              </h3>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center bg-amber-500/10 text-amber-500 shadow-sm border border-amber-500/20"
+            >
+              <i class="fa-solid fa-chart-line text-xl"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projects-section" class="glass-panel p-6 mb-8"></div>
+        <!-- نهاية قسم الأرقام والإحصائيات -->
+
+        <!-- بقية محتوى الـ Dashboard (الجداول والقوائم) -->
+        <div class="dashboard-grid grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- حاوية المشاريع -->
+          <div class="stat-card p-6 rounded-2xl">
+            <h2
+              class="text-xl font-bold mb-4"
+              style="color: var(--title-color)"
+            >
+              Recent Projects
+            </h2>
+            <div
+              id="projects-container"
+              class="min-h-[200px] flex items-center justify-center border-2 border-dashed border-gray-300 rounded-xl"
+            >
+              <span style="color: var(--text-muted)"
+                >سيتم تحميل المشاريع هنا عبر JavaScript...</span
+              >
+            </div>
+          </div>
+
+          <!-- حاوية الوحدات -->
+          <div class="stat-card p-6 rounded-2xl">
+            <h2
+              class="text-xl font-bold mb-4"
+              style="color: var(--title-color)"
+            >
+              Recent Units
+            </h2>
+            <div
+              id="units-container"
+              class="min-h-[200px] flex items-center justify-center border-2 border-dashed border-gray-300 rounded-xl"
+            >
+              <span style="color: var(--text-muted)"
+                >سيتم تحميل الوحدات هنا عبر JavaScript...</span
+              >
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // Initialization
+      document.addEventListener("DOMContentLoaded", () => {
+        window.renderProjects();
+        window.renderUnits();
+        window.renderAccounts();
+        window.renderClients();
+        window.renderCareers();
+        window.renderBlogs();
+        window.renderSellUnits();
+        if (typeof window.renderDevelopers === "function")
+          window.renderDevelopers();
+        if (typeof window.renderNewsletters === "function")
+          window.renderNewsletters();
+
+        // Update Statistics dynamically
+        const updateStats = () => {
+          const projects =
+            JSON.parse(localStorage.getItem("sky_projects")) || [];
+          const units = JSON.parse(localStorage.getItem("sky_units")) || [];
+          const clients = JSON.parse(localStorage.getItem("sky_clients")) || [];
+
+          const statProjects = document.getElementById("stat-projects");
+          const statUnits = document.getElementById("stat-units");
+          const statClients = document.getElementById("stat-clients");
+
+          if (statProjects) statProjects.innerText = projects.length;
+          if (statUnits) statUnits.innerText = units.length;
+          if (statClients) statClients.innerText = clients.length;
+        };
+
+        updateStats();
+      });
+    </script>
+  </body>
+</html>

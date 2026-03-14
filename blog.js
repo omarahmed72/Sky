@@ -11,7 +11,6 @@ resetAndRunStats();
 function runStats() {
   if (hasCounteds) return;
   const counters = document.querySelectorAll(".counter");
-
   counters.forEach((counter) => {
     const target = parseFloat(counter.getAttribute("data-target"));
     const isDecimal = counter.getAttribute("data-decimal") === "true";
@@ -32,11 +31,9 @@ function runStats() {
   hasCounteds = true;
 }
 
-// --- Mobile Menu Toggle ---
 function toggleMobileMenu() {
   const menu = document.getElementById("mobile-menu");
   menu.classList.toggle("active");
-
   const sublinks = document.querySelectorAll(".mobile-nav-sublink");
   sublinks.forEach((link) => {
     link.style.display = menu.classList.contains("active") ? "block" : "none";
@@ -74,28 +71,20 @@ if (navbar) {
 // --- Theme Switching ---
 const themeIcon = document.getElementById("theme-icon");
 const navLogo = document.getElementById("nav-logo");
-
 let savedTheme = localStorage.getItem("theme");
 let isDarkMode = savedTheme === "dark";
 
 function applyTheme() {
   if (isDarkMode) {
     document.body.setAttribute("data-theme", "dark");
-    if (themeIcon) {
-      themeIcon.classList.remove("fa-moon");
-      themeIcon.classList.add("fa-sun");
-    }
+    if (themeIcon) themeIcon.classList.replace("fa-moon", "fa-sun");
     if (navLogo) navLogo.src = "imgs/logo white.png";
   } else {
     document.body.removeAttribute("data-theme");
-    if (themeIcon) {
-      themeIcon.classList.remove("fa-sun");
-      themeIcon.classList.add("fa-moon");
-    }
+    if (themeIcon) themeIcon.classList.replace("fa-sun", "fa-moon");
     if (navLogo) navLogo.src = "imgs/logo.png";
   }
 }
-
 applyTheme();
 
 function toggleTheme() {
@@ -112,7 +101,6 @@ function enableAudio() {
     v.muted = false;
     v.volume = 0.5;
     const playPromise = v.play();
-
     if (playPromise !== undefined) {
       playPromise.catch(() => {
         v.muted = true;
@@ -130,7 +118,7 @@ document.addEventListener("touchstart", enableAudio, {
   passive: true,
 });
 
-// --- OPTIMIZED Blog Carousel Logic ---
+// --- OPTIMIZED Blog Carousel Logic (iOS/Safari Fix) ---
 var nextBtn = document.querySelector(".next"),
   prevBtn = document.querySelector(".prev"),
   carousel = document.querySelector(".carousel"),
@@ -138,9 +126,9 @@ var nextBtn = document.querySelector(".next"),
   runningTime = document.querySelector(".timeRunning");
 
 if (nextBtn && prevBtn && carousel) {
-  let timeRunning = 500; // تم تقليل وقت الأنيميشن ليكون أسرع وأكثر استجابة
+  let timeRunning = 500;
   let timeAutoNext = 7000;
-  let isAnimating = false; // متغير لمنع المستخدم من الضغط السريع الذي يسبب اللاج
+  let isAnimating = false;
 
   nextBtn.onclick = function () {
     if (!isAnimating) showSlider("next");
@@ -156,36 +144,74 @@ if (nextBtn && prevBtn && carousel) {
 
   function resettimeAnimation() {
     runningTime.style.animation = "none";
-    runningTime.offsetHeight;
+    runningTime.offsetHeight; // Trigger reflow safely
     runningTime.style.animation = "runningTime 7s linear 1 forwards";
   }
 
   function showSlider(type) {
-    isAnimating = true; // قفل الأزرار أثناء الحركة
     let sliderItems = document.querySelectorAll(".carousel .list .item");
 
-    if (type === "next") {
-      list.appendChild(sliderItems[0]);
-      carousel.classList.add("next");
-    } else {
-      list.prepend(sliderItems[sliderItems.length - 1]);
-      carousel.classList.add("prev");
-    }
+    // الخدعة الاحترافية: استخدام Double requestAnimationFrame
+    // الفريم الأول: لترتيب العناصر في الـ DOM بهدوء
+    window.requestAnimationFrame(() => {
+      if (type === "next") {
+        list.appendChild(sliderItems[0]);
+      } else {
+        list.prepend(sliderItems[sliderItems.length - 1]);
+      }
 
-    clearTimeout(runTimeOut);
-    runTimeOut = setTimeout(() => {
-      carousel.classList.remove("next");
-      carousel.classList.remove("prev");
-      isAnimating = false; // فتح الأزرار بعد انتهاء الحركة
-    }, timeRunning);
+      // الفريم الثاني: تشغيل الأنيميشن بعد ما المتصفح حسب أماكن الكروت الجديدة
+      window.requestAnimationFrame(() => {
+        if (type === "next") {
+          carousel.classList.add("next");
+        } else {
+          carousel.classList.add("prev");
+        }
+      });
 
-    clearTimeout(runNextAuto);
-    runNextAuto = setTimeout(() => {
-      nextBtn.click();
-    }, timeAutoNext);
+      clearTimeout(runTimeOut);
+      runTimeOut = setTimeout(() => {
+        carousel.classList.remove("next");
+        carousel.classList.remove("prev");
+      }, timeRunning);
 
-    resettimeAnimation();
+      clearTimeout(runNextAuto);
+      runNextAuto = setTimeout(() => {
+        nextBtn.click();
+      }, timeAutoNext);
+
+      resettimeAnimation();
+    });
   }
 
+  // function showSlider(type) {
+  //   isAnimating = true;
+  //   let sliderItems = document.querySelectorAll(".carousel .list .item");
+
+  //   // iOS WebKit Magic: تأجيل التعديل حتى يكون المتصفح جاهزاً لرسم الإطار
+  //   window.requestAnimationFrame(() => {
+  //     if (type === "next") {
+  //       list.appendChild(sliderItems[0]);
+  //       carousel.classList.add("next");
+  //     } else {
+  //       list.prepend(sliderItems[sliderItems.length - 1]);
+  //       carousel.classList.add("prev");
+  //     }
+
+  //     clearTimeout(runTimeOut);
+  //     runTimeOut = setTimeout(() => {
+  //       carousel.classList.remove("next");
+  //       carousel.classList.remove("prev");
+  //       isAnimating = false;
+  //     }, timeRunning);
+
+  //     clearTimeout(runNextAuto);
+  //     runNextAuto = setTimeout(() => {
+  //       nextBtn.click();
+  //     }, timeAutoNext);
+
+  //     resettimeAnimation();
+  //   });
+  // }
   resettimeAnimation();
 }

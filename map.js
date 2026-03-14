@@ -1,5 +1,5 @@
 /* =========================================
-   1. GLOBAL THEME LOGIC & INITIALIZATION
+   1. منطق المظهر العام والتهيئة
    ========================================= */
 const themeIcon = document.getElementById("theme-icon");
 const navLogo = document.getElementById("nav-logo");
@@ -7,6 +7,7 @@ const navLogo = document.getElementById("nav-logo");
 let savedTheme = localStorage.getItem("theme");
 let isDarkMode = savedTheme === "dark";
 
+// متغير لتحديث طبقة الخريطة عند تغيير المظهر
 let updateMapThemeFn = null;
 
 function applyTheme() {
@@ -26,6 +27,11 @@ function applyTheme() {
       themeIcon.classList.add("fa-moon");
     }
     if (navLogo) navLogo.src = "imgs/logo.png";
+  }
+
+  // تحديث طبقة الخريطة فور تغيير المظهر إذا كانت الخريطة محملة
+  if (typeof updateMapThemeFn === "function") {
+    updateMapThemeFn(isDarkMode);
   }
 }
 
@@ -47,19 +53,19 @@ function toggleTheme() {
 applyTheme();
 
 /* =========================================
-   2. GENERAL UI LOGIC (Navbar, Mobile Menu)
+   2. واجهة المستخدم العامة (شريط التنقل، قائمة الهاتف)
    ========================================= */
 
 window.toggleMobileMenu = function () {
   const menu = document.getElementById("mobile-menu");
 
-  // Close other menus if open
+  // إغلاق القوائم الأخرى إذا كانت مفتوحة
   const sidebar = document.getElementById("sidebarContainer");
   const filterMenu = document.getElementById("filtersMenu");
   if (sidebar) sidebar.classList.remove("active");
   if (filterMenu) {
     filterMenu.classList.remove("active");
-    document.body.style.overflow = ""; // Unlock scroll if filter closes
+    document.body.style.overflow = ""; // إلغاء قفل التمرير
   }
 
   if (menu) {
@@ -71,7 +77,7 @@ window.toggleMobileMenu = function () {
   }
 };
 
-// Optimized Scroll Listener using requestAnimationFrame
+// مستمع التمرير المحسن لشريط التنقل
 let lastScrollTop = 0;
 const navbar = document.getElementById("navbar");
 let isScrolling = false;
@@ -99,7 +105,7 @@ if (navbar) {
   );
 }
 
-// --- Click outside to close all menus ---
+// --- النقر في الخارج لإغلاق جميع القوائم ---
 document.addEventListener("click", function (event) {
   const filterMenu = document.getElementById("filtersMenu");
   const filterBtn = document.querySelector(".filter-toggle-btn");
@@ -108,18 +114,18 @@ document.addEventListener("click", function (event) {
   const mobileMenu = document.getElementById("mobile-menu");
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 
-  // Handle Filter Menu click outside
+  // معالجة قائمة الفلاتر
   if (filterMenu && filterMenu.classList.contains("active")) {
     const clickedInsideFilter = filterMenu.contains(event.target);
     const clickedFilterBtn = filterBtn && filterBtn.contains(event.target);
 
     if (!clickedInsideFilter && !clickedFilterBtn) {
       filterMenu.classList.remove("active");
-      document.body.style.overflow = ""; // Unlock body scroll
+      document.body.style.overflow = "";
     }
   }
 
-  // Handle Sidebar click outside
+  // معالجة القائمة الجانبية
   if (sidebar && sidebar.classList.contains("active")) {
     const clickedInsideSidebar = sidebar.contains(event.target);
     const clickedSidebarBtn = listBtn && listBtn.contains(event.target);
@@ -129,7 +135,7 @@ document.addEventListener("click", function (event) {
     }
   }
 
-  // Handle Mobile Menu click outside
+  // معالجة قائمة الهاتف
   if (mobileMenu && mobileMenu.classList.contains("active")) {
     const clickedInsideMobileMenu = mobileMenu.contains(event.target);
     const clickedMobileBtn =
@@ -144,21 +150,30 @@ document.addEventListener("click", function (event) {
 });
 
 /* =========================================
-   3. MAP PAGE LOGIC
+   3. منطق صفحة الخريطة
    ========================================= */
 
 window.addEventListener("load", () => {
   const mapElement = document.getElementById("map");
 
   if (mapElement && typeof L !== "undefined") {
+    // إعدادات الروابط الخاصة بالخرائط (الأساسية والليلية والقمر الصناعي)
     const tiles = {
-      light:
-        "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-      dark: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-      satellite: "http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+      // ألوان الأرض الطبيعية مع الحدود والأسماء بالإنجليزية (تطابق الصورة تماماً)
+      light: "https://{s}.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}",
+
+      // تم توحيد الوضع الليلي ليحتفظ بنفس شكل الأرض الطبيعية لتظل مطابقة للصورة دائماً
+      dark: "https://{s}.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}",
+
+      // قمر صناعي نقي بدون أسماء (للمخططات العامة)
+      satellite: "https://{s}.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}",
     };
 
-    var streetLayer = L.tileLayer(tiles.light, { maxZoom: 19 });
+    var streetLayer = L.tileLayer(tiles.light, {
+      maxZoom: 19,
+      subdomains: ["mt0", "mt1", "mt2", "mt3"],
+    });
+
     var satLayer = L.tileLayer(tiles.satellite, {
       maxZoom: 20,
       subdomains: ["mt0", "mt1", "mt2", "mt3"],
@@ -171,6 +186,14 @@ window.addEventListener("load", () => {
       zoom: 2.5,
       attributionControl: false,
     });
+
+    // ربط مظهر الخريطة بزر التبديل (وضع ليلي/نهاري)
+    updateMapThemeFn = function (isDark) {
+      streetLayer.setUrl(isDark ? tiles.dark : tiles.light);
+    };
+
+    // تفعيل السمة الحالية عند التحميل
+    updateMapThemeFn(isDarkMode);
 
     L.control.zoom({ position: "bottomleft" }).addTo(map);
     var markersLayer = L.layerGroup().addTo(map);
@@ -963,7 +986,7 @@ window.addEventListener("load", () => {
       },
     ];
 
-    // Performance FIX: Using DocumentFragment to prevent DOM thrashing
+    // استخدام DocumentFragment لتعزيز الأداء
     window.renderProjects = function (data) {
       const countEl = document.getElementById("project-count");
       if (countEl) countEl.innerText = data.length;
@@ -1037,7 +1060,7 @@ window.addEventListener("load", () => {
       const menu = document.getElementById("filtersMenu");
       if (menu && menu.classList.contains("active")) {
         menu.classList.remove("active");
-        document.body.style.overflow = ""; // Unlock scroll when closing
+        document.body.style.overflow = ""; // إلغاء قفل التمرير
       }
     };
 
@@ -1056,7 +1079,6 @@ window.addEventListener("load", () => {
 
       if (menu) {
         menu.classList.toggle("active");
-        // Add scroll lock identical to the explore page filter sidebar
         if (menu.classList.contains("active")) {
           document.body.style.overflow = "hidden";
         } else {
@@ -1072,7 +1094,7 @@ window.addEventListener("load", () => {
 
       if (menu) {
         menu.classList.remove("active");
-        document.body.style.overflow = ""; // Unlock scroll if filter closes
+        document.body.style.overflow = "";
       }
       if (mobileMenu) {
         mobileMenu.classList.remove("active");
@@ -1107,7 +1129,8 @@ window.addEventListener("load", () => {
 
       map.removeLayer(satLayer);
 
-      streetLayer.setUrl(tiles.light);
+      // العودة لطبقة الخريطة السابقة مع مراعاة وضع السمة (نهاري/ليلي)
+      streetLayer.setUrl(isDarkMode ? tiles.dark : tiles.light);
       map.addLayer(streetLayer);
 
       map.flyTo([28.5, 31.0], 6.5);

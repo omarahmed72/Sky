@@ -526,6 +526,79 @@ function submitListing() {
   btn.innerText = "Processing...";
   btn.disabled = true;
 
+  // Gather data
+  const title = document.getElementById("sell-title")
+    ? document.getElementById("sell-title").value
+    : "";
+  const category = document.getElementById("sell-category")
+    ? document.getElementById("sell-category").value
+    : "";
+  const price = document.getElementById("sell-price")
+    ? document.getElementById("sell-price").value
+    : "";
+  const area = document.getElementById("sell-area")
+    ? document.getElementById("sell-area").value
+    : "";
+
+  // Get active pills
+  const bedroomsActive = document.querySelector(
+    "#bedrooms-pills .pill-option.active",
+  );
+  const bedrooms = bedroomsActive ? bedroomsActive.innerText : "";
+  const bathroomsActive = document.querySelector(
+    "#bathrooms-pills .pill-option.active",
+  );
+  const bathrooms = bathroomsActive ? bathroomsActive.innerText : "";
+
+  const desc = document.getElementById("sell-desc")
+    ? document.getElementById("sell-desc").value
+    : "";
+  const gov = document.getElementById("sell-gov")
+    ? document.getElementById("sell-gov").value
+    : "";
+  const city = document.getElementById("sell-city")
+    ? document.getElementById("sell-city").value
+    : "";
+  const name = document.getElementById("sell-name")
+    ? document.getElementById("sell-name").value
+    : "";
+  const phone = document.getElementById("sell-phone")
+    ? document.getElementById("sell-phone").value
+    : "";
+  const email = document.getElementById("sell-email")
+    ? document.getElementById("sell-email").value
+    : "";
+
+  // Handle Images (take the first preview if exists)
+  const previewContainer = document.getElementById("preview-container");
+  let imageBase64 =
+    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80"; // default
+  if (previewContainer && previewContainer.querySelector("img")) {
+    imageBase64 = previewContainer.querySelector("img").src;
+  }
+
+  const obj = {
+    id: Date.now(),
+    title,
+    category,
+    price,
+    area,
+    bedrooms,
+    bathrooms,
+    desc,
+    gov,
+    city,
+    name,
+    phone,
+    email,
+    image: imageBase64,
+    status: "Pending", // Default status
+  };
+
+  let sellUnits = JSON.parse(localStorage.getItem("sky_sell_units")) || [];
+  sellUnits.push(obj);
+  localStorage.setItem("sky_sell_units", JSON.stringify(sellUnits));
+
   setTimeout(() => {
     btn.innerText = originalText;
     btn.disabled = false;
@@ -534,11 +607,16 @@ function submitListing() {
     // Admin notification simulation
     setTimeout(() => {
       showToast("New Ad Submission Received (Admin)", "admin");
-      console.log("New Ad Data:", "User: Ahmed, Type: Apartment, Price: 4.5M");
+      console.log(
+        "New Ad Data:",
+        `User: ${name}, Type: ${category}, Price: ${price}`,
+      );
     }, 2000);
 
     document.getElementById("sell-form").reset();
-    document.getElementById("preview-container").innerHTML = "";
+    if (document.getElementById("preview-container")) {
+      document.getElementById("preview-container").innerHTML = "";
+    }
     // Reset pills
     document
       .querySelectorAll(".pill-option")
@@ -853,5 +931,3 @@ function getBotResponse(input) {
     return "Please choose an option or ask about 'Projects', 'Prices', or 'Selling'.";
   }
 }
-
-// ... (باقي الدوال في الأسفل كما هي) ...

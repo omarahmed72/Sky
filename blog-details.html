@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SKYPIONEERS - Real Estate</title>
+    <title>SKYPIONEERS - Blog Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
@@ -14,14 +14,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="style3.css" />
   </head>
   <body>
+    <!-- Sound Hint -->
     <div id="sound-hint" class="sound-indicator visible">
       <i class="fas fa-volume-up mr-2"></i> Tap anywhere for sound
     </div>
 
+    <!-- Tesla Style Liquid Navbar with Mega Menu -->
     <nav class="tesla-nav" id="navbar">
       <div class="nav-logo">
         <a href="index.html">
@@ -64,8 +65,7 @@
                 <h4>Featured</h4>
                 <img
                   src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
-                  loading="lazy"
-                  decoding="async"
+                  alt="[صورة المبنى]"
                   style="
                     width: 100%;
                     border-radius: 8px;
@@ -122,8 +122,7 @@
                 <h4>Featured</h4>
                 <img
                   src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
-                  loading="lazy"
-                  decoding="async"
+                  alt="[صورة المبنى]"
                   style="
                     width: 100%;
                     border-radius: 8px;
@@ -182,16 +181,19 @@
       </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="mobile-menu-overlay">
       <div class="mobile-close-btn" onclick="toggleMobileMenu()">
         <i class="fas fa-times"></i>
       </div>
+
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="index.html">Home</a>
       </div>
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="explore.html">Explore</a>
       </div>
+
       <div class="mobile-projects-wrapper">
         <div class="mobile-projects-title">
           <a href="projects.html">Projects</a>
@@ -206,6 +208,7 @@
           <a href="projects.html">Upcoming</a>
         </div>
       </div>
+
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="about.html">About</a>
       </div>
@@ -232,28 +235,60 @@
       </div>
     </div>
 
-    <div id="blogs-page" class="blogs-page page-section">
-      <div class="carousel">
-        <div class="list">
-          <!-- Dynamic blogs will be loaded here -->
+    <!-- BLOG DETAILS SECTION -->
+    <div class="blog-details-section">
+      <div class="blog-post-card">
+        <!-- Hero Image -->
+        <div class="blog-hero-wrapper">
+          <img
+            id="blog-detail-image"
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2000&auto=format&fit=crop"
+            alt="[صورة غرفة معيشة]"
+            class="blog-hero-image"
+          />
         </div>
-        <div class="arrows">
-          <button class="prev"><i class="fa-solid fa-angle-left"></i></button>
-          <button class="next"><i class="fa-solid fa-angle-right"></i></button>
+
+        <!-- Blog Header -->
+        <div class="blog-header">
+          <p class="blog-meta-date">
+            <span id="blog-detail-date">Loading date...</span> &bull;
+            <span id="blog-detail-author">Loading author...</span>
+          </p>
+          <h1 class="blog-main-title" id="blog-detail-title">
+            Loading title...
+          </h1>
         </div>
-        <div class="timeRunning"></div>
+
+        <!-- Blog Content Grid (1 Column) -->
+        <div class="blog-content-grid" style="display: block">
+          <div
+            class="blog-text-column"
+            id="blog-detail-desc"
+            style="
+              white-space: pre-wrap;
+              font-size: 1.15rem;
+              line-height: 1.8;
+              color: var(--text-color);
+              margin-top: 1.5rem;
+            "
+          >
+            Loading description...
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- Footer -->
     <footer>
       <div>&copy; 2026 SkyPioneers</div>
-      <div>
+      <div class="social-icons">
         <i class="fab fa-facebook-f mx-2"></i>
         <i class="fab fa-instagram mx-2"></i>
         <i class="fab fa-linkedin-in mx-2"></i>
       </div>
     </footer>
 
+    <!-- REAL ESTATE CHATBOT WIDGET -->
     <div id="chatbot-widget" class="chatbot-widget">
       <div class="chat-header">
         <div class="chat-title-group">
@@ -302,6 +337,7 @@
       </div>
     </div>
 
+    <!-- WhatsApp Floating Button -->
     <a
       href="https://wa.me/201000000000"
       target="_blank"
@@ -311,6 +347,7 @@
       <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Bottom Bar -->
     <div class="tesla-bottom-bar">
       <div class="tesla-chat-input">
         <i class="fa-regular fa-comment-dots chat-icon"></i>
@@ -325,72 +362,51 @@
         </button>
       </div>
     </div>
-    <!-- Script to render blogs dynamically -->
+
+    <!-- Script to Load Dynamic Blog -->
     <script>
-      (function () {
-        let storedBlogs = localStorage.getItem("sky_blogs");
-        let blogs = [];
+      document.addEventListener("DOMContentLoaded", () => {
+        // Parse the blog ID from the URL
+        const params = new URLSearchParams(window.location.search);
+        const blogIdParam = params.get("id");
 
-        if (storedBlogs) {
-          try {
-            blogs = JSON.parse(storedBlogs);
-          } catch (e) {
-            console.error("Error parsing blogs", e);
+        if (blogIdParam) {
+          const blogId = parseInt(blogIdParam, 10);
+          const blogs = JSON.parse(localStorage.getItem("sky_blogs")) || [];
+          const blog = blogs.find((b) => b.id === blogId);
+
+          if (blog) {
+            // Update page elements
+            document.getElementById("blog-detail-image").src =
+              blog.image || "imgs/1.avif";
+            document.getElementById("blog-detail-title").innerText = blog.title;
+            document.getElementById("blog-detail-author").innerText =
+              "By " + (blog.author || "Unknown Author");
+            document.getElementById("blog-detail-date").innerText =
+              blog.date || "";
+            document.getElementById("blog-detail-desc").innerText = blog.desc;
+
+            // Update document title
+            document.title = "SKYPIONEERS - " + blog.title;
+          } else {
+            document.getElementById("blog-detail-title").innerText =
+              "Blog Not Found";
+            document.getElementById("blog-detail-desc").innerText =
+              "The blog you are looking for does not exist or has been deleted.";
+            document.getElementById("blog-detail-author").innerText = "";
+            document.getElementById("blog-detail-date").innerText = "";
           }
+        } else {
+          // Fallback if no ID is passed (maybe keeping the static text or showing instructions)
+          document.getElementById("blog-detail-title").innerText =
+            "No Blog Selected";
+          document.getElementById("blog-detail-desc").innerText =
+            "Please select a blog from the blogs page.";
+          document.getElementById("blog-detail-author").innerText = "";
+          document.getElementById("blog-detail-date").innerText = "";
         }
-
-        if (!blogs || blogs.length === 0) {
-          blogs = [
-            {
-              id: 1,
-              title: "The Future of Real Estate in Egypt",
-              author: "Omar Faruk",
-              date: "2024-03-01",
-              desc: "Exploring the new administrative capital and upcoming major projects reshaping the market.",
-              image: "imgs/1.avif",
-            },
-          ];
-          localStorage.setItem("sky_blogs", JSON.stringify(blogs));
-        }
-
-        const list = document.querySelector(".carousel .list");
-
-        if (list && blogs.length > 0) {
-          // Duplicate blogs if too few to ensure the 3D carousel works properly (minimum 5 items recommended)
-          let displayBlogs = [...blogs];
-          while (displayBlogs.length > 0 && displayBlogs.length < 6) {
-            displayBlogs = displayBlogs.concat(blogs);
-          }
-
-          list.innerHTML = displayBlogs
-            .map(
-              (blog) => `
-            <div class="item glass-card">
-              <img
-                src="${blog.image || "imgs/1.avif"}"
-                alt=""
-                class="card-img"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="content">
-                <div class="title">${blog.title}</div>
-                <div class="name">${blog.author || ""}</div>
-                <div class="date" style="font-size: 12px; color: var(--accent-gold); margin: 5px;">${blog.date || ""}</div>
-                <div class="des" style="display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin-top: 10px;">
-                  ${blog.desc}
-                </div>
-                <div class="btn">
-                  <button onclick="window.location.href='blog-details.html?id=${blog.id}'">See More</button>
-                </div>
-              </div>
-            </div>
-            `,
-            )
-            .join("");
-        }
-      })();
+      });
     </script>
-    <script src="blog.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

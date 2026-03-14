@@ -2742,9 +2742,11 @@ a {
 }
 
 .blogs-page .carousel .list .item .content .name {
-  font-size: 85px;
+  font-size: 25px;
   font-weight: bold;
   text-transform: uppercase;
+  margin: 5px;
+
   line-height: 1;
   text-shadow: 3px 4px 4px rgba(255, 255, 255, 0.8);
   opacity: 0;
@@ -2867,7 +2869,8 @@ a {
     width: 115px;
     height: 160px;
     position: absolute;
-    top: 83%;
+    /* top: 83%; */
+    top: 76%;
     transform: translate(0, -50%);
     /* left: 70%; */
     border-radius: 20px;
@@ -2887,7 +2890,7 @@ a {
   }
 
   .blogs-page .carousel .list .item .content .name {
-    font-size: 50px;
+    font-size: 18px;
   }
 
   .blogs-page .carousel .list .item .content .des {
@@ -3016,6 +3019,7 @@ a {
     font-size: 85px;
     font-weight: bold;
     text-transform: uppercase;
+    margin-bottom: 5px;
     /* color: var(--blog-title); */
     line-height: 1;
     /* letter-spacing: 2px;
@@ -3025,9 +3029,10 @@ a {
   }
 
   .blogs-page .carousel .list .item .content .name {
-    font-size: 85px;
+    font-size: 25px;
     font-weight: bold;
     text-transform: uppercase;
+    margin: 5px;
     line-height: 1;
     text-shadow: 3px 4px 4px rgba(255, 255, 255, 0.8);
     opacity: 0;
@@ -3739,6 +3744,10 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  min-height: 200px;
+  margin-bottom: 50px;
+  z-index: 10;
+  position: relative;
 }
 
 .job-card {
@@ -4286,18 +4295,59 @@ footer {
 @media (max-width: 1024px) {
   .dash-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto 1fr auto;
   }
   .dash-sidebar {
-    flex-direction: row;
-    overflow-x: auto;
-    padding-bottom: 10px;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--mega-menu-bg);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    z-index: 2000;
+    flex-direction: column;
+    padding: 80px 20px 20px 20px;
+    transition: left 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-right: 1px solid var(--nav-border);
+    overflow-y: auto;
+  }
+  .dash-sidebar.active {
+    left: 0;
   }
   .dash-link {
     flex: 0 0 auto;
   }
   .dash-link span {
     display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .dash-grid {
+    padding: 0;
+    gap: 16px;
+  }
+
+  .dash-card {
+    padding: 16px;
+  }
+
+  .banner-gradient {
+    min-height: auto;
+    padding: 20px !important;
+  }
+
+  .banner-gradient > div:first-child {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .banner-gradient img {
+    opacity: 0.2;
+    right: -50px !important;
+    bottom: -50px !important;
   }
 }
 
@@ -4317,45 +4367,7 @@ footer {
   z-index: 2;
 }
 
-/* 1. Sidebar (Thin Rail) */
-.dash-sidebar {
-  width: 80px;
-  height: calc(100vh - 120px);
-  position: sticky;
-  top: 100px;
-  left: 3rem;
-  background: var(--dash-sidebar-bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px 0;
-  border-radius: 16px;
-  gap: 30px;
-}
-
-.dash-icon {
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.3s;
-  font-size: 18px;
-}
-
-.dash-icon:hover,
-.dash-icon.active {
-  background: var(--accent-gold);
-  color: #fff;
-  box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
-}
-
-.mt-auto {
-  margin-top: auto;
-}
+/* 1. Sidebar (Thin Rail) Note: Legacy definition removed to prevent conflicts with grid layout */
 
 /* 2. Main Content Area */
 .dash-main {
@@ -4810,15 +4822,6 @@ footer {
   .dashboard-container {
     flex-direction: column;
   }
-  .dash-sidebar {
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    position: relative;
-    top: 0;
-    justify-content: center;
-    padding: 15px;
-  }
   .dash-grid-row-1,
   .dash-grid-row-2 {
     grid-template-columns: 1fr;
@@ -4890,8 +4893,6 @@ footer {
     background-color: rgba(11, 8, 41, 0.85) !important;
   }
 }
-
-
 
 /* Performance Optimization: Isolate rendering for carousel items */
 .blogs-page .carousel .list .item,
