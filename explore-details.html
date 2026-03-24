@@ -288,32 +288,131 @@
       <i class="fas fa-volume-up mr-2"></i> Tap anywhere for sound
     </div>
 
-    <!-- شريط التنقل (Navbar) مطابق لملف about.html -->
     <nav class="tesla-nav" id="navbar">
       <div class="nav-logo">
         <a href="index.html">
-          <img
-            src="imgs/logo.png"
-            alt="Logo"
-            id="nav-logo"
-            onerror="
-              this.style.display = 'none';
-              this.parentElement.innerHTML =
-                '<span style=\'font-size: 18px; font-weight: bold; color: var(--text-color);\'>SKYPIONEERS</span>';
-            "
-          />
+          <img src="imgs/logo.png" alt="Logo" id="nav-logo" />
         </a>
       </div>
 
       <div class="nav-center hidden lg:flex">
         <div class="nav-item has-menu">
           <a href="explore.html">Explore</a>
+          <div class="mega-menu-container">
+            <div class="mega-content">
+              <div class="mega-col">
+                <h4>Residential</h4>
+                <ul>
+                  <li><a href="projects.html">Projects</a></li>
+                  <li><a href="sell.html">Sell Unit</a></li>
+                  <li><a href="calculator.html">Calculator</a></li>
+                  <li><a href="developers.html">Developers</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Commercial</h4>
+                <ul>
+                  <li><a href="#">Tech Hub Plaza</a></li>
+                  <li><a href="#">Innovation Center</a></li>
+                  <li><a href="#">Executive Suites</a></li>
+                  <li><a href="#">Global Trade Tower</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Upcoming</h4>
+                <ul>
+                  <li><a href="#">The Vertex</a></li>
+                  <li><a href="#">Eco District</a></li>
+                  <li><a href="#">Ocean Front</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Featured</h4>
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
+                  style="
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 120px;
+                    object-fit: cover;
+                  "
+                />
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: var(--text-muted);
+                  "
+                  >View Masterplan -></a
+                >
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="nav-item has-menu">
           <a href="about.html">About</a>
+          <div class="mega-menu-container">
+            <div class="mega-content">
+              <div class="mega-col">
+                <h4>About Us</h4>
+                <ul>
+                  <li><a href="#">Our Story</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Our Vision</a></li>
+                  <li><a href="#">Our Mission</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Our Work</h4>
+                <ul>
+                  <li><a href="#">Marketing Insights</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Events</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Sky News & Events</h4>
+                <ul>
+                  <li><a href="#">Sky News</a></li>
+                  <li><a href="#">Events</a></li>
+                  <li><a href="#">Press</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Featured</h4>
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
+                  style="
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 120px;
+                    object-fit: cover;
+                  "
+                />
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: var(--text-muted);
+                  "
+                  >View Masterplan -></a
+                >
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="nav-item">
           <a href="blogs.html">Blogs</a>
+        </div>
+        <div class="nav-item">
+          <a href="newsletter.html">Newsletter</a>
         </div>
         <div class="nav-item">
           <a href="contact.html">Contact</a>
@@ -324,23 +423,87 @@
       </div>
 
       <div class="nav-right">
-        <div class="theme-toggle" title="Help Center">
-          <a href="help.html"><i class="fa-regular fa-circle-question"></i></a>
+        <div class="theme-toggle" onclick="" title="Help Center">
+          <a href="help.html">
+            <i class="fa-regular fa-circle-question"></i>
+          </a>
         </div>
-        <div class="theme-toggle" title="Saved Items">
-          <a href="saved-items.html"><i class="fa-solid fa-bookmark"></i></a>
+        <div class="theme-toggle" onclick="" title="Saved Items">
+          <a href="saved-items.html">
+            <i class="fa-solid fa-bookmark"></i>
+          </a>
         </div>
+
         <div class="theme-toggle" onclick="toggleTheme()" title="Switch Theme">
           <i class="fas fa-moon" id="theme-icon"></i>
         </div>
         <div class="hidden lg:flex theme-toggle">
-          <a href="login.html"><i class="fa-solid fa-user"></i></a>
+          <a href="login.html">
+            <i class="fa-solid fa-user"></i>
+          </a>
         </div>
         <div class="nav-item lg:hidden" onclick="toggleMobileMenu()">
           <i class="fas fa-bars"></i>
         </div>
       </div>
     </nav>
+
+    <div id="mobile-menu" class="mobile-menu-overlay">
+      <div class="mobile-close-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-times"></i>
+      </div>
+
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="index.html">Home</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="explore.html">Explore</a>
+      </div>
+
+      <div class="mobile-projects-wrapper">
+        <div class="mobile-projects-title">
+          <a href="projects.html">Projects</a>
+        </div>
+        <div class="mobile-nav-sublink" style="display: block">
+          <a href="sell.html">Sell Unit</a>
+        </div>
+        <div class="mobile-nav-sublink" style="display: block">
+          <a href="calculator.html">Calculator</a>
+        </div>
+        <div class="mobile-nav-sublink" style="display: block">
+          <a href="developers.html">Developers</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="about.html">About</a>
+      </div>
+      <!-- <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="sell.html">Sell Unit</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="developers.html">Developers</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="calculator.html">Calculator</a>
+      </div> -->
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="blogs.html">Blogs</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="newsletter.html">Newsletter</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="careers.html">Careers</a>
+      </div>
+      <div class="mobile-login-btn" onclick="toggleMobileMenu()">
+        <a href="login.html">Login</a>
+      </div>
+    </div>
 
     <!-- محتوى الصفحة الرئيسي -->
     <main class="details-page-wrapper">
@@ -360,46 +523,70 @@
           >New Cairo</a
         >
         <span>></span>
-        <span class="text-theme-main font-bold">Stei8ht</span>
+        <span class="text-theme-main font-bold" id="detail-breadcrumb"
+          >Stei8ht</span
+        >
       </div>
 
-      <!-- شبكة الصور المطابقة للصورة الأولى -->
-      <div class="gallery-grid">
-        <div class="h-full">
+      <!-- شبكة الصور (تم تحويلها إلى سلايدر) -->
+      <div
+        id="detail-gallery"
+        class="relative w-full h-[300px] lg:h-[450px] mb-[30px] rounded-l-lg lg:rounded-none lg:rounded-l-lg overflow-hidden group"
+      >
+        <div
+          id="slider-wrapper"
+          class="flex w-full h-full transition-transform duration-500 ease-in-out"
+        >
           <img
             src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2000&auto=format&fit=crop"
-            alt="Stei8ht Villa"
-            class="main-image rounded-l-lg lg:rounded-none lg:rounded-l-lg"
+            alt="Stei8ht Villa 1"
+            class="w-full h-full object-cover shrink-0"
           />
-        </div>
-        <div class="side-images">
           <img
             src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=400&auto=format&fit=crop"
             alt="Detail 1"
-            class="side-img"
+            class="w-full h-full object-cover shrink-0"
           />
           <img
             src="https://images.unsplash.com/photo-1600607687644-aac4c15cecb1?q=80&w=400&auto=format&fit=crop"
             alt="Detail 2"
-            class="side-img"
+            class="w-full h-full object-cover shrink-0"
           />
           <img
             src="https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=400&auto=format&fit=crop"
             alt="Detail 3"
-            class="side-img"
+            class="w-full h-full object-cover shrink-0"
           />
-          <div class="more-photos-overlay h-full">
-            <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop"
-              alt="Detail 4"
-              class="side-img rounded-r-lg lg:rounded-none lg:rounded-r-lg"
-            />
-          </div>
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop"
+            alt="Detail 4"
+            class="w-full h-full object-cover shrink-0"
+          />
         </div>
+
+        <!-- Slider Controls -->
+        <button
+          id="slider-prev"
+          class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/80 backdrop-blur-sm z-10 hidden cursor-pointer"
+        >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button
+          id="slider-next"
+          class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/80 backdrop-blur-sm z-10 hidden cursor-pointer"
+        >
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Indicators -->
+        <div
+          id="slider-indicators"
+          class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10 hidden"
+        ></div>
       </div>
 
       <!-- كارد تفاصيل المشروع (المطور، السعر، الأزرار) -->
-      <div class="project-header-card">
+      <div class="project-header-card" id="detail-header-card">
         <div class="flex items-center gap-6">
           <!-- شعار المطور -->
           <div
@@ -461,14 +648,14 @@
       <div class="mb-10">
         <h2 class="text-lg font-bold text-theme-main mb-4">Details</h2>
         <div class="flex flex-wrap gap-4">
-          <div class="action-pill">
-            <i class="far fa-image"></i>
-            <span>Gallery</span>
-          </div>
-          <div class="action-pill">
+          <a
+            href="map.html"
+            class="action-pill hover:opacity-80 transition"
+            id="detail-map-link"
+          >
             <i class="far fa-map"></i>
             <span>View on Map</span>
-          </div>
+          </a>
           <div class="action-pill">
             <i class="fas fa-cubes"></i>
             <span>Master Plan</span>
@@ -480,6 +667,7 @@
       <div class="mb-12">
         <h2 class="text-lg font-bold text-theme-main mb-4">Payment Plans</h2>
         <div
+          id="detail-payment-plans"
           class="p-6 bg-[var(--card-bg)] backdrop-blur-md rounded-xl border border-[var(--card-border)] shadow-sm"
         >
           <div class="flex flex-wrap gap-4">
@@ -538,7 +726,7 @@
       </div>
 
       <!-- قسم استكشاف الوحدات (Explore Properties) - مطابق للصورة الثانية -->
-      <div class="mb-12">
+      <!-- <div class="mb-12">
         <div class="flex justify-between items-center mb-6">
           <div>
             <h2 class="text-2xl font-bold text-theme-main mb-1">
@@ -560,7 +748,6 @@
           </div>
         </div>
 
-        <!-- التبويبات (Tabs) -->
         <div class="explore-tabs">
           <div class="explore-tab active">All</div>
           <div class="explore-tab">Developer Sale</div>
@@ -568,9 +755,7 @@
           <div class="explore-tab">Sky Now</div>
         </div>
 
-        <!-- شبكة الوحدات (Property Grid) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- بطاقة وحدة 1 -->
           <div class="unit-card">
             <div class="unit-img-wrapper">
               <img
@@ -639,7 +824,6 @@
             </div>
           </div>
 
-          <!-- بطاقة وحدة 2 -->
           <div class="unit-card">
             <div class="unit-img-wrapper">
               <img
@@ -714,7 +898,6 @@
             </div>
           </div>
 
-          <!-- بطاقة وحدة 3 -->
           <div class="unit-card">
             <div class="unit-img-wrapper">
               <img
@@ -783,10 +966,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- قسم المرافق ونبذة عن المشروع (Amenities & About) - مطابق للصورة الثالثة -->
       <div
+        id="detail-info-section"
         class="bg-[var(--card-bg)] backdrop-blur-md rounded-xl border border-[var(--card-border)] shadow-sm p-8 mb-12"
       >
         <!-- Amenities -->
@@ -965,6 +1149,376 @@
             : "dark",
         );
       }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const userStr = localStorage.getItem("sky_current_user");
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          if (user && user.name) {
+            const firstLetter = user.name.charAt(0).toUpperCase();
+
+            // Desktop icon
+            const desktopLoginLink = document.querySelector(
+              '.nav-right .theme-toggle a[href="login.html"]',
+            );
+            if (desktopLoginLink) {
+              desktopLoginLink.innerHTML = `<div style="width: 34px; height: 34px; border-radius: 50%; background-color: var(--accent-gold); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">${firstLetter}</div>`;
+              desktopLoginLink.href = "#"; // Prevent going to login page if already logged in
+              desktopLoginLink.title = "Logout";
+              desktopLoginLink.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem("sky_current_user");
+                window.location.reload();
+              };
+            }
+
+            // Mobile menu login button
+            const mobileLoginBtn = document.querySelector(
+              '.mobile-login-btn a[href="login.html"]',
+            );
+            if (mobileLoginBtn) {
+              mobileLoginBtn.innerText = "Logout (" + user.name + ")";
+              mobileLoginBtn.href = "#";
+              mobileLoginBtn.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem("sky_current_user");
+                window.location.reload();
+              };
+            }
+          }
+        }
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        function initSlider() {
+          const wrapper = document.getElementById("slider-wrapper");
+          const prevBtn = document.getElementById("slider-prev");
+          const nextBtn = document.getElementById("slider-next");
+          const indicatorsContainer =
+            document.getElementById("slider-indicators");
+          if (!wrapper) return;
+
+          const slides = wrapper.querySelectorAll("img");
+          if (slides.length <= 1) {
+            if (prevBtn) prevBtn.style.display = "none";
+            if (nextBtn) nextBtn.style.display = "none";
+            if (indicatorsContainer) indicatorsContainer.style.display = "none";
+            return;
+          }
+
+          if (prevBtn) prevBtn.style.display = "flex";
+          if (nextBtn) nextBtn.style.display = "flex";
+          if (indicatorsContainer) indicatorsContainer.style.display = "flex";
+
+          let currentIndex = 0;
+
+          indicatorsContainer.innerHTML = "";
+          slides.forEach((_, index) => {
+            const dot = document.createElement("button");
+            dot.className = `w-2.5 h-2.5 rounded-full transition ${index === 0 ? "bg-white" : "bg-white/50 hover:bg-white/75"}`;
+            dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+            dot.addEventListener("click", () => goToSlide(index));
+            indicatorsContainer.appendChild(dot);
+          });
+
+          const updateSlider = () => {
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            Array.from(indicatorsContainer.children).forEach((dot, index) => {
+              dot.className = `w-2.5 h-2.5 rounded-full transition ${index === currentIndex ? "bg-white" : "bg-white/50 hover:bg-white/75"}`;
+            });
+          };
+
+          const goToSlide = (index) => {
+            currentIndex = index;
+            updateSlider();
+          };
+
+          if (prevBtn) {
+            const newPrev = prevBtn.cloneNode(true);
+            prevBtn.parentNode.replaceChild(newPrev, prevBtn);
+            newPrev.addEventListener("click", () => {
+              currentIndex =
+                currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+              updateSlider();
+            });
+          }
+
+          if (nextBtn) {
+            const newNext = nextBtn.cloneNode(true);
+            nextBtn.parentNode.replaceChild(newNext, nextBtn);
+            newNext.addEventListener("click", () => {
+              currentIndex =
+                currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+              updateSlider();
+            });
+          }
+
+          // Drag and Swipe logic
+          let isDragging = false;
+          let startPos = 0;
+          let movedBy = 0;
+
+          function getPositionX(event) {
+            return event.type.includes("mouse") ? event.pageX : (event.touches ? event.touches[0].clientX : event.clientX);
+          }
+
+          function touchStart(event) {
+            isDragging = true;
+            startPos = getPositionX(event);
+            movedBy = 0;
+            wrapper.classList.remove("transition-transform", "duration-500");
+            wrapper.style.cursor = "grabbing";
+          }
+
+          function touchMove(event) {
+            if (!isDragging) return;
+            const currentPosition = getPositionX(event);
+            movedBy = currentPosition - startPos;
+            wrapper.style.transform = `translateX(calc(-${currentIndex * 100}% + ${movedBy}px))`;
+          }
+
+          function touchEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            wrapper.style.cursor = "grab";
+            wrapper.classList.add("transition-transform", "duration-500");
+            
+            if (movedBy < -50 && currentIndex < slides.length - 1) {
+              currentIndex += 1;
+            } else if (movedBy > 50 && currentIndex > 0) {
+              currentIndex -= 1;
+            }
+            updateSlider();
+          }
+
+          wrapper.style.cursor = "grab";
+          // Touch events
+          wrapper.addEventListener("touchstart", touchStart, { passive: true });
+          wrapper.addEventListener("touchmove", touchMove, { passive: true });
+          wrapper.addEventListener("touchend", touchEnd);
+
+          // Mouse events
+          wrapper.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            touchStart(e);
+          });
+          wrapper.addEventListener("mousemove", touchMove);
+          wrapper.addEventListener("mouseup", touchEnd);
+          wrapper.addEventListener("mouseleave", touchEnd);
+
+          // Prevent native image dragging
+          slides.forEach(img => {
+            img.addEventListener("dragstart", (e) => e.preventDefault());
+          });
+        }
+
+        // Initialize slider for static HTML on load
+        initSlider();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = parseInt(urlParams.get("id"));
+        if (!id) return;
+
+        const explores = JSON.parse(localStorage.getItem("sky_explores")) || [];
+        const item = explores.find((x) => x.id === id);
+        if (!item) return;
+
+        // Update Breadcrumb
+        const breadcrumb = document.getElementById("detail-breadcrumb");
+        if (breadcrumb) breadcrumb.innerText = item.title;
+
+        // Update Gallery
+        const gallery = document.getElementById("detail-gallery");
+        if (gallery) {
+          const allImages = [];
+          if (item.mainImage) {
+            allImages.push(item.mainImage);
+          } else {
+            allImages.push(
+              "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2000&auto=format&fit=crop",
+            );
+          }
+          if (item.sideImages && item.sideImages.length > 0) {
+            allImages.push(...item.sideImages);
+          }
+
+          gallery.innerHTML = `
+            <div id="slider-wrapper" class="flex w-full h-full transition-transform duration-500 ease-in-out">
+              ${allImages.map((src, i) => `<img src="${src}" class="w-full h-full object-cover shrink-0" alt="Slider Image ${i + 1}" />`).join("")}
+            </div>
+            <button id="slider-prev" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/80 backdrop-blur-sm z-10 hidden cursor-pointer">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="slider-next" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/80 backdrop-blur-sm z-10 hidden cursor-pointer">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <div id="slider-indicators" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10 hidden">
+            </div>
+          `;
+
+          // Re-initialize slider after dynamic update
+          initSlider();
+        }
+
+        // Update Header Card
+        const headerCard = document.getElementById("detail-header-card");
+        if (headerCard) {
+          headerCard.innerHTML = `
+            <div class="flex items-center gap-6">
+              <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm overflow-hidden border border-gray-100 p-2">
+                ${item.devLogo ? `<img src="${item.devLogo}" style="max-width:100%; max-height:100%; object-fit:contain;" />` : `<span class="text-black font-bold text-xl">${item.devName}</span>`}
+              </div>
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <h1 class="text-2xl font-bold text-theme-main">${item.title} in ${item.location} by ${item.devName}</h1>
+                  <span class="bg-[var(--nav-border)] text-theme-main text-[10px] px-3 py-1 rounded-full uppercase font-bold tracking-wider">${item.type || "Compound"}</span>
+                </div>
+                <div class="flex flex-wrap gap-8 mt-4">
+                  <div>
+                    <p class="text-[11px] text-theme-muted uppercase tracking-wider mb-1">Developer Start Price</p>
+                    <p class="text-xl font-bold text-theme-main">${Number(item.devStartPrice || 0).toLocaleString()} <span class="text-xs font-normal text-theme-muted">EGP</span></p>
+                  </div>
+                  <div class="border-l border-[var(--nav-border)] pl-8">
+                    <p class="text-[11px] text-theme-muted uppercase tracking-wider mb-1">Resale Start Price</p>
+                    <p class="text-xl font-bold text-theme-main">${Number(item.resaleStartPrice || 0).toLocaleString()} <span class="text-xs font-normal text-theme-muted">EGP</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-3 w-full lg:w-auto mt-4 lg:mt-0">
+              <button class="btn-outline flex-1 justify-center"><i class="fas fa-phone-alt"></i> Call Us</button>
+              <button class="btn-whatsapp flex-1 justify-center"><i class="fab fa-whatsapp"></i> Whatsapp</button>
+            </div>
+           `;
+        }
+
+        // Update Payment Plans
+        const paymentPlansContainer = document.getElementById(
+          "detail-payment-plans",
+        );
+        if (paymentPlansContainer) {
+          if (item.paymentPlans && item.paymentPlans.length > 0) {
+            paymentPlansContainer.innerHTML =
+              '<div class="flex flex-wrap gap-4">' +
+              item.paymentPlans
+                .map(
+                  (plan) => `
+                  <div class="payment-plan-card">
+                    <div class="text-theme-gold text-xs font-bold mb-3 flex items-center gap-2"><i class="fas fa-certificate"></i> Original Plan</div>
+                    <div class="flex justify-between items-end">
+                      <div><span class="text-3xl font-bold text-theme-main">${plan.dp}%</span><span class="text-xs text-theme-muted ml-1">Down Payment</span></div>
+                      <div class="text-sm font-semibold text-theme-main">${plan.years} years</div>
+                    </div>
+                  </div>
+               `,
+                )
+                .join("") +
+              "</div>";
+          } else {
+            paymentPlansContainer.innerHTML =
+              '<p class="text-[var(--text-muted)] p-4">No payment plans available.</p>';
+          }
+        }
+
+        // Optional: Update Titles for descriptions
+        const h2s = document.querySelectorAll("h2");
+        h2s.forEach((h2) => {
+          if (
+            h2.innerText.includes("Explore Properties In Stei8ht") ||
+            h2.innerText.includes("Explore Properties In")
+          ) {
+            h2.innerText = `Explore Properties In ${item.title}`;
+          } else if (
+            h2.innerText.includes("About Stei8ht") ||
+            h2.innerText.includes("About")
+          ) {
+            if (h2.innerText.includes("About ")) {
+              h2.innerText = `About ${item.title} - ${item.location}`;
+            }
+          } else if (
+            h2.innerText.includes("in Stei8ht") ||
+            h2.innerText.includes("Major Facilities & Services")
+          ) {
+            if (h2.innerText.includes("in ")) {
+              h2.innerText = `Major Facilities & Services in ${item.title}`;
+            }
+          }
+        });
+
+        // Update Amenities & About Section
+        const infoSection = document.getElementById("detail-info-section");
+        if (infoSection) {
+          let html = "";
+
+          // Amenities
+          if (item.amenities) {
+            const amenitiesList = item.amenities
+              .split(",")
+              .map((a) => a.trim())
+              .filter((a) => a);
+            if (amenitiesList.length > 0) {
+              html += `
+                    <div class="mb-10">
+                      <h2 class="text-xl font-bold text-theme-main mb-6">Amenities</h2>
+                      <div class="flex flex-wrap gap-4">
+                        ${amenitiesList
+                          .map(
+                            (amenity) => `
+                        <div class="flex items-center gap-3 text-sm text-theme-main font-medium">
+                          <div class="w-10 h-10 rounded-full bg-[var(--input-bg)] flex items-center justify-center border border-[var(--nav-border)]">
+                            <i class="fas fa-check text-theme-gold"></i>
+                          </div>
+                          ${amenity}
+                        </div>
+                        `,
+                          )
+                          .join("")}
+                      </div>
+                    </div>`;
+            }
+          }
+
+          // About
+          if (item.about) {
+            html += `
+                <div class="mb-10">
+                  <h2 class="text-xl font-bold text-theme-main mb-4">About ${item.title} - ${item.location}</h2>
+                  <div class="space-y-4 text-[13px] text-theme-muted leading-relaxed">
+                    <p>${item.about.replace(/\n/g, "<br>")}</p>
+                  </div>
+                </div>`;
+          }
+
+          // Facilities
+          if (item.facilities) {
+            html += `
+                <div>
+                  <h2 class="text-xl font-bold text-theme-main mb-4">Major Facilities & Services in ${item.title}</h2>
+                  <div class="space-y-4 text-[13px] text-theme-muted leading-relaxed">
+                    <p>${item.facilities.replace(/\n/g, "<br>")}</p>
+                  </div>
+                </div>`;
+          }
+
+          if (html === "") {
+            infoSection.style.display = "none";
+          } else {
+            infoSection.innerHTML = html;
+          }
+        }
+
+        // Update View on Map Link
+        const mapLink = document.getElementById("detail-map-link");
+        if (mapLink && item.location) {
+          // Link to internal map, passing location if map.js chooses to support it
+          mapLink.href = `map.html?location=${encodeURIComponent(item.location)}`;
+        }
+
+        // Update document title
+        document.title = `${item.title} in ${item.location} - SKYPIONEERS`;
+      });
     </script>
   </body>
 </html>

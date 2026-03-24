@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -414,7 +414,9 @@
         background: #20b858;
       }
 
-      /* قسم النبذة عن المطور */
+      /* ----------------------------------------------------
+         تنسيقات قسم النبذة عن المطور (المعدلة بشكل احترافي)
+         ---------------------------------------------------- */
       .about-dev-section {
         background: var(--card-bg);
         backdrop-filter: blur(20px);
@@ -423,35 +425,108 @@
         border-radius: 16px;
         padding: 40px;
         box-shadow: var(--glass-shadow);
+        position: relative;
+        overflow: hidden;
       }
+
+      /* خط علوي جمالي للبطاقة */
+      .about-dev-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--accent-gold);
+      }
+
       .about-dev-title {
-        font-size: 22px;
-        font-weight: 700;
+        font-size: 26px;
+        font-weight: 800;
         color: var(--title-color);
-        margin-bottom: 20px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
       }
+
+      .about-dev-title i {
+        color: var(--accent-gold);
+      }
+
       .about-dev-content {
-        font-size: 14px;
-        line-height: 1.8;
+        font-size: 15px;
+        line-height: 1.9;
         color: var(--text-color);
       }
+
       .about-dev-content p {
-        margin-bottom: 20px;
+        margin-bottom: 18px;
+        color: var(--text-muted);
       }
+
+      .about-dev-content strong {
+        color: var(--text-color);
+        font-weight: 700;
+      }
+
+      /* صندوق مخصص للرؤية والرسالة */
+      .vision-mission-box {
+        background: rgba(128, 128, 128, 0.05);
+        border: 1px solid var(--card-border);
+        border-left: 4px solid var(--accent-gold);
+        padding: 30px;
+        border-radius: 8px;
+        margin-top: 40px;
+      }
+
       .about-dev-subtitle {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 700;
         color: var(--title-color);
-        margin: 30px 0 15px;
+        margin: 0 0 20px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
+
+      .about-dev-subtitle i {
+        color: var(--accent-gold);
+      }
+
+      /* شبكة للقيم (بدل القائمة النقطية العادية) */
       .about-dev-list {
-        list-style: disc;
-        padding-left: 20px;
-        margin-bottom: 20px;
+        list-style: none;
+        padding-left: 0;
+        margin-top: 25px;
+        margin-bottom: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
       }
+
       .about-dev-list li {
-        margin-bottom: 10px;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 12px 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 14px;
         color: var(--text-color);
+        transition: 0.3s;
+      }
+
+      .about-dev-list li:hover {
+        border-color: var(--accent-gold);
+        transform: translateY(-2px);
+      }
+
+      .about-dev-list li i {
+        color: var(--accent-gold);
+        font-size: 14px;
       }
 
       /* استجابة الشاشات الصغيرة */
@@ -481,11 +556,16 @@
           flex: 1;
           justify-content: center;
         }
+        .about-dev-section {
+          padding: 25px;
+        }
+        .vision-mission-box {
+          padding: 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- شريط التنقل (Navbar) -->
     <nav class="tesla-nav" id="navbar">
       <div class="nav-logo">
         <a href="index.html">
@@ -497,7 +577,6 @@
         <div class="nav-item has-menu">
           <a href="explore.html">Explore</a>
           <div class="mega-menu-container">
-            <!-- (Mega menu content) -->
             <div class="mega-content">
               <div class="mega-col">
                 <h4>Residential</h4>
@@ -535,7 +614,6 @@
                     height: 120px;
                     object-fit: cover;
                   "
-                  alt=""
                 />
                 <a
                   href="#"
@@ -554,9 +632,65 @@
 
         <div class="nav-item has-menu">
           <a href="about.html">About</a>
+          <div class="mega-menu-container">
+            <div class="mega-content">
+              <div class="mega-col">
+                <h4>About Us</h4>
+                <ul>
+                  <li><a href="#">Our Story</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Our Vision</a></li>
+                  <li><a href="#">Our Mission</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Our Work</h4>
+                <ul>
+                  <li><a href="#">Marketing Insights</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Events</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Sky News & Events</h4>
+                <ul>
+                  <li><a href="#">Sky News</a></li>
+                  <li><a href="#">Events</a></li>
+                  <li><a href="#">Press</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Featured</h4>
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop"
+                  style="
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 120px;
+                    object-fit: cover;
+                  "
+                />
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: var(--text-muted);
+                  "
+                  >View Masterplan -></a
+                >
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="nav-item">
           <a href="blogs.html">Blogs</a>
+        </div>
+        <div class="nav-item">
+          <a href="newsletter.html">Newsletter</a>
         </div>
         <div class="nav-item">
           <a href="contact.html">Contact</a>
@@ -567,16 +701,17 @@
       </div>
 
       <div class="nav-right">
-        <div class="theme-toggle" title="Help Center">
+        <div class="theme-toggle" onclick="" title="Help Center">
           <a href="help.html">
             <i class="fa-regular fa-circle-question"></i>
           </a>
         </div>
-        <div class="theme-toggle" title="Saved Items">
+        <div class="theme-toggle" onclick="" title="Saved Items">
           <a href="saved-items.html">
             <i class="fa-solid fa-bookmark"></i>
           </a>
         </div>
+
         <div class="theme-toggle" onclick="toggleTheme()" title="Switch Theme">
           <i class="fas fa-moon" id="theme-icon"></i>
         </div>
@@ -591,25 +726,57 @@
       </div>
     </nav>
 
-    <!-- القائمة الجانبية للهاتف المحمول -->
     <div id="mobile-menu" class="mobile-menu-overlay">
       <div class="mobile-close-btn" onclick="toggleMobileMenu()">
         <i class="fas fa-times"></i>
       </div>
+
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="index.html">Home</a>
       </div>
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="explore.html">Explore</a>
       </div>
+
+      <div class="mobile-projects-wrapper">
+        <div class="mobile-projects-title">
+          <a href="projects.html">Projects</a>
+        </div>
+        <div class="mobile-nav-sublink" style="display: block">
+          <a href="sell.html">Sell Unit</a>
+        </div>
+        <div class="mobile-nav-sublink" style="display: block">
+          <a href="calculator.html">Calculator</a>
+        </div>
+        <div class="mobile-nav-sublink" style="display: block">
+          <a href="developers.html">Developers</a>
+        </div>
+      </div>
+
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="about.html">About</a>
       </div>
-      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+      <!-- <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="sell.html">Sell Unit</a>
       </div>
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="developers.html">Developers</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="calculator.html">Calculator</a>
+      </div> -->
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="blogs.html">Blogs</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="newsletter.html">Newsletter</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="careers.html">Careers</a>
       </div>
       <div class="mobile-login-btn" onclick="toggleMobileMenu()">
         <a href="login.html">Login</a>
@@ -634,7 +801,10 @@
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Ardic_logo.png/600px-Ardic_logo.png"
               alt=""
               class="dev-logo-large"
-              onerror="this.src = 'https://via.placeholder.com/120?text=ARDIC'"
+              onerror="
+                this.onerror = null;
+                this.src = 'https://via.placeholder.com/120?text=ARDIC';
+              "
             />
             <div class="dev-title-group">
               <div class="dev-title-row">
@@ -708,7 +878,10 @@
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Ardic_logo.png/600px-Ardic_logo.png"
                     class="small-dev-logo"
                     alt=""
-                    onerror="this.src = 'https://via.placeholder.com/40?text=A'"
+                    onerror="
+                      this.onerror = null;
+                      this.src = 'https://via.placeholder.com/40?text=A';
+                    "
                   />
                   <div class="loc-title">
                     <span class="loc-text">New Cairo</span>
@@ -757,7 +930,10 @@
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Ardic_logo.png/600px-Ardic_logo.png"
                     class="small-dev-logo"
                     alt=""
-                    onerror="this.src = 'https://via.placeholder.com/40?text=A'"
+                    onerror="
+                      this.onerror = null;
+                      this.src = 'https://via.placeholder.com/40?text=A';
+                    "
                   />
                   <div class="loc-title">
                     <span class="loc-text">Mostakbal City</span>
@@ -781,10 +957,11 @@
           </div>
         </div>
 
-        <!-- قسم النبذة عن المطور (About) -->
+        <!-- قسم النبذة عن المطور (About) بتصميمه الجديد -->
         <div class="about-dev-section">
           <h2 class="about-dev-title">
-            About ARDIC For Real Estate Development
+            <i class="fa-solid fa-building"></i> About ARDIC For Real Estate
+            Development
           </h2>
           <div class="about-dev-content">
             <p>
@@ -795,13 +972,13 @@
             </p>
             <p>
               The ARDIC For Real Estate Development and Investment Company has
-              been in the market for more than 25 years, during which it has
-              developed many landmark projects.
+              been in the market for more than <strong>25 years</strong>, during
+              which it has developed many landmark projects.
             </p>
             <p>
               Ardic Development has developed more than 3 successful projects in
-              a series called "Zizinia" with variations in name according to the
-              project.
+              a series called <strong>"Zizinia"</strong> with variations in name
+              according to the project.
             </p>
             <p>
               The company has focused its efforts on East Cairo to develop its
@@ -814,36 +991,41 @@
               Mostakbal in Mostakbal City.
             </p>
 
-            <h3 class="about-dev-subtitle">
-              Ardic Development Vision, Mission & Values
-            </h3>
-            <p>
-              Ardic Development has always been driven by an ambitious vision, a
-              strong mission statement, and a solid value proposition.
-            </p>
-            <p>
-              The company views itself as one of the leading real estate
-              developers in Egypt. Ardic Development strives to achieve such an
-              ambitious vision by offering high-quality projects to the market.
-            </p>
-            <p>
-              Moreover, the company's mission is to develop communities that
-              hold value and meaning to its residents and not just mere concrete
-              buildings. This mission statement is being worked on through the
-              integration of innovation in all of its real estate projects.
-            </p>
-            <p>
-              Moreover, Ardic Development is highly driven by a coherent value
-              proposition. Thanks to following a strict value system with these
-              values at its core:
-            </p>
-            <ul class="about-dev-list">
-              <li>Inspiration</li>
-              <li>Creativity</li>
-              <li>Satisfaction</li>
-              <li>Respect</li>
-              <li>Quality</li>
-            </ul>
+            <div class="vision-mission-box">
+              <h3 class="about-dev-subtitle">
+                <i class="fa-solid fa-bullseye"></i> Ardic Development Vision,
+                Mission & Values
+              </h3>
+              <p>
+                Ardic Development has always been driven by an ambitious vision,
+                a strong mission statement, and a solid value proposition.
+              </p>
+              <p>
+                The company views itself as one of the leading real estate
+                developers in Egypt. Ardic Development strives to achieve such
+                an ambitious vision by offering high-quality projects to the
+                market.
+              </p>
+              <p>
+                Moreover, the company's mission is to develop communities that
+                hold value and meaning to its residents and not just mere
+                concrete buildings. This mission statement is being worked on
+                through the integration of innovation in all of its real estate
+                projects.
+              </p>
+              <p>
+                Moreover, Ardic Development is highly driven by a coherent value
+                proposition. Thanks to following a strict value system with
+                these values at its core:
+              </p>
+              <ul class="about-dev-list">
+                <li><i class="fa-solid fa-check"></i> Inspiration</li>
+                <li><i class="fa-solid fa-check"></i> Creativity</li>
+                <li><i class="fa-solid fa-check"></i> Satisfaction</li>
+                <li><i class="fa-solid fa-check"></i> Respect</li>
+                <li><i class="fa-solid fa-check"></i> Quality</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -925,7 +1107,7 @@
     </script>
 
     <!-- Dynamic Developer Data Logic -->
-    <script>
+    <!-- <script>
       document.addEventListener("DOMContentLoaded", () => {
         const urlParams = new URLSearchParams(window.location.search);
         const devId = urlParams.get("id");
@@ -978,11 +1160,15 @@
 
           // Update About Section
           const aboutTitleEl = document.querySelector(".about-dev-title");
-          if (aboutTitleEl) aboutTitleEl.innerText = "About " + dev.name;
+          // Add icon if dynamically replaced
+          if (aboutTitleEl)
+            aboutTitleEl.innerHTML =
+              `<i class="fa-solid fa-building"></i> About ` + dev.name;
 
           const aboutContentEl = document.querySelector(".about-dev-content");
           if (aboutContentEl && dev.about) {
             // Check if it already has html tags or just pure text, inject as html
+            // Note: Make sure the dynamic content stored in localStorage matches the new structured HTML classes for best results.
             aboutContentEl.innerHTML = dev.about;
           }
 
@@ -992,6 +1178,219 @@
           });
         }
       });
+    </script> -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const devId = urlParams.get("id");
+        const developers =
+          JSON.parse(localStorage.getItem("sky_developers")) || [];
+        const projects = JSON.parse(localStorage.getItem("sky_projects")) || [];
+        const units = JSON.parse(localStorage.getItem("sky_units")) || [];
+        const dev = developers.find((d) => d.id == devId);
+
+        function parsePrice(priceVal) {
+          if (!priceVal) return Infinity;
+          const str = String(priceVal).toUpperCase().replace(/,/g, "").trim();
+          const numMatch = str.match(/[\d\.]+/);
+          if (!numMatch) return Infinity;
+          let num = parseFloat(numMatch[0]);
+          if (str.includes("M") || str.includes("MILLION")) num *= 1000000;
+          else if (str.includes("K") || str.includes("THOUSAND")) num *= 1000;
+          return num;
+        }
+
+        function formatPrice(num) {
+          if (num === Infinity || isNaN(num)) return "N/A";
+          if (num >= 1000000)
+            return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M EGP";
+          if (num >= 1000)
+            return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K EGP";
+          return num.toLocaleString() + " EGP";
+        }
+
+        function getDevMinPrice(devName) {
+          const devProjs = projects.filter(
+            (p) => p.developer === devName || p.devName === devName,
+          );
+          if (devProjs.length === 0) return "N/A";
+          const minPrice = Math.min(
+            ...devProjs.map((p) => parsePrice(p.price)),
+          );
+          return formatPrice(minPrice);
+        }
+
+        if (dev) {
+          // تعديل العنوان في المتصفح
+          document.title = `${dev.name} - SKYPIONEERS`;
+
+          // Update Banner Logo & Header Logo
+          const bannerLogo = document.querySelector(".banner-logo");
+          if (bannerLogo && dev.logo) bannerLogo.src = dev.logo;
+
+          const devLogoLarge = document.querySelector(".dev-logo-large");
+          if (devLogoLarge && dev.logo) devLogoLarge.src = dev.logo;
+
+          // Update Name
+          const titleEls = document.querySelectorAll(".dev-title");
+          titleEls.forEach((el) => (el.innerText = dev.name));
+
+          // Update Properties Count
+          const propCountEl = document.getElementById("dev-prop-count");
+          if (propCountEl) propCountEl.innerText = dev.propertiesCount || "0";
+
+          // --- تحديث السعر الديناميكي ---
+          // استبدل الـ ID بما يتوافق مع العنصر في تصميمك (مثل .start-price-value)
+          const priceEl =
+            document.getElementById("dev-start-price") ||
+            document.querySelector(".start-price-value");
+          if (priceEl) priceEl.innerText = getDevMinPrice(dev.name);
+
+          // Update Areas
+          const areasContainer = document.querySelector(".pills-group");
+          if (areasContainer && dev.areas) {
+            const areasArr = dev.areas
+              .split(",")
+              .map((a) => a.trim())
+              .filter((a) => a);
+            areasContainer.innerHTML = areasArr
+              .map((area) => `<div class="pill-option">${area}</div>`)
+              .join("");
+          }
+
+          // Update About Section
+          const aboutTitleEl = document.querySelector(".about-dev-title");
+          if (aboutTitleEl)
+            aboutTitleEl.innerHTML =
+              `<i class="fa-solid fa-building"></i> About ` + dev.name;
+
+          const aboutContentEl = document.querySelector(".about-dev-content");
+          if (aboutContentEl && dev.about) {
+            aboutContentEl.innerHTML = dev.about;
+          }
+
+          // --- Dynamic Compounds Section ---
+          const devProjs = projects.filter(
+            (p) => p.devName === dev.name || p.developer === dev.name,
+          );
+
+          const compSectionTitle = document.querySelector(
+            ".compounds-header .section-title",
+          );
+          if (compSectionTitle) {
+            compSectionTitle.innerText = `Compounds In ${dev.name}`;
+          }
+
+          const resultsCount = document.querySelector(
+            ".compounds-header .results-count",
+          );
+          if (resultsCount) {
+            resultsCount.innerText = `${devProjs.length} Results Available`;
+          }
+
+          const compoundsGrid = document.querySelector(".compounds-grid");
+          if (compoundsGrid) {
+            if (devProjs.length > 0) {
+              compoundsGrid.innerHTML = devProjs
+                .map((proj) => {
+                  const imgUrl =
+                    proj.image ||
+                    "https://via.placeholder.com/800x400?text=No+Image";
+
+                  // Get unique unit types for this project
+                  const projUnits = units.filter(
+                    (u) => u.project === proj.name,
+                  );
+                  const uniqueTypes = [
+                    ...new Set(projUnits.map((u) => u.type)),
+                  ];
+                  const typesStr =
+                    uniqueTypes.length > 0 ? uniqueTypes.join(" | ") : "N/A";
+                  const displayPrice = proj.price
+                    ? formatPrice(parsePrice(proj.price))
+                    : "N/A";
+
+                  return `
+                  <div class="compound-card" style="cursor: pointer;" onclick="window.location.href='project-details.html?id=${proj.id}'">
+                    <div class="compound-img-wrapper">
+                      <img src="${imgUrl}" class="compound-img" alt="${proj.name || ""}" onerror="this.onerror=null; this.src = 'https://via.placeholder.com/800?text=Image'"/>
+                      <div class="card-overlay-actions" onclick="event.stopPropagation()">
+                        <div class="action-icon"><i class="fa-solid fa-house"></i></div>
+                        <div class="action-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <div class="action-icon"><i class="fa-regular fa-heart"></i></div>
+                      </div>
+                      <div class="compare-badge" onclick="event.stopPropagation()">Start Compare</div>
+                    </div>
+                    <div class="compound-details">
+                      <div class="dev-info-row">
+                        <img src="${dev.logo || "https://via.placeholder.com/40?text=Logo"}" class="small-dev-logo" alt="${dev.name}" onerror="this.onerror=null; this.src = 'https://via.placeholder.com/40'"/>
+                        <div class="loc-title">
+                          <span class="loc-text">${proj.location || ""}</span>
+                          <span class="comp-name">${proj.name || ""}</span>
+                        </div>
+                      </div>
+                      <div class="unit-types">${typesStr}</div>
+                      <div class="card-bottom">
+                        <div class="comp-price">${displayPrice}</div>
+                        <div class="contact-icons" onclick="event.stopPropagation()">
+                          <div class="c-icon c-phone"><i class="fa-solid fa-phone"></i></div>
+                          <div class="c-icon c-whatsapp"><i class="fa-brands fa-whatsapp"></i></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+                })
+                .join("");
+            } else {
+              compoundsGrid.innerHTML =
+                '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); font-size: 16px; padding: 40px 0;">No projects found for this developer.</p>';
+            }
+          }
+        }
+      });
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const userStr = localStorage.getItem("sky_current_user");
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          if (user && user.name) {
+            const firstLetter = user.name.charAt(0).toUpperCase();
+
+            // Desktop icon
+            const desktopLoginLink = document.querySelector(
+              '.nav-right .theme-toggle a[href="login.html"]',
+            );
+            if (desktopLoginLink) {
+              desktopLoginLink.innerHTML = `<div style="width: 34px; height: 34px; border-radius: 50%; background-color: var(--accent-gold); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">${firstLetter}</div>`;
+              desktopLoginLink.href = "#"; // Prevent going to login page if already logged in
+              desktopLoginLink.title = "Logout";
+              desktopLoginLink.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem("sky_current_user");
+                window.location.reload();
+              };
+            }
+
+            // Mobile menu login button
+            const mobileLoginBtn = document.querySelector(
+              '.mobile-login-btn a[href="login.html"]',
+            );
+            if (mobileLoginBtn) {
+              mobileLoginBtn.innerText = "Logout (" + user.name + ")";
+              mobileLoginBtn.href = "#";
+              mobileLoginBtn.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem("sky_current_user");
+                window.location.reload();
+              };
+            }
+          }
+        }
+      });
+    </script>
+    <script src="main.js" defer></script>
   </body>
 </html>

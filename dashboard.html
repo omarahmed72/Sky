@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="style3.css" />
   </head>
   <body>
-    <!-- Tesla Style Liquid Navbar with Mega Menu -->
     <nav class="tesla-nav" id="navbar">
       <div class="nav-logo">
         <a href="index.html">
@@ -26,16 +25,6 @@
       </div>
 
       <div class="nav-center hidden lg:flex">
-        <!-- Home Link -->
-        <!-- <div class="nav-item">
-          <a href="index.html">Home</a>
-        </div> -->
-
-        <!-- Explore Link -->
-        <!-- <div class="nav-item">
-          <a href="explore.html">Explore</a>
-        </div> -->
-
         <div class="nav-item has-menu">
           <a href="explore.html">Explore</a>
           <div class="mega-menu-container">
@@ -92,9 +81,6 @@
           </div>
         </div>
 
-        <!-- About Link triggers Page Switch -->
-        <!-- <div class="nav-item" onclick="switchPage('about')">About</div> -->
-
         <div class="nav-item has-menu">
           <a href="about.html">About</a>
           <div class="mega-menu-container">
@@ -150,17 +136,12 @@
             </div>
           </div>
         </div>
-        <!-- <div class="nav-item">
-          <a href="sell.html">Sell Unit</a>
-        </div>
-        <div class="nav-item">
-          <a href="developers.html">Developers</a>
-        </div>
-        <div class="nav-item">
-          <a href="calculator.html">Calculator</a>
-        </div> -->
+
         <div class="nav-item">
           <a href="blogs.html">Blogs</a>
+        </div>
+        <div class="nav-item">
+          <a href="newsletter.html">Newsletter</a>
         </div>
         <div class="nav-item">
           <a href="contact.html">Contact</a>
@@ -196,7 +177,6 @@
       </div>
     </nav>
 
-    <!-- Mobile Menu Overlay (Full Website Menu) -->
     <div id="mobile-menu" class="mobile-menu-overlay">
       <div class="mobile-close-btn" onclick="toggleMobileMenu()">
         <i class="fas fa-times"></i>
@@ -208,36 +188,46 @@
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="explore.html">Explore</a>
       </div>
-      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
-        <a href="dashboard.html" style="color: var(--accent-gold)">Dashboard</a>
-      </div>
 
       <div class="mobile-projects-wrapper">
         <div class="mobile-projects-title">
           <a href="projects.html">Projects</a>
         </div>
         <div class="mobile-nav-sublink" style="display: block">
-          <a href="projects.html">Residential</a>
+          <a href="sell.html">Sell Unit</a>
         </div>
         <div class="mobile-nav-sublink" style="display: block">
-          <a href="projects.html">Commercial</a>
+          <a href="calculator.html">Calculator</a>
         </div>
         <div class="mobile-nav-sublink" style="display: block">
-          <a href="projects.html">Upcoming</a>
+          <a href="developers.html">Developers</a>
         </div>
       </div>
 
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="about.html">About</a>
       </div>
-      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+      <!-- <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="sell.html">Sell Unit</a>
       </div>
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="developers.html">Developers</a>
       </div>
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="calculator.html">Calculator</a>
+      </div> -->
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="blogs.html">Blogs</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="newsletter.html">Newsletter</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="careers.html">Careers</a>
       </div>
       <div class="mobile-login-btn" onclick="toggleMobileMenu()">
         <a href="login.html">Login</a>
@@ -283,6 +273,9 @@
 
           <a href="#" class="dash-link active" onclick="switchTab('dashboard')">
             <i class="fas fa-th-large"></i> <span>Dashboard</span>
+          </a>
+          <a href="#" class="dash-link" onclick="switchTab('explores')">
+            <i class="fas fa-compass"></i> <span>Explore</span>
           </a>
           <a href="#" class="dash-link" onclick="switchTab('projects')">
             <i class="fas fa-building"></i> <span>Projects</span>
@@ -546,6 +539,42 @@
                       </td>
                     </tr>
                   </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explore Tab -->
+          <div id="tab-explores" class="tab-content hidden flex-col gap-6">
+            <div class="dash-card">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-[var(--text-color)]">
+                  Explore Management
+                </h3>
+                <button
+                  onclick="openModal('exploreModal')"
+                  class="bg-[var(--accent-gold)] text-white px-4 py-2 rounded text-xs font-bold hover:bg-yellow-600 transition shadow-lg"
+                >
+                  + Add Explore
+                </button>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr
+                      class="text-[var(--text-muted)] text-xs border-b border-[var(--nav-border)]"
+                    >
+                      <th class="py-4 font-medium">Title</th>
+                      <th class="py-4 font-medium">Location</th>
+                      <th class="py-4 font-medium">Developer</th>
+                      <th class="py-4 font-medium">Start Price</th>
+                      <th class="py-4 font-medium text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="text-sm text-[var(--text-color)]"
+                    id="explores-table-body"
+                  ></tbody>
                 </table>
               </div>
             </div>
@@ -968,8 +997,9 @@
                 <img
                   src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-74.006,40.7128,13,0/300x300?access_token=YOUR_ACCESS_TOKEN"
                   onerror="
+                    this.onerror = null;
                     this.src =
-                      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/1000px-World_map_blank_without_borders.svg.png'
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/1000px-World_map_blank_without_borders.svg.png';
                   "
                   class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition duration-500"
                 />
@@ -1109,31 +1139,6 @@
             />
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs text-[var(--text-muted)] mb-1"
-                >Properties Count</label
-              >
-              <input
-                type="number"
-                id="developerPropertiesCount"
-                placeholder="e.g., 4"
-                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
-              />
-            </div>
-            <div>
-              <label class="block text-xs text-[var(--text-muted)] mb-1"
-                >Starting Price (Text)</label
-              >
-              <input
-                type="text"
-                id="developerStartPrice"
-                placeholder="e.g., 5,000,000 EGP"
-                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
-              />
-            </div>
-          </div>
-
           <div>
             <label class="block text-xs text-[var(--text-muted)] mb-1"
               >Areas (e.g. Mostakbal City, New Cairo)</label
@@ -1174,6 +1179,251 @@
             <button
               type="button"
               onclick="closeModal('developerModal')"
+              class="px-4 py-2 text-sm text-[var(--text-muted)] hover:text-[var(--text-color)] transition"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-[var(--accent-gold)] text-white px-4 py-2 rounded text-sm font-bold hover:scale-105 transition"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Explore Modal -->
+    <div
+      id="exploreModal"
+      class="hidden fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-[var(--bg-color)] rounded-lg p-6 w-full max-w-lg border border-[var(--nav-border)] shadow-xl mt-16 max-h-[85vh] overflow-y-auto"
+      >
+        <h3
+          class="text-xl font-bold text-[var(--text-color)] mb-4"
+          id="exploreModalTitle"
+        >
+          Add Explore Item
+        </h3>
+        <form
+          id="exploreForm"
+          onsubmit="window.saveExplore(event)"
+          class="flex flex-col gap-4"
+        >
+          <input type="hidden" id="exploreId" />
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Title (Compound Name)</label
+              >
+              <input
+                type="text"
+                id="exploreTitle"
+                placeholder="e.g. Stei8ht"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Location</label
+              >
+              <input
+                type="text"
+                id="exploreLocation"
+                placeholder="e.g. New Cairo"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Developer Name</label
+              >
+              <select
+                id="exploreDevName"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
+                style="background-color: var(--bg-color)"
+              ></select>
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Type</label
+              >
+              <input
+                type="text"
+                id="exploreType"
+                placeholder="e.g. Compound"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Developer Start Price (EGP)</label
+              >
+              <input
+                type="number"
+                id="exploreDevStartPrice"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Resale Start Price (EGP)</label
+              >
+              <input
+                type="number"
+                id="exploreResaleStartPrice"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
+                required
+              />
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Main Image</label
+              >
+              <input
+                type="file"
+                accept="image/*"
+                id="exploreMainImage"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
+              />
+              <input type="hidden" id="exploreMainImageBase64" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Side Images (Multiple, up to 4)</label
+              >
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                id="exploreSideImages"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
+                onchange="
+                  document.getElementById('exploreImagesPreview').innerText =
+                    this.files.length + ' image(s) selected'
+                "
+              />
+              <div
+                id="exploreImagesPreview"
+                class="text-xs text-[var(--accent-gold)] mt-1"
+              ></div>
+              <input type="hidden" id="exploreSideImagesBase64" value="[]" />
+            </div>
+          </div>
+
+          <div class="mt-4 mb-2 pb-2 border-b border-[var(--nav-border)]">
+            <h4 class="text-sm font-bold text-[var(--accent-gold)]">
+              Payment Plans (up to 3)
+            </h4>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Plan 1 - Down Payment (e.g. 10%)</label
+              >
+              <input
+                type="text"
+                id="explorePlan1DP"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Plan 1 - Years (e.g. 6 Years)</label
+              >
+              <input
+                type="text"
+                id="explorePlan1Years"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Plan 2 - Down Payment</label
+              >
+              <input
+                type="text"
+                id="explorePlan2DP"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Plan 2 - Years</label
+              >
+              <input
+                type="text"
+                id="explorePlan2Years"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Plan 3 - Down Payment</label
+              >
+              <input
+                type="text"
+                id="explorePlan3DP"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Plan 3 - Years</label
+              >
+              <input
+                type="text"
+                id="explorePlan3Years"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 mt-2">
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Amenities (comma-separated)</label
+              >
+              <input
+                type="text"
+                id="exploreAmenities"
+                placeholder="e.g. Commercial Strip, Gym, Pool"
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >About Project</label
+              >
+              <textarea
+                id="exploreAbout"
+                rows="3"
+                placeholder="Description about the project..."
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none"
+              ></textarea>
+            </div>
+            <div>
+              <label class="block text-xs text-[var(--text-muted)] mb-1"
+                >Major Facilities & Services</label
+              >
+              <textarea
+                id="exploreFacilities"
+                rows="3"
+                placeholder="Details about facilities and services..."
+                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="flex justify-end gap-2 mt-4">
+            <button
+              type="button"
+              onclick="closeModal('exploreModal')"
               class="px-4 py-2 text-sm text-[var(--text-muted)] hover:text-[var(--text-color)] transition"
             >
               Cancel
@@ -1244,18 +1494,7 @@
               <option value="Completed">Completed</option>
             </select>
           </div>
-          <div>
-            <label class="block text-xs text-[var(--text-muted)] mb-1"
-              >Starting Price (EGP)</label
-            >
-            <input
-              type="number"
-              id="projectPrice"
-              placeholder="e.g., 7375464"
-              class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
-              required
-            />
-          </div>
+
           <div>
             <label class="block text-xs text-[var(--text-muted)] mb-1"
               >Project Image</label
@@ -1279,38 +1518,17 @@
           </div>
           <div>
             <label class="block text-xs text-[var(--text-muted)] mb-1"
-              >Developer Logo</label
-            >
-            <input
-              type="file"
-              accept="image/*"
-              id="projectLogo"
-              class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
-            />
-            <input type="hidden" id="projectLogoBase64" />
-          </div>
-          <div>
-            <label class="block text-xs text-[var(--text-muted)] mb-1"
               >Developer Name</label
             >
-            <input
-              type="text"
+            <select
               id="projectDevName"
-              placeholder="e.g., Empire State Developments"
               class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
-            />
-          </div>
-          <div>
-            <label class="block text-xs text-[var(--text-muted)] mb-1"
-              >Developer Description</label
+              style="background-color: var(--bg-color)"
             >
-            <textarea
-              id="projectDevDesc"
-              rows="3"
-              placeholder="e.g., Empire Group brings over 33 years..."
-              class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
-            ></textarea>
+              <option value="">Select a Developer</option>
+            </select>
           </div>
+
           <div>
             <label class="block text-xs text-[var(--text-muted)] mb-1"
               >Project Description</label
@@ -1607,40 +1825,26 @@
             ></textarea>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs text-[var(--text-muted)] mb-1"
-                >Developer Logo</label
-              >
-              <input
-                type="file"
-                accept="image/*"
-                id="unitLogo"
-                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
-              />
-              <input type="hidden" id="unitLogoBase64" />
-            </div>
-            <div>
-              <label class="block text-xs text-[var(--text-muted)] mb-1"
-                >Gallery Images</label
-              >
-              <input
-                type="file"
-                accept="image/*"
-                multiple
-                id="unitImages"
-                class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
-                onchange="
-                  document.getElementById('unitImagesPreview').innerText =
-                    this.files.length + ' image(s) selected'
-                "
-              />
-              <div
-                id="unitImagesPreview"
-                class="text-xs text-[var(--accent-gold)] mt-1"
-              ></div>
-              <input type="hidden" id="unitImagesBase64" value="[]" />
-            </div>
+          <div>
+            <label class="block text-xs text-[var(--text-muted)] mb-1"
+              >Gallery Images</label
+            >
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              id="unitImages"
+              class="w-full bg-transparent border border-[var(--nav-border)] rounded px-3 py-2 text-[var(--text-color)] outline-none focus:border-[var(--accent-gold)]"
+              onchange="
+                document.getElementById('unitImagesPreview').innerText =
+                  this.files.length + ' image(s) selected'
+              "
+            />
+            <div
+              id="unitImagesPreview"
+              class="text-xs text-[var(--accent-gold)] mt-1"
+            ></div>
+            <input type="hidden" id="unitImagesBase64" value="[]" />
           </div>
 
           <div class="flex justify-end gap-2 mt-4">
@@ -2385,7 +2589,8 @@
         },
       ];
       if (!localStorage.getItem("sky_projects")) {
-        localStorage.setItem("sky_projects", JSON.stringify(projects));
+        // localStorage.setItem("sky_projects", JSON.stringify(projects));
+        safeSaveToLocalStorage("sky_projects", projects);
       }
       let units = JSON.parse(localStorage.getItem("sky_units")) || [
         {
@@ -2433,7 +2638,7 @@
           canEdit: false,
         },
       ];
-      let clients = [
+      let clients = JSON.parse(localStorage.getItem("sky_clients")) || [
         {
           id: 1,
           name: "Esard award",
@@ -2447,6 +2652,9 @@
           projects: "Main Street",
         },
       ];
+      if (!localStorage.getItem("sky_clients")) {
+        localStorage.setItem("sky_clients", JSON.stringify(clients));
+      }
 
       // Careers State Management
       let careers = JSON.parse(localStorage.getItem("sky_careers")) || [
@@ -2495,6 +2703,12 @@
         localStorage.setItem("sky_careers", JSON.stringify(careers));
       }
 
+      // Explores State Management
+      let explores = JSON.parse(localStorage.getItem("sky_explores")) || [];
+      if (!localStorage.getItem("sky_explores")) {
+        localStorage.setItem("sky_explores", JSON.stringify(explores));
+      }
+
       // Blogs State Management
       let blogs = JSON.parse(localStorage.getItem("sky_blogs")) || [
         {
@@ -2538,6 +2752,37 @@
       }
 
       // Render Functions
+      window.renderExplores = function () {
+        const tbody = document.getElementById("explores-table-body");
+        if (!tbody) return;
+        tbody.innerHTML = explores
+          .map(
+            (e) => `
+           <tr class="hover:bg-[var(--pill-bg)] transition border-b border-[var(--nav-border)]">
+             <td class="py-3 font-medium">${e.title}</td>
+             <td class="py-3 text-[var(--text-muted)]">${e.location}</td>
+             <td class="py-3 text-[var(--text-muted)]">${e.devName}</td>
+             <td class="py-3 font-bold">${Number(e.devStartPrice).toLocaleString()} EGP</td>
+             <td class="py-3 text-right">
+               <button onclick="editExplore(${e.id})" class="text-blue-500 hover:text-blue-400 mr-2"><i class="fas fa-edit"></i></button>
+               <button onclick="deleteExplore(${e.id})" class="text-red-500 hover:text-red-400"><i class="fas fa-trash"></i></button>
+             </td>
+           </tr>
+         `,
+          )
+          .join("");
+
+        const exploreDevName = document.getElementById("exploreDevName");
+        if (exploreDevName) {
+          const devs = JSON.parse(localStorage.getItem("sky_developers")) || [];
+          exploreDevName.innerHTML =
+            `<option value="">Select a Developer</option>` +
+            devs
+              .map((d) => `<option value="${d.name}">${d.name}</option>`)
+              .join("");
+        }
+      };
+
       window.renderProjects = function () {
         const statEl = document.getElementById("stat-projects");
         if (statEl) {
@@ -2662,6 +2907,60 @@
 
       // CRUD Actions
       // Helper function to read file as Base64 and optionally compress to avoid localStorage quota issues
+      // function renderFileAsBase64(file) {
+      //   return new Promise((resolve) => {
+      //     if (!file) {
+      //       resolve(null);
+      //       return;
+      //     }
+
+      //     // Only compress images. If it's a PDF or something (though not expected), return raw base64.
+      //     if (!file.type.startsWith("image/")) {
+      //       const fallbackReader = new FileReader();
+      //       fallbackReader.onload = (e) => resolve(e.target.result);
+      //       fallbackReader.readAsDataURL(file);
+      //       return;
+      //     }
+
+      //     const reader = new FileReader();
+      //     reader.onload = (e) => {
+      //       const img = new Image();
+      //       img.onload = () => {
+      //         const canvas = document.createElement("canvas");
+      //         let width = img.width;
+      //         let height = img.height;
+      //         // Max width/height 1000px to maintain decent quality but tiny file size
+      //         const MAX_SIZE = 1000;
+      //         if (width > height) {
+      //           if (width > MAX_SIZE) {
+      //             height *= MAX_SIZE / width;
+      //             width = MAX_SIZE;
+      //           }
+      //         } else {
+      //           if (height > MAX_SIZE) {
+      //             width *= MAX_SIZE / height;
+      //             height = MAX_SIZE;
+      //           }
+      //         }
+      //         canvas.width = Math.floor(width);
+      //         canvas.height = Math.floor(height);
+
+      //         const ctx = canvas.getContext("2d");
+      //         // White bg in case of transparent png -> jpeg
+      //         ctx.fillStyle = "#fff";
+      //         ctx.fillRect(0, 0, canvas.width, canvas.height);
+      //         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      //         const resultBase64 = canvas.toDataURL("image/jpeg", 0.6);
+      //         resolve(resultBase64);
+      //       };
+      //       img.onerror = () => resolve(e.target.result); // If image processing fails, fallback to original
+      //       img.src = e.target.result;
+      //     };
+      //     reader.readAsDataURL(file);
+      //   });
+      // }
+      // دوال مساعدة لضغط الصور
       function renderFileAsBase64(file) {
         return new Promise((resolve) => {
           if (!file) {
@@ -2669,7 +2968,7 @@
             return;
           }
 
-          // Only compress images. If it's a PDF or something (though not expected), return raw base64.
+          // السماح فقط للصور بالمرور للضغط
           if (!file.type.startsWith("image/")) {
             const fallbackReader = new FileReader();
             fallbackReader.onload = (e) => resolve(e.target.result);
@@ -2684,8 +2983,10 @@
               const canvas = document.createElement("canvas");
               let width = img.width;
               let height = img.height;
-              // Max width/height 1000px to maintain decent quality but tiny file size
-              const MAX_SIZE = 1000;
+
+              // تقليل الحجم الأقصى إلى 800 بيكسل لتوفير مساحة الـ localStorage
+              const MAX_SIZE = 800;
+
               if (width > height) {
                 if (width > MAX_SIZE) {
                   height *= MAX_SIZE / width;
@@ -2701,38 +3002,207 @@
               canvas.height = Math.floor(height);
 
               const ctx = canvas.getContext("2d");
-              // White bg in case of transparent png -> jpeg
+              // خلفية بيضاء لتجنب الخلفيات السوداء في صور الـ PNG الشفافة
               ctx.fillStyle = "#fff";
               ctx.fillRect(0, 0, canvas.width, canvas.height);
               ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-              const resultBase64 = canvas.toDataURL("image/jpeg", 0.6);
+              // التغيير السحري هنا: استخدام webp بدلاً من jpeg مع تقليل الجودة لـ 0.5 (ممتازة للويب)
+              const resultBase64 = canvas.toDataURL("image/webp", 0.5);
               resolve(resultBase64);
             };
-            img.onerror = () => resolve(e.target.result); // If image processing fails, fallback to original
+            img.onerror = () => resolve(e.target.result); // في حالة فشل المعالجة، نرجع الصورة الأصلية
             img.src = e.target.result;
           };
           reader.readAsDataURL(file);
         });
       }
 
+      // دالة آمنة لحفظ البيانات في المتصفح مع تنبيه المستخدم عند امتلاء المساحة
+      function safeSaveToLocalStorage(key, data) {
+        try {
+          localStorage.setItem(key, JSON.stringify(data));
+          return true; // تم الحفظ بنجاح
+        } catch (e) {
+          // 22 للـ Firefox و QuotaExceededError للـ Chrome/Safari
+          if (e.name === "QuotaExceededError" || e.code === 22) {
+            alert(
+              "⚠️ المساحة التخزينية للمتصفح امتلأت بالكامل! يرجى مسح بعض المشاريع أو الصور القديمة لتتمكن من إضافة بيانات جديدة.",
+            );
+          } else {
+            console.error("حدث خطأ أثناء حفظ البيانات:", e);
+          }
+          return false; // فشل الحفظ
+        }
+      }
+
+      window.saveExplore = async function (e) {
+        e.preventDefault();
+        const id = document.getElementById("exploreId").value;
+        const mainImgInput = document.getElementById("exploreMainImage");
+        const hiddenMainImg = document.getElementById(
+          "exploreMainImageBase64",
+        ).value;
+
+        let mainImgBase64 = hiddenMainImg;
+        if (mainImgInput.files && mainImgInput.files[0]) {
+          mainImgBase64 = await renderFileAsBase64(mainImgInput.files[0]);
+        }
+
+        const sideImagesInput = document.getElementById("exploreSideImages");
+        const hiddenSideImages = document.getElementById(
+          "exploreSideImagesBase64",
+        ).value;
+        let sideImagesBase64 = hiddenSideImages
+          ? JSON.parse(hiddenSideImages)
+          : [];
+        if (sideImagesInput.files && sideImagesInput.files.length > 0) {
+          sideImagesBase64 = [];
+          for (let i = 0; i < sideImagesInput.files.length; i++) {
+            const b64 = await renderFileAsBase64(sideImagesInput.files[i]);
+            if (b64) sideImagesBase64.push(b64);
+          }
+        }
+
+        const devName = document.getElementById("exploreDevName").value;
+        const currentDevs =
+          JSON.parse(localStorage.getItem("sky_developers")) || [];
+        const devObj = currentDevs.find((d) => d.name === devName);
+        let devLogoBase64 =
+          devObj && devObj.logo
+            ? devObj.logo
+            : "https://cbe-realestate-egypt.fsn1.your-objectstorage.com/centro/logo/cropped-circle-image-copy.webp";
+
+        const paymentPlans = [];
+        const p1dp = document.getElementById("explorePlan1DP").value;
+        const p1yr = document.getElementById("explorePlan1Years").value;
+        if (p1dp || p1yr) paymentPlans.push({ dp: p1dp, years: p1yr });
+
+        const p2dp = document.getElementById("explorePlan2DP").value;
+        const p2yr = document.getElementById("explorePlan2Years").value;
+        if (p2dp || p2yr) paymentPlans.push({ dp: p2dp, years: p2yr });
+
+        const p3dp = document.getElementById("explorePlan3DP").value;
+        const p3yr = document.getElementById("explorePlan3Years").value;
+        if (p3dp || p3yr) paymentPlans.push({ dp: p3dp, years: p3yr });
+
+        const obj = {
+          id: id ? parseInt(id) : Date.now(),
+          title: document.getElementById("exploreTitle").value,
+          location: document.getElementById("exploreLocation").value,
+          devName: devName,
+          devLogo: devLogoBase64,
+          type: document.getElementById("exploreType").value,
+          devStartPrice: document.getElementById("exploreDevStartPrice").value,
+          resaleStartPrice: document.getElementById("exploreResaleStartPrice")
+            .value,
+          mainImage:
+            mainImgBase64 ||
+            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2000&auto=format&fit=crop",
+          sideImages: sideImagesBase64,
+          paymentPlans: paymentPlans,
+          amenities: document.getElementById("exploreAmenities").value,
+          about: document.getElementById("exploreAbout").value,
+          facilities: document.getElementById("exploreFacilities").value,
+        };
+
+        if (id) {
+          const index = explores.findIndex((x) => x.id === parseInt(id));
+          if (index !== -1) explores[index] = obj;
+        } else {
+          explores.push(obj);
+        }
+
+        safeSaveToLocalStorage("sky_explores", explores);
+        window.renderExplores();
+        window.closeModal("exploreModal");
+      };
+
+      window.editExplore = function (id) {
+        const obj = explores.find((x) => x.id === id);
+        if (!obj) return;
+        document.getElementById("exploreId").value = obj.id;
+        document.getElementById("exploreTitle").value = obj.title || "";
+        document.getElementById("exploreLocation").value = obj.location || "";
+
+        const exploreDevName = document.getElementById("exploreDevName");
+        if (exploreDevName) {
+          const devs = JSON.parse(localStorage.getItem("sky_developers")) || [];
+          exploreDevName.innerHTML =
+            `<option value="">Select a Developer</option>` +
+            devs
+              .map((d) => `<option value="${d.name}">${d.name}</option>`)
+              .join("");
+        }
+        document.getElementById("exploreDevName").value = obj.devName || "";
+        document.getElementById("exploreType").value = obj.type || "";
+        document.getElementById("exploreDevStartPrice").value =
+          obj.devStartPrice || "";
+        document.getElementById("exploreResaleStartPrice").value =
+          obj.resaleStartPrice || "";
+
+        const plans = obj.paymentPlans || [];
+        document.getElementById("explorePlan1DP").value = plans[0]
+          ? plans[0].dp
+          : "";
+        document.getElementById("explorePlan1Years").value = plans[0]
+          ? plans[0].years
+          : "";
+        document.getElementById("explorePlan2DP").value = plans[1]
+          ? plans[1].dp
+          : "";
+        document.getElementById("explorePlan2Years").value = plans[1]
+          ? plans[1].years
+          : "";
+        document.getElementById("explorePlan3DP").value = plans[2]
+          ? plans[2].dp
+          : "";
+        document.getElementById("explorePlan3Years").value = plans[2]
+          ? plans[2].years
+          : "";
+
+        document.getElementById("exploreAmenities").value = obj.amenities || "";
+        document.getElementById("exploreAbout").value = obj.about || "";
+        if (document.getElementById("exploreFacilities"))
+          document.getElementById("exploreFacilities").value =
+            obj.facilities || "";
+
+        document.getElementById("exploreMainImage").value = "";
+        document.getElementById("exploreMainImageBase64").value =
+          obj.mainImage || "";
+        document.getElementById("exploreSideImages").value = "";
+        document.getElementById("exploreSideImagesBase64").value =
+          obj.sideImages ? JSON.stringify(obj.sideImages) : "[]";
+
+        const preview = document.getElementById("exploreImagesPreview");
+        if (preview)
+          preview.innerText = obj.sideImages
+            ? obj.sideImages.length + " image(s) saved"
+            : "";
+
+        document.getElementById("exploreModalTitle").innerText =
+          "Edit Explore Item";
+        window.openModal("exploreModal");
+      };
+
+      window.deleteExplore = function (id) {
+        if (confirm("Are you sure you want to remove this explore item?")) {
+          explores = explores.filter((x) => x.id !== id);
+          safeSaveToLocalStorage("sky_explores", explores);
+          window.renderExplores();
+        }
+      };
+
       window.saveProject = async function (e) {
         e.preventDefault();
         const id = document.getElementById("projectId").value;
         const imgInput = document.getElementById("projectImage");
-        const logoInput = document.getElementById("projectLogo");
         const hiddenImg = document.getElementById("projectImageBase64").value;
-        const hiddenLogo = document.getElementById("projectLogoBase64").value;
 
         // Determine images (new upload vs existing)
         let imgBase64 = hiddenImg;
         if (imgInput.files && imgInput.files[0]) {
           imgBase64 = await renderFileAsBase64(imgInput.files[0]);
-        }
-
-        let logoBase64 = hiddenLogo;
-        if (logoInput.files && logoInput.files[0]) {
-          logoBase64 = await renderFileAsBase64(logoInput.files[0]);
         }
 
         const heroInput = document.getElementById("projectHeroImages");
@@ -2748,18 +3218,33 @@
           }
         }
 
+        const pName = document.getElementById("projectName").value;
+        const pUnits = units.filter((u) => u.project === pName);
+        let minPrice = 0;
+        if (pUnits.length > 0) {
+          let m = Math.min(
+            ...pUnits.map((u) => parseFloat(u.price) || Infinity),
+          );
+          minPrice = m === Infinity ? 0 : m;
+        }
+
+        const chosenDevName = document.getElementById("projectDevName").value;
+        const currentDevs =
+          JSON.parse(localStorage.getItem("sky_developers")) || [];
+        const chosenDevObj = currentDevs.find((d) => d.name === chosenDevName);
+        let logoBase64 = chosenDevObj
+          ? chosenDevObj.logo
+          : "https://cbe-realestate-egypt.fsn1.your-objectstorage.com/centro/logo/cropped-circle-image-copy.webp";
+
         const obj = {
           id: id ? parseInt(id) : Date.now(),
-          name: document.getElementById("projectName").value,
+          name: pName,
           location: document.getElementById("projectLocation").value,
           status: document.getElementById("projectStatus").value,
-          price: parseFloat(document.getElementById("projectPrice").value),
+          price: minPrice,
           image: imgBase64 || "imgs/newsletter-1.webp", // fallback
-          devLogo:
-            logoBase64 ||
-            "https://cbe-realestate-egypt.fsn1.your-objectstorage.com/centro/logo/cropped-circle-image-copy.webp", // fallback
-          devName: document.getElementById("projectDevName").value,
-          devDesc: document.getElementById("projectDevDesc").value,
+          devLogo: logoBase64,
+          devName: chosenDevName,
           desc: document.getElementById("projectDesc").value,
           mapLink: document.getElementById("projectMapLink").value,
           heroImages: heroImagesBase64,
@@ -2770,7 +3255,8 @@
         } else {
           projects.push(obj);
         }
-        localStorage.setItem("sky_projects", JSON.stringify(projects));
+        // localStorage.setItem("sky_projects", JSON.stringify(projects));
+        safeSaveToLocalStorage("sky_projects", projects);
         window.renderProjects();
         window.closeModal("projectModal");
       };
@@ -2781,13 +3267,9 @@
         document.getElementById("projectName").value = obj.name;
         document.getElementById("projectLocation").value = obj.location;
         document.getElementById("projectStatus").value = obj.status;
-        document.getElementById("projectPrice").value = obj.price || "";
         document.getElementById("projectImage").value = ""; // Reset file input
-        document.getElementById("projectLogo").value = ""; // Reset file input
         document.getElementById("projectImageBase64").value = obj.image || "";
-        document.getElementById("projectLogoBase64").value = obj.devLogo || "";
         document.getElementById("projectDevName").value = obj.devName || "";
-        document.getElementById("projectDevDesc").value = obj.devDesc || "";
         document.getElementById("projectDesc").value = obj.desc || "";
         document.getElementById("projectMapLink").value = obj.mapLink || "";
         document.getElementById("projectHeroImages").value = "";
@@ -2804,7 +3286,8 @@
       window.deleteProject = function (id) {
         if (confirm("Are you sure you want to remove this project?")) {
           projects = projects.filter((p) => p.id !== id);
-          localStorage.setItem("sky_projects", JSON.stringify(projects));
+          // localStorage.setItem("sky_projects", JSON.stringify(projects));
+          safeSaveToLocalStorage("sky_projects", projects);
           window.renderProjects();
         }
       };
@@ -2812,11 +3295,21 @@
       window.saveUnit = async function (e) {
         e.preventDefault();
         const id = document.getElementById("unitId").value;
-        const logoInput = document.getElementById("unitLogo");
-        const hiddenLogo = document.getElementById("unitLogoBase64").value;
-        let logoBase64 = hiddenLogo;
-        if (logoInput && logoInput.files && logoInput.files[0]) {
-          logoBase64 = await renderFileAsBase64(logoInput.files[0]);
+
+        const uProjectName = document.getElementById("unitProject").value;
+        const projObj = projects.find((p) => p.name === uProjectName);
+        let logoBase64 =
+          "https://cbe-realestate-egypt.fsn1.your-objectstorage.com/centro/logo/cropped-circle-image-copy.webp";
+        if (projObj) {
+          const devName = projObj.devName || projObj.developer;
+          const currentDevs =
+            JSON.parse(localStorage.getItem("sky_developers")) || [];
+          const devObj = currentDevs.find((d) => d.name === devName);
+          if (devObj && devObj.logo) {
+            logoBase64 = devObj.logo;
+          } else if (projObj.devLogo) {
+            logoBase64 = projObj.devLogo;
+          }
         }
 
         const imagesInput = document.getElementById("unitImages");
@@ -2860,6 +3353,21 @@
           units.push(obj);
         }
         localStorage.setItem("sky_units", JSON.stringify(units));
+
+        projects.forEach((p) => {
+          let pUnits = units.filter((u) => u.project === p.name);
+          if (pUnits.length > 0) {
+            let m = Math.min(
+              ...pUnits.map((u) => parseFloat(u.price) || Infinity),
+            );
+            p.price = m === Infinity ? 0 : m;
+          } else {
+            p.price = 0;
+          }
+        });
+        safeSaveToLocalStorage("sky_projects", projects);
+        window.renderProjects();
+
         window.renderUnits();
         window.closeModal("unitModal");
       };
@@ -2887,8 +3395,7 @@
         document.getElementById("unitPlanDown").value = obj.planDown || "";
         document.getElementById("unitAbout").value = obj.about || "";
 
-        document.getElementById("unitLogo").value = "";
-        document.getElementById("unitLogoBase64").value = obj.devLogo || "";
+        // Removed unitLogo manual setting
         document.getElementById("unitImages").value = "";
         document.getElementById("unitImagesBase64").value = obj.images
           ? JSON.stringify(obj.images)
@@ -2907,6 +3414,21 @@
         if (confirm("Are you sure you want to remove this unit?")) {
           units = units.filter((u) => u.id !== id);
           localStorage.setItem("sky_units", JSON.stringify(units));
+
+          projects.forEach((p) => {
+            let pUnits = units.filter((u) => u.project === p.name);
+            if (pUnits.length > 0) {
+              let m = Math.min(
+                ...pUnits.map((u) => parseFloat(u.price) || Infinity),
+              );
+              p.price = m === Infinity ? 0 : m;
+            } else {
+              p.price = 0;
+            }
+          });
+          safeSaveToLocalStorage("sky_projects", projects);
+          window.renderProjects();
+
           window.renderUnits();
         }
       };
@@ -2963,6 +3485,7 @@
         } else {
           clients.push(obj);
         }
+        localStorage.setItem("sky_clients", JSON.stringify(clients));
         window.renderClients();
         window.closeModal("clientModal");
       };
@@ -2979,6 +3502,7 @@
       window.deleteClient = function (id) {
         if (confirm("Are you sure you want to remove this client?")) {
           clients = clients.filter((c) => c.id !== id);
+          localStorage.setItem("sky_clients", JSON.stringify(clients));
           window.renderClients();
         }
       };
@@ -3217,79 +3741,211 @@
         },
       ];
 
+      // window.renderDevelopers = function () {
+      //   const tbody = document.getElementById("developers-table-body");
+      //   if (!tbody) return;
+      //   tbody.innerHTML = developers
+      //     .map(
+      //       (d) => `
+      //      <tr class="hover:bg-[var(--pill-bg)] transition border-b border-[var(--nav-border)]">
+      //        <td class="py-3 flex items-center gap-2 text-xs">
+      //         <img src="${d.logo}" class="w-8 h-8 rounded-full border border-[var(--nav-border)] object-contain bg-white" onerror="this.onerror=null; this.src='https://via.placeholder.com/40?text=D'"/>
+      //          <span class="font-medium whitespace-normal">${d.name}</span>
+      //        </td>
+      //        <td class="py-3 text-[var(--text-muted)] text-xs">${d.propertiesCount || 0}</td>
+      //        <td class="py-3 text-[var(--text-muted)] text-xs font-bold">${d.startPrice || "N/A"}</td>
+      //        <td class="py-3 text-[var(--text-muted)] text-xs">${d.areas || "N/A"}</td>
+      //        <td class="py-3 text-right">
+      //          <button onclick="editDeveloper(${d.id})" class="text-blue-500 hover:text-blue-400 mr-2"><i class="fas fa-edit"></i></button>
+      //          <button onclick="deleteDeveloper(${d.id})" class="text-red-500 hover:text-red-400"><i class="fas fa-trash"></i></button>
+      //        </td>
+      //      </tr>
+      //    `,
+      //     )
+      //     .join("");
+      // };
+
+      // window.saveDeveloper = async function (e) {
+      //   e.preventDefault();
+      //   const id = document.getElementById("developerId").value;
+      //   const imgInput = document.getElementById("developerLogo");
+      //   const hiddenImg = document.getElementById("developerLogoBase64").value;
+
+      //   let imgBase64 = hiddenImg;
+      //   if (imgInput && imgInput.files && imgInput.files[0]) {
+      //     // Render via standard base64 converter or rely on global renderFileAsBase64
+      //     imgBase64 = await renderFileAsBase64(imgInput.files[0]);
+      //   }
+
+      //   const obj = {
+      //     id: id ? parseInt(id) : Date.now(),
+      //     name: document.getElementById("developerName").value,
+      //     propertiesCount: document.getElementById("developerPropertiesCount")
+      //       .value,
+      //     startPrice: document.getElementById("developerStartPrice").value,
+      //     areas: document.getElementById("developerAreas").value,
+      //     about: document.getElementById("developerAbout").value,
+      //     logo:
+      //       imgBase64 ||
+      //       "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Ardic_logo.png/600px-Ardic_logo.png",
+      //   };
+
+      //   if (id) {
+      //     const index = developers.findIndex((d) => d.id === parseInt(id));
+      //     if (index !== -1) developers[index] = obj;
+      //   } else {
+      //     developers.push(obj);
+      //   }
+      //   localStorage.setItem("sky_developers", JSON.stringify(developers));
+      //   window.renderDevelopers();
+      //   if (typeof window.closeModal === "function") {
+      //     window.closeModal("developerModal");
+      //   } else {
+      //     document.getElementById("developerModal").classList.add("hidden");
+      //   }
+      // };
+
+      // --- دوال مساعدة لحساب أقل سعر ديناميكياً ---
+      function parsePrice(priceVal) {
+        if (priceVal === undefined || priceVal === null || priceVal === "")
+          return Infinity;
+        const str = String(priceVal).toUpperCase().replace(/,/g, "").trim();
+        const numMatch = str.match(/[\d\.]+/);
+        if (!numMatch) return Infinity;
+        let num = parseFloat(numMatch[0]);
+        if (str.includes("M") || str.includes("MILLION")) num *= 1000000;
+        else if (str.includes("K") || str.includes("THOUSAND")) num *= 1000;
+        return num;
+      }
+
+      function formatPrice(num) {
+        if (num === Infinity || isNaN(num)) return "N/A";
+        if (num >= 1000000)
+          return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M EGP";
+        if (num >= 1000)
+          return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K EGP";
+        return num.toLocaleString() + " EGP";
+      }
+
+      function getDevMinPrice(devName) {
+        const projects = JSON.parse(localStorage.getItem("sky_projects")) || [];
+        // البحث عن المشاريع التي تنتمي لهذا المطور
+        const devProjs = projects.filter(
+          (p) => p.devName === devName || p.developer === devName,
+        );
+        if (devProjs.length === 0) return "N/A";
+        const prices = devProjs
+          .map((p) => parsePrice(p.price))
+          .filter((val) => val !== Infinity);
+        if (prices.length === 0) return "N/A";
+        const minPrice = Math.min(...prices);
+        return formatPrice(minPrice);
+      }
+
+      function getDevPropertiesCount(devName) {
+        const projects = JSON.parse(localStorage.getItem("sky_projects")) || [];
+        const units = JSON.parse(localStorage.getItem("sky_units")) || [];
+        const devProjs = projects.filter(
+          (p) => p.devName === devName || p.developer === devName,
+        );
+        const devProjNames = devProjs.map((p) => p.name);
+        if (devProjNames.length === 0) return 0;
+        const devUnits = units.filter((u) => devProjNames.includes(u.project));
+        return devUnits.length;
+      }
+      // ---------------------------------------------
+
+      // تحديث دالة عرض المطورين في لوحة التحكم
       window.renderDevelopers = function () {
         const tbody = document.getElementById("developers-table-body");
         if (!tbody) return;
-        tbody.innerHTML = developers
-          .map(
-            (d) => `
-           <tr class="hover:bg-[var(--pill-bg)] transition border-b border-[var(--nav-border)]">
-             <td class="py-3 flex items-center gap-2 text-xs">
-               <img src="${d.logo}" class="w-8 h-8 rounded-full border border-[var(--nav-border)] object-contain bg-white" onerror="this.src='https://via.placeholder.com/40?text=D'"/>
-               <span class="font-medium whitespace-normal">${d.name}</span>
-             </td>
-             <td class="py-3 text-[var(--text-muted)] text-xs">${d.propertiesCount || 0}</td>
-             <td class="py-3 text-[var(--text-muted)] text-xs font-bold">${d.startPrice || "N/A"}</td>
-             <td class="py-3 text-[var(--text-muted)] text-xs">${d.areas || "N/A"}</td>
-             <td class="py-3 text-right">
-               <button onclick="editDeveloper(${d.id})" class="text-blue-500 hover:text-blue-400 mr-2"><i class="fas fa-edit"></i></button>
-               <button onclick="deleteDeveloper(${d.id})" class="text-red-500 hover:text-red-400"><i class="fas fa-trash"></i></button>
-             </td>
-           </tr>
-         `,
-          )
-          .join("");
+        const developersList =
+          JSON.parse(localStorage.getItem("sky_developers")) || [];
+        tbody.innerHTML = "";
+
+        developersList.forEach((dev) => {
+          const minPrice = getDevMinPrice(dev.name);
+          const propertiesCount = getDevPropertiesCount(dev.name);
+
+          const tr = document.createElement("tr");
+          tr.className =
+            "hover:bg-[var(--pill-bg)] transition border-b border-[var(--nav-border)]";
+          tr.innerHTML = `
+        <td class="py-3 flex items-center gap-2 text-xs">
+          <img src="${dev.logo}" alt="logo" class="w-8 h-8 rounded-full border border-[var(--nav-border)] object-contain bg-white" onerror="this.onerror=null; this.src='https://via.placeholder.com/40?text=D'">
+          <span class="font-medium whitespace-normal">${dev.name}</span>
+        </td>
+        <td class="py-3 text-[var(--text-muted)] text-xs">${propertiesCount}</td>
+        <td class="py-3 text-[var(--text-muted)] text-xs font-bold">${minPrice}</td>
+        <td class="py-3 text-[var(--text-muted)] text-xs">${dev.areas || "N/A"}</td>
+        <td class="py-3 text-right flex gap-2 justify-end">
+          <button onclick="editDeveloper('${dev.id}')" class="text-blue-500 hover:text-blue-400 mr-2"><i class="fas fa-edit"></i></button>
+          <button onclick="deleteDeveloper('${dev.id}')" class="text-red-500 hover:text-red-400"><i class="fas fa-trash"></i></button>
+        </td>
+      `;
+          tbody.appendChild(tr);
+        });
+
+        const projectDevNameSelect = document.getElementById("projectDevName");
+        if (projectDevNameSelect) {
+          projectDevNameSelect.innerHTML =
+            '<option value="">Select a Developer</option>' +
+            developersList
+              .map((d) => `<option value="${d.name}">${d.name}</option>`)
+              .join("");
+        }
       };
 
+      // حفظ المطور
       window.saveDeveloper = async function (e) {
-        e.preventDefault();
+        if (e) e.preventDefault();
         const id = document.getElementById("developerId").value;
+        const name = document.getElementById("developerName").value;
+        const areas = document.getElementById("developerAreas").value;
+        const about = document.getElementById("developerAbout").value;
+
         const imgInput = document.getElementById("developerLogo");
         const hiddenImg = document.getElementById("developerLogoBase64").value;
-
         let imgBase64 = hiddenImg;
         if (imgInput && imgInput.files && imgInput.files[0]) {
-          // Render via standard base64 converter or rely on global renderFileAsBase64
           imgBase64 = await renderFileAsBase64(imgInput.files[0]);
         }
 
-        const obj = {
-          id: id ? parseInt(id) : Date.now(),
-          name: document.getElementById("developerName").value,
-          propertiesCount: document.getElementById("developerPropertiesCount")
-            .value,
-          startPrice: document.getElementById("developerStartPrice").value,
-          areas: document.getElementById("developerAreas").value,
-          about: document.getElementById("developerAbout").value,
+        const newDev = {
+          id: id ? id : Date.now().toString(),
+          name,
+          about,
+          areas,
           logo:
             imgBase64 ||
             "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Ardic_logo.png/600px-Ardic_logo.png",
         };
 
+        // Update both global and local storage
+        let developersList =
+          JSON.parse(localStorage.getItem("sky_developers")) || [];
+
         if (id) {
-          const index = developers.findIndex((d) => d.id === parseInt(id));
-          if (index !== -1) developers[index] = obj;
+          developersList = developersList.map((d) =>
+            String(d.id) === String(id) ? newDev : d,
+          );
         } else {
-          developers.push(obj);
+          developersList.push(newDev);
         }
-        localStorage.setItem("sky_developers", JSON.stringify(developers));
+
+        developers = developersList; // Update the global variable
+        localStorage.setItem("sky_developers", JSON.stringify(developersList));
+        if (typeof closeModal === "function") closeModal("developerModal");
         window.renderDevelopers();
-        if (typeof window.closeModal === "function") {
-          window.closeModal("developerModal");
-        } else {
-          document.getElementById("developerModal").classList.add("hidden");
-        }
       };
 
       window.editDeveloper = function (id) {
-        const obj = developers.find((d) => d.id === id);
+        const developersList =
+          JSON.parse(localStorage.getItem("sky_developers")) || developers;
+        const obj = developersList.find((d) => String(d.id) === String(id));
         if (!obj) return;
-        document.getElementById("developerId").value = obj.id;
-        document.getElementById("developerName").value = obj.name;
-        document.getElementById("developerPropertiesCount").value =
-          obj.propertiesCount || "";
-        document.getElementById("developerStartPrice").value =
-          obj.startPrice || "";
+        document.getElementById("developerId").value = obj.id || "";
+        document.getElementById("developerName").value = obj.name || "";
         document.getElementById("developerAreas").value = obj.areas || "";
         document.getElementById("developerAbout").value = obj.about || "";
         document.getElementById("developerLogoBase64").value = obj.logo || "";
@@ -3307,8 +3963,16 @@
 
       window.deleteDeveloper = function (id) {
         if (confirm("Are you sure you want to remove this developer?")) {
-          developers = developers.filter((d) => d.id !== id);
-          localStorage.setItem("sky_developers", JSON.stringify(developers));
+          let developersList =
+            JSON.parse(localStorage.getItem("sky_developers")) || developers;
+          developersList = developersList.filter(
+            (d) => String(d.id) !== String(id),
+          );
+          developers = developersList;
+          localStorage.setItem(
+            "sky_developers",
+            JSON.stringify(developersList),
+          );
           window.renderDevelopers();
         }
       };
@@ -3405,6 +4069,8 @@
 
       // Initialization
       document.addEventListener("DOMContentLoaded", () => {
+        if (typeof window.renderExplores === "function")
+          window.renderExplores();
         window.renderProjects();
         window.renderUnits();
         window.renderAccounts();
@@ -3440,6 +4106,46 @@
         const menu = document.getElementById("mobile-menu");
         menu.classList.toggle("active");
       }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const userStr = localStorage.getItem("sky_current_user");
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          if (user && user.name) {
+            const firstLetter = user.name.charAt(0).toUpperCase();
+
+            // Desktop icon
+            const desktopLoginLink = document.querySelector(
+              '.nav-right .theme-toggle a[href="login.html"]',
+            );
+            if (desktopLoginLink) {
+              desktopLoginLink.innerHTML = `<div style="width: 34px; height: 34px; border-radius: 50%; background-color: var(--accent-gold); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">${firstLetter}</div>`;
+              desktopLoginLink.href = "#"; // Prevent going to login page if already logged in
+              desktopLoginLink.title = "Logout";
+              desktopLoginLink.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem("sky_current_user");
+                window.location.reload();
+              };
+            }
+
+            // Mobile menu login button
+            const mobileLoginBtn = document.querySelector(
+              '.mobile-login-btn a[href="login.html"]',
+            );
+            if (mobileLoginBtn) {
+              mobileLoginBtn.innerText = "Logout (" + user.name + ")";
+              mobileLoginBtn.href = "#";
+              mobileLoginBtn.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem("sky_current_user");
+                window.location.reload();
+              };
+            }
+          }
+        }
+      });
     </script>
     <script src="main.js"></script>
   </body>

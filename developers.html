@@ -21,7 +21,6 @@
       <i class="fas fa-volume-up mr-2"></i> Tap anywhere for sound
     </div>
 
-    <!-- Tesla Style Liquid Navbar with Mega Menu -->
     <nav class="tesla-nav" id="navbar">
       <div class="nav-logo">
         <a href="index.html">
@@ -30,15 +29,6 @@
       </div>
 
       <div class="nav-center hidden lg:flex">
-        <!-- Home Link -->
-        <!-- <div class="nav-item">
-          <a href="index.html">Home</a>
-        </div> -->
-        <!-- Explore Link -->
-        <!-- <div class="nav-item">
-          <a href="explore.html">Explore</a>
-        </div> -->
-
         <div class="nav-item has-menu">
           <a href="explore.html">Explore</a>
           <div class="mega-menu-container">
@@ -88,15 +78,12 @@
                     font-size: 12px;
                     color: var(--text-muted);
                   "
-                >View Masterplan -></a
+                  >View Masterplan -></a
                 >
               </div>
             </div>
           </div>
         </div>
-
-        <!-- About Link triggers Page Switch -->
-        <!-- <div class="nav-item" onclick="switchPage('about')">About</div> -->
 
         <div class="nav-item has-menu">
           <a href="about.html">About</a>
@@ -153,17 +140,12 @@
             </div>
           </div>
         </div>
-        <!-- <div class="nav-item">
-          <a href="sell.html">Sell Unit</a>
-        </div>
-        <div class="nav-item">
-          <a href="developers.html">Developers</a>
-        </div>
-        <div class="nav-item">
-          <a href="calculator.html">Calculator</a>
-        </div> -->
+
         <div class="nav-item">
           <a href="blogs.html">Blogs</a>
+        </div>
+        <div class="nav-item">
+          <a href="newsletter.html">Newsletter</a>
         </div>
         <div class="nav-item">
           <a href="contact.html">Contact</a>
@@ -199,11 +181,11 @@
       </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="mobile-menu-overlay">
       <div class="mobile-close-btn" onclick="toggleMobileMenu()">
         <i class="fas fa-times"></i>
       </div>
+
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="index.html">Home</a>
       </div>
@@ -216,20 +198,20 @@
           <a href="projects.html">Projects</a>
         </div>
         <div class="mobile-nav-sublink" style="display: block">
-          <a href="projects.html">Residential</a>
+          <a href="sell.html">Sell Unit</a>
         </div>
         <div class="mobile-nav-sublink" style="display: block">
-          <a href="projects.html">Commercial</a>
+          <a href="calculator.html">Calculator</a>
         </div>
         <div class="mobile-nav-sublink" style="display: block">
-          <a href="projects.html">Upcoming</a>
+          <a href="developers.html">Developers</a>
         </div>
       </div>
 
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="about.html">About</a>
       </div>
-      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+      <!-- <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="sell.html">Sell Unit</a>
       </div>
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
@@ -237,13 +219,17 @@
       </div>
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="calculator.html">Calculator</a>
-      </div>
+      </div> -->
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="blogs.html">Blogs</a>
       </div>
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
+        <a href="newsletter.html">Newsletter</a>
+      </div>
+      <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="contact.html">Contact</a>
       </div>
+
       <div class="mobile-nav-link" onclick="toggleMobileMenu()">
         <a href="careers.html">Careers</a>
       </div>
@@ -267,7 +253,7 @@
           <source src="video sky.mp4" type="video/mp4" />
         </video>
         <div class="explore-video-overlay"></div>
-      </div> 
+      </div>
 
       <!-- Main Content Wrapper -->
       <div class="explore-content-wrapper">
@@ -407,7 +393,11 @@
             </div>
 
             <!-- Pagination -->
-            <div class="pagination" id="developers-pagination" style="display: none;">
+            <div
+              class="pagination"
+              id="developers-pagination"
+              style="display: none"
+            >
               <div class="page-btn"><i class="fas fa-chevron-left"></i></div>
               <div class="page-btn active">1</div>
               <div class="page-btn"><i class="fas fa-chevron-right"></i></div>
@@ -502,7 +492,7 @@
       </div>
     </div>
     <script src="main.js"></script>
-    <script>
+    <!-- <script>
       document.addEventListener("DOMContentLoaded", () => {
         const grid = document.getElementById("developers-grid");
         let developers = JSON.parse(localStorage.getItem("sky_developers")) || [
@@ -541,6 +531,113 @@
             </div>
           </div>
         `).join("");
+      });
+    </script> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const developersContainer = document.getElementById("developers-grid");
+        const developers =
+          JSON.parse(localStorage.getItem("sky_developers")) || [];
+        const projects = JSON.parse(localStorage.getItem("sky_projects")) || [];
+
+        function parsePrice(priceVal) {
+          if (!priceVal) return Infinity;
+          const str = String(priceVal).toUpperCase().replace(/,/g, "").trim();
+          const numMatch = str.match(/[\d\.]+/);
+          if (!numMatch) return Infinity;
+          let num = parseFloat(numMatch[0]);
+          if (str.includes("M") || str.includes("MILLION")) num *= 1000000;
+          else if (str.includes("K") || str.includes("THOUSAND")) num *= 1000;
+          return num;
+        }
+
+        function formatPrice(num) {
+          if (num === Infinity || isNaN(num)) return "N/A";
+          if (num >= 1000000)
+            return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M EGP";
+          if (num >= 1000)
+            return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K EGP";
+          return num.toLocaleString() + " EGP";
+        }
+
+        function getDevMinPrice(devName) {
+          const devProjs = projects.filter((p) => p.developer === devName);
+          if (devProjs.length === 0) return "N/A";
+          const minPrice = Math.min(
+            ...devProjs.map((p) => parsePrice(p.price)),
+          );
+          return formatPrice(minPrice);
+        }
+
+        if (developersContainer && developers.length > 0) {
+          developersContainer.innerHTML = developers
+            .map((dev) => {
+              const dynamicPrice = getDevMinPrice(dev.name); // السعر الديناميكي
+              return `
+        <div class="developer-card flex flex-col h-full bg-[var(--card-bg)] border border-[var(--card-border)] rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 relative">
+          <div class="developer-img-container h-48 bg-white flex items-center justify-center p-4">
+            <img src="${dev.logo}" class="max-w-full max-h-full object-contain" onerror="this.src='https://via.placeholder.com/150?text=Logo'"/>
+          </div>
+          <div class="developer-details p-5 flex flex-col flex-1">
+            <div class="prop-tag inline-block bg-[var(--nav-border)] text-[var(--text-color)] text-[10px] px-2 py-1 rounded-full mb-2 w-fit">${dev.propertiesCount || 0} Properties</div>
+            <h1 class="developer-title text-lg font-bold text-[var(--text-color)] mb-2">${dev.name}</h1>
+
+            <div class="developer-description text-sm text-[var(--text-muted)] mb-4 flex-1 line-clamp-3">
+              ${(dev.about || "Leading real estate developer.").replace(/<\/?[^>]+(>|$)/g, "")}
+            </div>
+            <a href="developer-detalis.html?id=${dev.id}" class="prop-price mt-auto inline-flex items-center gap-2 text-[var(--accent-gold)] font-bold">
+              <span>Read More</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      `;
+            })
+            .join("");
+        } else if (developersContainer) {
+          developersContainer.innerHTML =
+            '<p class="text-center w-full col-span-full text-[var(--text-color)]">No developers found.</p>';
+        }
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const userStr = localStorage.getItem("sky_current_user");
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          if (user && user.name) {
+            const firstLetter = user.name.charAt(0).toUpperCase();
+
+            // Desktop icon
+            const desktopLoginLink = document.querySelector(
+              '.nav-right .theme-toggle a[href="login.html"]',
+            );
+            if (desktopLoginLink) {
+              desktopLoginLink.innerHTML = `<div style="width: 34px; height: 34px; border-radius: 50%; background-color: var(--accent-gold); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">${firstLetter}</div>`;
+              desktopLoginLink.href = "#"; // Prevent going to login page if already logged in
+              desktopLoginLink.title = "Logout";
+              desktopLoginLink.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem("sky_current_user");
+                window.location.reload();
+              };
+            }
+
+            // Mobile menu login button
+            const mobileLoginBtn = document.querySelector(
+              '.mobile-login-btn a[href="login.html"]',
+            );
+            if (mobileLoginBtn) {
+              mobileLoginBtn.innerText = "Logout (" + user.name + ")";
+              mobileLoginBtn.href = "#";
+              mobileLoginBtn.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem("sky_current_user");
+                window.location.reload();
+              };
+            }
+          }
+        }
       });
     </script>
   </body>

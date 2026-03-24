@@ -460,7 +460,7 @@ a {
   position: absolute;
   top: 208px; /* 125px (top-bar top) + 65px (top-bar height) + 18px (margin) */
   left: 25px;
-  width: 600px;
+  width: 609px;
   z-index: 1000;
   display: flex;
   gap: 2px;
